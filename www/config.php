@@ -18,7 +18,7 @@ defined("ETC_PATH") || define("ETC_PATH", FILES_PATH . "etc/");
 defined("IMG_PATH") || define("IMG_PATH", FILES_PATH . "img/");
 
 defined("DEBUG_MODE") || define("DEBUG_MODE", 1);
-defined("USED_CSS") || define("USED_CSS", array());
-defined("USED_JS") || define("USED_JS", array());
+//defined("USED_CSS") || define("USED_CSS", array());
+//defined("USED_JS") || define("USED_JS", array());
 
 ?>
