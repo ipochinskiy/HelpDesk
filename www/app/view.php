@@ -1,6 +1,6 @@
 <?php
 
-class View {
+class view {
 
     function showView($viewToShow, $data = null)
     {
