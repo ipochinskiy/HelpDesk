@@ -6,7 +6,9 @@ class Route {
         $controller_name = 'main';
         $action_name = 'index';
 
-        $routes = explode('/', $_SERVER['REQUEST_URI']);
+        $uriMap = parse_url($_SERVER['REQUEST_URI']);
+
+        $routes = explode('/', $uriMap[path]);
 
         if (count($routes) > 3) {
             die("Unexpected route!");
@@ -18,6 +20,13 @@ class Route {
 
         if ( !empty($routes[2]) ) {
             $action_name = $routes[2];
+        }
+
+        $queryGetParams = explode('&', $uriMap[query]);
+
+        foreach ($queryGetParams as $queryItem) {
+            $queryItemArray = explode('=', $queryItem);
+            $_GET[$queryItemArray[0]] = $queryItemArray[1];
         }
 
         $controller_name = 'controller' . ucfirst($controller_name);
