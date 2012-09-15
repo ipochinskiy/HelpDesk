@@ -4,14 +4,29 @@ require MODELS_PATH . "modelNews.php";
 
 class controllerNews extends controller {
 
-    function actionIndex() {
+    function __construct() {
         $this -> model = new modelNews();
-        $this -> model -> getNewsList();
-        $this -> view -> showView('viewNews.php');
+        $this -> view = new view();
+    }
+
+    function actionIndex() {
+        try {
+            $this -> view -> showView('viewNews.php', $this -> model -> getNewsList());
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     function actionAddNewsItem() {
-        echo "Hello from actionAddNewsItem!!<br />" . $_GET['text'] . "<br />" . $_GET['tags'];
+        $newsItemForAddition = date("d/m/Y H:i") . ";" . $_GET['auth'] . ";" . $_GET['tags'] . ";" . $_GET['text'];
+
+        try {
+            $this -> model -> addNewsItem($newsItemForAddition);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        $this -> actionIndex();
     }
 
 }

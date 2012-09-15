@@ -10,7 +10,7 @@ defined("PORTAL_ROUTING_PATH") || define("PORTAL_ROUTING_PATH", PORTAL_ROOT_PATH
 defined("CONTROLLERS_PATH") || define("CONTROLLERS_PATH", PORTAL_ROOT_PATH . "app/controllers/");
 defined("VIEWS_PATH") || define("VIEWS_PATH", PORTAL_ROOT_PATH . "app/views/");
 defined("MODELS_PATH") || define("MODELS_PATH", PORTAL_ROOT_PATH . "app/models/");
-defined("FILES_PATH") || define("FILES_PATH", PORTAL_ROOT_PATH . "app/files/");
+defined("FILES_PATH") || define("FILES_PATH", PORTAL_ROOT_PATH . "files/");
 
 defined("DOC_PATH") || define("DOC_PATH", FILES_PATH . "doc/");
 defined("HTML_PATH") || define("HTML_PATH", FILES_PATH . "html/");
