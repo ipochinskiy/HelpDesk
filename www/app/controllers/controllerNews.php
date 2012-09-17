@@ -18,7 +18,9 @@ class controllerNews extends controller {
     }
 
     function actionAddNewsItem() {
-        $newsItemForAddition = date("d/m/Y H:i") . ";" . $_GET['auth'] . ";" . $_GET['tags'] . ";" . $_GET['text'];
+        $newsItemForAddition = array("date" => date("d/m/Y H:i"),
+                                     "tags" => $_GET['tags'],
+                                     "text" => $_GET['text']);
 
         try {
             $this -> model -> addNewsItem($newsItemForAddition);

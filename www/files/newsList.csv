@@ -1,10 +1,16 @@
-d/m/Y H:i;Author1;tag1, tag2, tag3;preNewsItem
-d/m/Y H:i;Author2;tag1, tag2, tag3;preNewsItem
-d/m/Y H:i;Author3;tag1, tag2, tag3;preNewsItem
-d/m/Y H:i;Author4;tag1, tag2, tag3;preNewsItem
-d/m/Y H:i;Author5;tag1, tag2, tag3;preNewsItem
-d/m/Y H:i;Author6;tag1, tag2, tag3;preNewsItem
-16/09/2012 00:59;SSS;some+tags;New+newsItem%21
-16/09/2012 01:00;SSS;some+tags;New+newsItem%21
-16/09/2012 01:00;SSS;some+tags;New+newsItem%21
-16/09/2012 01:07;SSS;some+tags;New+newsItem%21
+d/m/Y H:i;tag1, tag2, tag3;preNewsItem
+d/m/Y H:i;tag1, tag2, tag3;preNewsItem
+d/m/Y H:i;tag1, tag2, tag3;preNewsItem
+d/m/Y H:i;tag1, tag2, tag3;preNewsItem
+d/m/Y H:i;tag1, tag2, tag3;preNewsItem
+d/m/Y H:i;tag1, tag2, tag3;preNewsItem
+16/09/2012 00:59;some+tags;New+newsItem%21
+16/09/2012 01:00;some+tags;New+newsItem%21
+17/09/2012 23:04;some tags;New newsItem!
+17/09/2012 23:04;some tags;New newsItem!
+17/09/2012 23:05;фвывф;New newsItem!
+17/09/2012 23:05;фвфыкв а ывапва п ";";New newsItem!
+17/09/2012 23:05;фвфыкв а ывапва п ";";"если" или; даже%ыф
+17/09/2012 23:06;фвфыкв а ывапва п ",";"если" или, даже%ыф
+17/09/2012 23:06;фвфыкв а ывапва п ",";"если" или, даже%ыф
+17/09/2012 23:06;some tags;New newsItem!

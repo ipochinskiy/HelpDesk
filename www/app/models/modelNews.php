@@ -18,29 +18,38 @@ class modelNews extends model {
         foreach ($newsList as $newsItem) {
             $newsItem = explode(';', $newsItem);
             array_push($resultArray, array("date" => $newsItem[0],
-                                           "auth" => $newsItem[1],
-                                           "tags" => $newsItem[2],
-                                           "text" => $newsItem[3]));
+                                           "tags" => $newsItem[1],
+                                           "text" => $newsItem[2]));
         }
 
         return array_reverse(array_slice($resultArray, 1));
     }
 
     function addNewsItem($newItemToAdd) {
-         if (is_writable(FILES_PATH . "newsList.csv")) {
+        if (is_writable(FILES_PATH . "newsList.csv")) {
 
-             if (!$newsListFileHandler = fopen(FILES_PATH . "newsList.csv", 'a')) {
-                 throw new Exception("Can't open file newsList.csv...");
-             }
+            if (!$newsListFileHandler = fopen(FILES_PATH . "newsList.csv", 'a')) {
+                throw new Exception("Can't open file newsList.csv...");
+            }
 
-             if (fwrite($newsListFileHandler, $newItemToAdd . PHP_EOL) === FALSE) {
-                 throw new Exception("Can't write to file newsList.csv...");
-             }
+            $newItemToAdd["text"] = str_replace("+", " ", urldecode($newItemToAdd["text"]));
+            $newItemToAdd["text"] = str_replace("%21", "", $newItemToAdd["text"]);
+            $newItemToAdd["text"] = str_replace(";", ",", $newItemToAdd["text"]);
 
-             fclose($newsListFileHandler);
+            $newItemToAdd["tags"] = str_replace("+", " ", urldecode($newItemToAdd["tags"]));
+            $newItemToAdd["tags"] = str_replace("%21", "", $newItemToAdd["tags"]);
+            $newItemToAdd["tags"] = str_replace(";", ",", $newItemToAdd["tags"]);
 
-         } else {
-             throw new Exception("File newsList.csv is unable to write in...");
+            $newItemToAdd = $newItemToAdd["date"] . ";" . $newItemToAdd["tags"] . ";" . $newItemToAdd["text"];
+
+            if (fwrite($newsListFileHandler, $newItemToAdd . PHP_EOL) === FALSE) {
+                throw new Exception("Can't write to file newsList.csv...");
+            }
+
+            fclose($newsListFileHandler);
+
+        } else {
+            throw new Exception("File newsList.csv is unable to write in...");
         }
     }
 }
