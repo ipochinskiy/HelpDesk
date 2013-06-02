@@ -1,18 +1,23 @@
 <?php
 
-class controller {
+abstract class controller {
 
-    public $view;
-    public $model;
+    protected  $view;
+    protected $model;
 
     function __construct() {
         $this -> view = new view();
     }
 
-    function actionIndex() {
+    abstract function index();
 
+    protected function redirect($url, $timeout = 0) {
+        echo "
+            <html>
+				<head>
+					<meta http-equiv='Refresh' content='1'; URL = $url'>
+				</head>
+        ";
     }
 
 }
-
-?>

@@ -1,7 +1,5 @@
 <?php
 
 class model {
-    public $resultArray = array();
+    protected $resultArray = array();
 }
-
-?>
