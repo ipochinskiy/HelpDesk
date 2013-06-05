@@ -1,7 +1,5 @@
 <?php
 
-require PORTAL_ROOT_PATH . "config.php";
-
 class mInstructions extends model {
 
     function getCe() {

@@ -7,17 +7,13 @@
     <script type="text/javascript" src=" <?php echo JS_PATH . "/highslide/highslide.min.js" ?>"></script>
     <link rel="stylesheet" type="text/css" href=" <?php echo JS_PATH . "/highslide/highslide.css" ?>" />
     <script type="text/javascript">
-        hs.graphicsDir = <?php echo JS_PATH . "highslide/graphics/" ?>;
+        hs.graphicsDir = '<?php echo JS_PATH . "highslide/graphics/" ?>';
         hs.wrapperClassName = "wide-border";
     </script>
 </head>
 
 <body>
 <div class="wrapper">
-
-    <!--
-    Блок верхней части страницы
-    -->
 
     <div id="header">
         <div id="logo">
@@ -32,21 +28,7 @@
             </select>
         </div>
     </div>
-
-    <!--
-    Конец Блок верхней части страницы
-    -->
-
-    <!--
-    Блок содержимого страницы: левое меню и контент
-    -->
-
     <div id="middle">
-
-        <!--
-        Левое меню
-        -->
-
         <div id="leftside">
 
             <?php
@@ -91,25 +73,18 @@
 
     </div>
 
-    <!--
-    Конец Левое меню
-    -->
+    <div class="table-sheet">
+    <table>
+        <tbody>
+        <tr>
+            <td class="table-tl"></td>
+            <td class="table-tc"></td>
+            <td class="table-tr"></td>
+        </tr>
+        <tr>
+            <td class="table-cl"></td>
+            <td class="table-cc">
+                <div id="content">
 
-    <!--
-    Рабочий холст на странице
-    -->
 
-    <div class="sheet">
-        <div class="sheet-tl"></div>
-        <div class="sheet-tr"></div>
-        <div class="sheet-tc"></div>
-        <div class="sheet-bc"></div>
-        <div class="sheet-cl"></div>
-        <div class="sheet-cr"></div>
-        <div class="sheet-cc"></div>
 
-        <!--
-        Контент
-        -->
-
-        <div id="content">

@@ -19,8 +19,8 @@ class cNews extends controller {
 
     function add() {
         $newsItemForAddition = array("date" => date("d/m/Y H:i"),
-                                     "author" => $_GET['author'],
-                                     "text" => $_GET['text']);
+                                     "author" => $_POST['author'],
+                                     "text" => $_POST['text']);
 
         try {
             $this -> model -> addNewsItem($newsItemForAddition);

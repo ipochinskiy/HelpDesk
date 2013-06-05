@@ -417,11 +417,11 @@ $(function(){
 		{
 			if(e.attr('fmiddle')) {
 				var addAttr = (e.attr('fclass')!=''?'class="'+e.attr('fclass')+'"':'')+' '+(e.attr('frel')!=''?'onclick="'+e.attr('frel')+'"':'');
-				var text = '<!-- link image cms-chaynik --><a href="'+e.attr('linkto')+'" '+addAttr+' title="'+e.attr('fname')+'">';
+				var text = '<a href="'+e.attr('linkto')+'" '+addAttr+' title="'+e.attr('fname')+'">';
 				text += '<img src="'+e.attr('fmiddle')+'" width="'+e.attr('fmiddlewidth')+'" height="'+e.attr('fmiddleheight')+'" alt="'+e.attr('fname')+'" />';
-				text += '</a><!-- /END link image --> ';
+				text += '</a> ';
 			} else {
-				var text = '<!-- image cms-chaynik --><img src="'+e.attr('linkto')+'" width="'+e.attr('fwidth')+'" height="'+e.attr('fheight')+'" alt="'+e.attr('fname')+'" /><!-- /END link image --> ';
+				var text = '<img src="'+e.attr('linkto')+'" width="'+e.attr('fwidth')+'" height="'+e.attr('fheight')+'" alt="'+e.attr('fname')+'" /> ';
 			}
 		}
 		

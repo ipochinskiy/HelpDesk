@@ -9,7 +9,7 @@ class Route {
 
         $uriMap = parse_url($_SERVER['REQUEST_URI']);
 
-        $routes = explode('/', $uriMap[path]);
+        $routes = explode('/', $uriMap['path']);
 
         if (count($routes) > 3) {
 //            Route::error404();

@@ -3,7 +3,7 @@
         <a href=""><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить новость</a>
     </div>
 
-<form method="GET" action="/news/add">
+<form method="POST" action="/news/add">
 Input Author...<input name="author" type="text" value="автор"/>
 <br />
 Input Text...<input name="text" type="text" value="текст"/>
