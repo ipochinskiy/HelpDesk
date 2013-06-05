@@ -1,17 +1,17 @@
 <div id="news-add">
-    <a href="/instructions/add"><img style="margin:-10px 5px 0 0;" src="/img/news-add.png" width="16" height="16" align="middle"/>Добавить инструкцию</a>
+    <a href="/instructions/add"><img style="margin:-10px 5px 0 0;" src="/img/news-add.png" width="16" height="16" align="middle"/>Р”РѕР±Р°РІРёС‚СЊ РёРЅСЃС‚СЂСѓРєС†РёСЋ</a>
 </div>
 
 <?php
 
 $instructions = array(
     array(
-        "key" => "Модемы",
+        "key" => "РњРѕРґРµРјС‹",
         "id" => "modems",
         "items" =>  array(),
     ),
     array(
-        "key" => "Роутеры",
+        "key" => "Р РѕСѓС‚РµСЂС‹",
         "id" => "routers",
         "items" => array(),
     ),
@@ -51,12 +51,12 @@ $instructions = array(
         "items" => array(),
     ),
     array(
-        "key" => "Ethernet-коммутаторы",
+        "key" => "Ethernet-РєРѕРјРјСѓС‚Р°С‚РѕСЂС‹",
         "id" => "etth_switches",
         "items" => array(),
     ),
     array(
-        "key" => "Оборудование уровня агрегации и ядра",
+        "key" => "РћР±РѕСЂСѓРґРѕРІР°РЅРёРµ СѓСЂРѕРІРЅСЏ Р°РіСЂРµРіР°С†РёРё Рё СЏРґСЂР°",
         "id" => "core_aggr_devices",
         "items" => array(),
     ),

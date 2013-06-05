@@ -1,6 +1,6 @@
 <?php
 if ($link != null) {
-    echo "<a href='$link'>Скачать инструкцию</a>";
+    echo "<a href='$link'>РЎРєР°С‡Р°С‚СЊ РёРЅСЃС‚СЂСѓРєС†РёСЋ</a>";
 }
 
 echo $content;

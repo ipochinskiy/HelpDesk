@@ -19,9 +19,10 @@ class mNews extends model {
 
         foreach ($newsList as $newsItem) {
             $newsItem = explode(';', $newsItem);
-            array_push($resultArray, array("date" => $newsItem[0],
-                                           "author" => $newsItem[1],
-                                           "text" => $newsItem[2]));
+            array_push($resultArray, array(
+                "date" => $newsItem[0],
+                "author" => $newsItem[1],
+                "text" => $newsItem[2]));
         }
 
         return array_reverse(array_slice($resultArray, 1));
@@ -29,10 +30,6 @@ class mNews extends model {
 
     function addNewsItem($itemToAdd) {
         if (is_writable(FILES_PATH . "news.csv")) {
-
-            if (!$newsListFileHandler = fopen(FILES_PATH . "news.csv", 'a')) {
-                throw new Exception("Can't open file news.csv...");
-            }
 
             $itemToAdd["text"] = str_replace("+", " ", urldecode($itemToAdd["text"]));
             $itemToAdd["text"] = str_replace("%21", "", $itemToAdd["text"]);
@@ -44,11 +41,7 @@ class mNews extends model {
 
             $itemToAdd = $itemToAdd["date"] . ";" . $itemToAdd["author"] . ";" . $itemToAdd["text"];
 
-            if (fwrite($newsListFileHandler, $itemToAdd . PHP_EOL) === FALSE) {
-                throw new Exception("Can't write to file news.csv...");
-            }
-
-            fclose($newsListFileHandler);
+            file_put_contents(FILES_PATH . "news.csv", $itemToAdd, FILE_APPEND);
 
         } else {
             throw new Exception("File news.csv is unable to write in...");

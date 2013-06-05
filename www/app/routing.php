@@ -23,14 +23,14 @@ class Route {
             $action_name = $routes[2];
         }
 
-        if ($uriMap["query"] != null) {
-            $queryGetParams = explode('&', $uriMap[query]);
-
-            foreach ($queryGetParams as $queryItem) {
-                $queryItemArray = explode('=', $queryItem);
-                $_GET[$queryItemArray[0]] = $queryItemArray[1];
-            }
-        }
+//        if ($uriMap["query"] != null) {
+//            $queryGetParams = explode('&', $uriMap[query]);
+//
+//            foreach ($queryGetParams as $queryItem) {
+//                $queryItemArray = explode('=', $queryItem);
+//                $_GET[$queryItemArray[0]] = $queryItemArray[1];
+//            }
+//        }
 
         $controller_name = 'c' . ucfirst($controller_name);
 //        $action_name = 'action' . ucfirst($action_name);

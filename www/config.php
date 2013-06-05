@@ -1,36 +1,36 @@
 <?php
 
-defined("PORTAL_ROOT_PATH") || define("PORTAL_ROOT_PATH", __DIR__ . "/");
+define("PORTAL_ROOT_PATH", __DIR__ . "/");
 
-defined("CSS_PATH") || define("CSS_PATH", "/css/");
-defined("JS_PATH") || define("JS_PATH", "/js/");
-defined("LIB_PATH") || define("LIB_PATH", "/lib/");
+define("CSS_PATH", "/css/");
+define("JS_PATH", "/js/");
+define("LIB_PATH", "/lib/");
 
-defined("PORTAL_ROUTING_PATH") || define("PORTAL_ROUTING_PATH", PORTAL_ROOT_PATH . "app/routing.php");
-defined("CONTROLLERS_PATH") || define("CONTROLLERS_PATH", PORTAL_ROOT_PATH . "app/controllers/");
-defined("VIEWS_PATH") || define("VIEWS_PATH", PORTAL_ROOT_PATH . "app/views/");
-defined("MODELS_PATH") || define("MODELS_PATH", PORTAL_ROOT_PATH . "app/models/");
+define("PORTAL_ROUTING_PATH", PORTAL_ROOT_PATH . "app/routing.php");
+define("CONTROLLERS_PATH", PORTAL_ROOT_PATH . "app/controllers/");
+define("VIEWS_PATH", PORTAL_ROOT_PATH . "app/views/");
+define("MODELS_PATH", PORTAL_ROOT_PATH . "app/models/");
 
-defined("FILES_PATH") || define("FILES_PATH", PORTAL_ROOT_PATH . "/files/");
-defined("DOC_PATH") || define("DOC_PATH", FILES_PATH . "doc/");
-defined("HTML_PATH") || define("HTML_PATH", FILES_PATH . "html/");
-defined("ETC_PATH") || define("ETC_PATH", FILES_PATH . "etc/");
-defined("IMG_PATH") || define("IMG_PATH", FILES_PATH . "img/");
-defined("NEWS_PATH") || define("NEWS_PATH", FILES_PATH . "_news/");
+define("FILES_PATH", PORTAL_ROOT_PATH . "/files/");
+define("DOC_PATH", FILES_PATH . "doc/");
+define("HTML_PATH", FILES_PATH . "html/");
+define("ETC_PATH", FILES_PATH . "etc/");
+define("IMG_PATH", FILES_PATH . "img/");
+define("NEWS_PATH", FILES_PATH . "_news/");
 
-defined("DEBUG_MODE") || define("DEBUG_MODE", 1);
-//defined("USED_CSS") || define("USED_CSS", array());
-//defined("USED_JS") || define("USED_JS", array());
+define("DEBUG_MODE", 1);
+//define("USED_CSS", array());
+//define("USED_JS", array());
 
 $categories = array(
     array(
         "url" => "news",
-        "key" => "Íîâîñòè",
+        "key" => "ÐÐ¾Ð²Ð¾ÑÑ‚Ð¸",
         "children" => null,
     ),
     array(
         "url" => "instructions",
-        "key" => "Èíñòðóêöèè",
+        "key" => "Ð˜Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸Ð¸",
         "children" => array(
             array(
                 "url" => "ce",
@@ -38,22 +38,22 @@ $categories = array(
                 "children" => array(
                     array(
                         "url" => "modems",
-                        "key" => "Ìîäåìû",
+                        "key" => "ÐœÐ¾Ð´ÐµÐ¼Ñ‹",
                         "file" => FILES_PATH . "modems.csv",
                     ),
                     array(
                         "url" => "routers",
-                        "key" => "Ðîóòåðû",
+                        "key" => "Ð Ð¾ÑƒÑ‚ÐµÑ€Ñ‹",
                         "file" => FILES_PATH . "routers.csv",
                     ),
                     array(
                         "url" => "stbs",
-                        "key" => "Ïðèñòàâêè STB",
+                        "key" => "ÐŸÑ€Ð¸ÑÑ‚Ð°Ð²ÐºÐ¸ STB",
                         "file" => FILES_PATH . "stbs.csv",
                     ),
                     array(
                         "url" => "voips",
-                        "key" => "Øëþçû VOIP",
+                        "key" => "Ð¨Ð»ÑŽÐ·Ñ‹ VOIP",
                         "file" => FILES_PATH . "voips.csv",
                     ),
                 ),
@@ -64,7 +64,7 @@ $categories = array(
             ),
             array(
                 "url" => "incidents",
-                "key" => "Èíöèäåíòû",
+                "key" => "Ð˜Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ñ‹",
                 "children" => array(
                     array(
                         "url" => "dsl",
@@ -90,23 +90,23 @@ $categories = array(
             ),
             array(
                 "url" => "soft",
-                "key" => "ÏÎ è ÏÊ",
+                "key" => "ÐŸÐž Ð¸ ÐŸÐš",
             ),
         ),
     ),
     array(
         "url" => "vips",
-        "key" => "VIP êëèåíòû",
+        "key" => "VIP ÐºÐ»Ð¸ÐµÐ½Ñ‚Ñ‹",
         "children" => null,
     ),
     array(
         "url" => "phones",
-        "key" => "Òåëåôîííûé ñïðàâî÷íèê",
+        "key" => "Ð¢ÐµÐ»ÐµÑ„Ð¾Ð½Ð½Ñ‹Ð¹ ÑÐ¿Ñ€Ð°Ð²Ð¾Ñ‡Ð½Ð¸Ðº",
         "children" => null,
     ),
     array(
         "url" => "tools",
-        "key" => "Èíñòðóìåíòû",
+        "key" => "Ð˜Ð½ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚Ñ‹",
         "children" => null,
     ),
 );

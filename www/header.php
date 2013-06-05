@@ -2,12 +2,12 @@
 <html>
 <head>
     <title>HelpDesk</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href=" <?php echo CSS_PATH . "style.css" ?>" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src=" <?php echo JS_PATH . "/highslide/highslide.min.js" ?>"></script>
     <link rel="stylesheet" type="text/css" href=" <?php echo JS_PATH . "/highslide/highslide.css" ?>" />
     <script type="text/javascript">
-        hs.graphicsDir = <?php echo JS_PATH . "/highslide/graphics/" ?>;
+        hs.graphicsDir = <?php echo JS_PATH . "highslide/graphics/" ?>;
         hs.wrapperClassName = "wide-border";
     </script>
 </head>
@@ -16,7 +16,7 @@
 <div class="wrapper">
 
     <!--
-    Блок верхней части страницы
+    Р‘Р»РѕРє РІРµСЂС…РЅРµР№ С‡Р°СЃС‚Рё СЃС‚СЂР°РЅРёС†С‹
     -->
 
     <div id="header">
@@ -34,75 +34,82 @@
     </div>
 
     <!--
-    Конец Блок верхней части страницы
+    РљРѕРЅРµС† Р‘Р»РѕРє РІРµСЂС…РЅРµР№ С‡Р°СЃС‚Рё СЃС‚СЂР°РЅРёС†С‹
     -->
 
     <!--
-    Блок содержимого страницы: левое меню и контент
+    Р‘Р»РѕРє СЃРѕРґРµСЂР¶РёРјРѕРіРѕ СЃС‚СЂР°РЅРёС†С‹: Р»РµРІРѕРµ РјРµРЅСЋ Рё РєРѕРЅС‚РµРЅС‚
     -->
 
     <div id="middle">
 
         <!--
-        Левое меню
+        Р›РµРІРѕРµ РјРµРЅСЋ
         -->
 
         <div id="leftside">
 
             <?php
-
             foreach($categories as $category) {
-                echo "
-                <div class='item'>
-                    <div class='item-body'>
-                        <div class='item-header''>
-                            <div class='header-tag-icon'>
-                                <div class='l'></div>
-                                <div class='t'><a href='/" . $category["url"] . "'>" . $category["key"] . "</a></div>
-                            </div>
-                        </div>
-                ";
-
-                if ($category["children"] != null) {
-                    foreach ($category["children"] as $cat) {
-                        echo "
-                        <div class='item-content'>
-                            <div class='l'></div>
-                            <div class='t'><a href='/" . $category["url"] . "/" . $cat["url"] . "'>" . $cat["key"] . "</a></div>
-                        </div>
-                    ";
-                    }
-                }
-
-                echo "
-                    </div>
-                </div>
-            ";
-
-            }
             ?>
 
+            <div class='item'>
+                <div class='item-body'>
+                    <div class='item-header''>
+                    <div class='header-tag-icon'>
+                        <div class='l'></div>
+
+                        <?php
+                        echo "<div class='t'><a href='/" . $category["url"] . "'>" . $category["key"] . "</a></div>";
+                        ?>
+
+                    </div>
+                </div>
+
+                <?php
+                if ($category["children"] != null) {
+                    foreach ($category["children"] as $cat) {
+                        ?>
+
+                        <div class='item-content'>
+                            <div class='l'></div>
+                            <?php
+                            echo "<div class='t'><a href='/" . $category["url"] . "/" . $cat["url"] . "'>" . $cat["key"] . "</a></div>";
+                            ?>
+                        </div>
+                    <?php
+                    }
+                }
+                ?>
+
+            </div>
         </div>
 
-        <!--
-        Конец Левое меню
-        -->
+        <?php
+        }
+        ?>
+
+    </div>
+
+    <!--
+    РљРѕРЅРµС† Р›РµРІРѕРµ РјРµРЅСЋ
+    -->
+
+    <!--
+    Р Р°Р±РѕС‡РёР№ С…РѕР»СЃС‚ РЅР° СЃС‚СЂР°РЅРёС†Рµ
+    -->
+
+    <div class="sheet">
+        <div class="sheet-tl"></div>
+        <div class="sheet-tr"></div>
+        <div class="sheet-tc"></div>
+        <div class="sheet-bc"></div>
+        <div class="sheet-cl"></div>
+        <div class="sheet-cr"></div>
+        <div class="sheet-cc"></div>
 
         <!--
-        Рабочий холст на странице
+        РљРѕРЅС‚РµРЅС‚
         -->
 
-        <div class="sheet">
-            <div class="sheet-tl"></div>
-            <div class="sheet-tr"></div>
-            <div class="sheet-tc"></div>
-            <div class="sheet-bc"></div>
-            <div class="sheet-cl"></div>
-            <div class="sheet-cr"></div>
-            <div class="sheet-cc"></div>
-
-            <!--
-            Контент
-            -->
-
-            <div id="content">
+        <div id="content">

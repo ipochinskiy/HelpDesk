@@ -27,7 +27,7 @@
 
     <?php
     if ($data) {
-        echo "<p style='color:red;font-weight:bold'>Необходимо заполнить все поля</p>";
+        echo "<p style='color:red;font-weight:bold'>РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅРёС‚СЊ РІСЃРµ РїРѕР»СЏ</p>";
     }
     ?>
 
@@ -35,7 +35,7 @@
 
     <table style="width:963px;">
         <tr>
-            <td>Секция:</td>
+            <td>РЎРµРєС†РёСЏ:</td>
             <td>
                 <select name="section" size="1">
                     <option value="0">CE/modems</option>
@@ -53,12 +53,12 @@
                 </select>
             </td>
         </tr>
-        <tr><td>Alias<b>*</b> инструкции:</td><td><input name="alias" type="text" size="60" value=<?php echo $_POST["alias"] ?> >.html</td></tr>
-        <tr><td colspan="2"><b>* - alias</b>: заполняется латинскими буквамии <b>без</b> слеша в конце "/"<br></td></tr>
-        <tr><td>Название инструкции:</td><td><input name="name" type="text" size="60" value=<?php echo $_POST["name"] ?> ></td></tr>
+        <tr><td>Alias<b>*</b> РёРЅСЃС‚СЂСѓРєС†РёРё:</td><td><input name="alias" type="text" size="60" value=<?php echo $_POST["alias"] ?> >.html</td></tr>
+        <tr><td colspan="2"><b>* - alias</b>: Р·Р°РїРѕР»РЅСЏРµС‚СЃСЏ Р»Р°С‚РёРЅСЃРєРёРјРё Р±СѓРєРІР°РјРёРё <b>Р±РµР·</b> СЃР»РµС€Р° РІ РєРѕРЅС†Рµ "/"<br></td></tr>
+        <tr><td>РќР°Р·РІР°РЅРёРµ РёРЅСЃС‚СЂСѓРєС†РёРё:</td><td><input name="name" type="text" size="60" value=<?php echo $_POST["name"] ?> ></td></tr>
     </table>
 
     <textarea id='h' name="content" class="editor_big" style="height:500px;"><?php echo $_POST["content"] ?></textarea>
     <br />
-    <input type="submit" value="Добавить" />
+    <input type="submit" value="Р”РѕР±Р°РІРёС‚СЊ" />
 </form>

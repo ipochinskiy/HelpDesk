@@ -1,12 +1,12 @@
 <div id="news">
     <div id="news-add">
-        <a href=""><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить новость</a>
+        <a href=""><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІРѕСЃС‚СЊ</a>
     </div>
 
 <form method="GET" action="/news/add">
-Input Author...<input name="author" type="text" value="автор"/>
+Input Author...<input name="author" type="text" value="Р°РІС‚РѕСЂ"/>
 <br />
-Input Text...<input name="text" type="text" value="текст"/>
+Input Text...<input name="text" type="text" value="С‚РµРєСЃС‚"/>
 <br />
 <input type="submit">
 </form>
@@ -19,9 +19,9 @@ if ($data != NULL) {
         echo "
         <div id='news'>
             <div class='news-item'>
-                <div><strong>Дата:</strong> $date</div>
-                <div><strong>Автор:</strong> $author</div>
-                <div><strong>Текст:</strong> $text</div>
+                <div><strong>Р”Р°С‚Р°:</strong> $date</div>
+                <div><strong>РђРІС‚РѕСЂ:</strong> $author</div>
+                <div><strong>РўРµРєСЃС‚:</strong> $text</div>
             </div>
         </div>
     ";
