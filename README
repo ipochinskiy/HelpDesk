@@ -1,1 +1,26 @@
 tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
+
+//TODO:
+
+1. Изменить кодироку на utf-8.
+2. При переходе по некоторым ссылкам менюшные ссылки подсвечиваются фиолетовым (already visited).
+3. min-weight, min-height контента.
+4. Разобраться с highslide.js.
+5. move "add news/instructions/vips" buttons in header and implement it in pop-ups maybe (modal dialog).
+6. news-item fixed size.
+7. "Select CE" implemet in jqueryUI widgets (autocomplete).
+	rskvazh: <select onchange="document.location=this.options[this.selectedIndex].value"> на нормальном javascript замутить проверку, чтобы якоря не выскакивало
+8. Добавить ограничение на количество символов в newsItems.
+9. Новости, инструкции и випов хранить в xml.
+10. Избавиться от глобальных переменных.
+	rslvazh: Сделай singleton'ом какой-нибудь Registry класс, и обращайся к нему Registry::set($key, $value), Registry::get($key). Либой модель Categories с методом getCategories().
+11. Некрасиво, когда html-код выводится как echo "html-код";
+	rskvazh: header.php:54 вообще некрасиво когда html-код идет как php echo, можно же <?php foreach($categories as $category): ?> … HTML …
+12. Редирект.
+	rskvazh: controller.php - protected function redirect($url, $timeout = 0), ну его надо делать через header('Location: http://xxx.com'); exit();
+13. Обработку всех исключений перенести в routing.php.
+	rskvazh: правильно что бросаешь исключения, лучше их перехватывать в routing и показывать страничку с кодом 500 и текстом ошибки
+14. Пагинация для новостей.
+15. Добавить функцию "Распечатать инструкцию".
+16. В xml складывается инфа в 16-ичном представлении.
+17. В html wrapper должен включать в себя header + middle + footer.

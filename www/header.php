@@ -2,14 +2,21 @@
 <html>
 <head>
     <title>HelpDesk</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <link href=" <?php echo CSS_PATH . "style.css" ?>" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src=" <?php echo JS_PATH . "/highslide/highslide.min.js" ?>"></script>
+    <script type="text/javascript" src="<?php echo JS_PATH . "/highslide/highslide.min.js" ?>"></script>
     <link rel="stylesheet" type="text/css" href=" <?php echo JS_PATH . "/highslide/highslide.css" ?>" />
     <script type="text/javascript">
         hs.graphicsDir = '<?php echo JS_PATH . "highslide/graphics/" ?>';
         hs.wrapperClassName = "wide-border";
     </script>
+
+
+    <script src="<?php echo JS_PATH . "jquery-1.10.1.js" ?>"></script>
+    <script src="<?php echo JS_PATH . "jquery-ui-1.10.3/ui/jquery-ui.js" ?>"></script>
+    <script src="<?php echo JS_PATH . "dialog.js" ?>"></script>
+
+
 </head>
 
 <body>
@@ -74,17 +81,17 @@
     </div>
 
     <div class="table-sheet">
-    <table>
-        <tbody>
-        <tr>
-            <td class="table-tl"></td>
-            <td class="table-tc"></td>
-            <td class="table-tr"></td>
-        </tr>
-        <tr>
-            <td class="table-cl"></td>
-            <td class="table-cc">
-                <div id="content">
+        <table>
+            <tbody>
+            <tr>
+                <td class="table-tl"></td>
+                <td class="table-tc"></td>
+                <td class="table-tr"></td>
+            </tr>
+            <tr>
+                <td class="table-cl"></td>
+                <td class="table-cc">
+                    <div id="content">
 
 
 
