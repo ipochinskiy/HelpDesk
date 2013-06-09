@@ -2,7 +2,7 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 
 //TODO:
 
-1. Изменить кодироку на utf-8.
++ 1. Изменить кодироку на utf-8.
 2. При переходе по некоторым ссылкам менюшные ссылки подсвечиваются фиолетовым (already visited).
 3. min-weight, min-height контента.
 4. Разобраться с highslide.js.
