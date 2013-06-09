@@ -125,43 +125,9 @@ class mInstructions extends model {
             }
         }
 
-//        if (array_search($item . ".html", scandir(HTML_PATH . "modems/")) != false) {
-//            try {
-//                $content = file_get_contents(HTML_PATH . "modems/" . $item . ".html");
-//            } catch (Exception $e) {
-//                throw new Exception("Can't read file $item in " . HTML_PATH . "modems/");
-//            }
-//        } elseif (array_search($item . ".html", scandir(HTML_PATH . "routers/")) != false) {
-//            try {
-//                $content = str_replace($item . ".files",
-//                    HTML_PATH . "routers/" . $item . ".files",
-//                    file_get_contents(HTML_PATH . "routers/" . $item . ".html"));
-//            } catch (Exception $e) {
-//                throw new Exception("Can't read file $item in " . HTML_PATH . "routers/");
-//            }
-//        } elseif (array_search($item . ".html", scandir(HTML_PATH . "stbs/")) != false) {
-//            try {
-//                $content = str_replace($item . ".files",
-//                    HTML_PATH . "stbs/" . $item . ".files",
-//                    file_get_contents(HTML_PATH . "stbs/" . $item . ".html"));
-//            } catch (Exception $e) {
-//                throw new Exception("Can't read file $item in " . HTML_PATH . "stbs/");
-//            }
-//        } elseif (array_search($item . ".html", scandir(HTML_PATH . "voips/")) != false) {
-//            try {
-//                $content = str_replace($item . ".files",
-//                    HTML_PATH . "voips/" . $item . ".files",
-//                    file_get_contents(HTML_PATH . "voips/" . $item . ".html"));
-//            } catch (Exception $e) {
-//                throw new Exception("Can't read file $item in " . HTML_PATH . "voips/");
-//            }
-//        } else {
-//            throw new Exception("There's no instruction for $item");
+//        if (array_search($item . ".doc", scandir(DOC_PATH)) != false) {
+//            $content["link"] =  "/files/doc/" . $item . ".doc";
 //        }
-
-        if (array_search($item . ".doc", scandir(DOC_PATH)) != false) {
-            $content["link"] =  "/files/doc/" . $item . ".doc";
-        }
 
         return $content;
     }

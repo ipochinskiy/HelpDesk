@@ -1,4 +1,4 @@
-<div id="news-add">
+<div id="instructions-add">
     <a href="/instructions/add"><img style="margin:-10px 5px 0 0;" src="/img/news-add.png" width="16" height="16" align="middle"/>Добавить инструкцию</a>
 </div>
 

@@ -438,7 +438,9 @@ table, th, td {vertical-align:middle; margin: 0; padding: 0;}
     background-image: url(../img/table-br.png);
 }
 
-
+#dialog-form {
+    display: none;
+}
 
 
 
