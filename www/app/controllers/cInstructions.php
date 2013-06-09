@@ -12,7 +12,7 @@ class cInstructions extends controller {
     function index($data = null) {
         try {
             if ($data === null) {
-                $data = $this -> model -> getCe();
+                $data = $this -> model -> getList("ce");
             }
 
             if (count($_GET) == 0) {
@@ -26,19 +26,35 @@ class cInstructions extends controller {
     }
 
     function ce() {
-        $this -> index($this -> model -> getCe());
+        try {
+            $this -> index($this -> model -> getList("ce"));
+        } catch (Exception $e) {
+            echo $e -> getMessage();
+        }
     }
 
     function pe() {
-        $this -> index($this -> model -> getPe());
+        try {
+            $this -> index($this -> model -> getList("pe"));
+        } catch (Exception $e) {
+            echo $e -> getMessage();
+        }
     }
 
     function incidents() {
-        $this -> index($this -> model -> getIncidents());
+        try {
+            $this -> index($this -> model -> getList("incidents"));
+        } catch (Exception $e) {
+            echo $e -> getMessage();
+        }
     }
 
     function soft() {
-        $this -> index($this -> model -> getSoft());
+        try {
+            $this -> index($this -> model -> getList("soft"));
+        } catch (Exception $e) {
+            echo $e -> getMessage();
+        }
     }
 
     function add() {

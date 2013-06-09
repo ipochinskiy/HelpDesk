@@ -11,12 +11,11 @@ define("CONTROLLERS_PATH", PORTAL_ROOT_PATH . "app/controllers/");
 define("VIEWS_PATH", PORTAL_ROOT_PATH . "app/views/");
 define("MODELS_PATH", PORTAL_ROOT_PATH . "app/models/");
 
-define("FILES_PATH", PORTAL_ROOT_PATH . "/files/");
-define("DOC_PATH", FILES_PATH . "doc/");
-define("HTML_PATH", FILES_PATH . "html/");
-define("ETC_PATH", FILES_PATH . "etc/");
-define("IMG_PATH", FILES_PATH . "img/");
-define("NEWS_PATH", FILES_PATH . "_news/");
+define("DATA_PATH", PORTAL_ROOT_PATH . "/data/");
+define("DOC_PATH", DATA_PATH . "doc/");
+define("ETC_PATH", DATA_PATH . "etc/");
+define("IMG_PATH", DATA_PATH . "img/");
+define("NEWS_PATH", DATA_PATH . "_news/");
 
 define("DEBUG_MODE", 1);
 //define("USED_CSS", array());
@@ -39,22 +38,22 @@ $categories = array(
                     array(
                         "url" => "modems",
                         "key" => "Модемы",
-                        "file" => FILES_PATH . "modems.csv",
+                        "file" => DATA_PATH . "modems.xml",
                     ),
                     array(
                         "url" => "routers",
                         "key" => "Роутеры",
-                        "file" => FILES_PATH . "routers.csv",
+                        "file" => DATA_PATH . "routers.xml",
                     ),
                     array(
                         "url" => "stbs",
                         "key" => "Приставки STB",
-                        "file" => FILES_PATH . "stbs.csv",
+                        "file" => DATA_PATH . "stbs.xml",
                     ),
                     array(
                         "url" => "voips",
                         "key" => "Шлюзы VOIP",
-                        "file" => FILES_PATH . "voips.csv",
+                        "file" => DATA_PATH . "voips.xml",
                     ),
                 ),
             ),

@@ -4,81 +4,13 @@
 
 <?php
 
-$instructions = array(
-    array(
-        "key" => "Модемы",
-        "id" => "modems",
-        "items" =>  array(),
-    ),
-    array(
-        "key" => "Роутеры",
-        "id" => "routers",
-        "items" => array(),
-    ),
-    array(
-        "key" => "STBs",
-        "id" => "stbs",
-        "items" => array(),
-    ),
-    array(
-        "key" => "VoIPs",
-        "id" => "voips",
-        "items" => array(),
-    ),
-    array(
-        "key" => "xDSL",
-        "id" => "xdsl",
-        "items" => array(),
-    ),
-    array(
-        "key" => "FttB",
-        "id" => "fttb",
-        "items" => array(),
-    ),
-    array(
-        "key" => "IPTV",
-        "id" => "iptv",
-        "items" => array(),
-    ),
-    array(
-        "key" => "SIP",
-        "id" => "sip",
-        "items" => array(),
-    ),
-    array(
-        "key" => "DSLAMs",
-        "id" => "dslams",
-        "items" => array(),
-    ),
-    array(
-        "key" => "Ethernet-коммутаторы",
-        "id" => "etth_switches",
-        "items" => array(),
-    ),
-    array(
-        "key" => "Оборудование уровня агрегации и ядра",
-        "id" => "core_aggr_devices",
-        "items" => array(),
-    ),
-);
-
 foreach ($data as $d) {
-    for ($i = 0; $i < count($instructions); $i++) {
-        if ($instructions[$i]["id"] == $d["section"]) {
-            $instructions[$i]["items"][] = $d;
-        }
+    echo "<h1>" . $d["sectionName"][0] . "</h1>";
+    echo "<ul>";
+    foreach ($d["children"] as $c) {
+        echo "<li><a href='/instructions?section=" . $d["sectionId"][0] . "&item=" . $c[0] -> id . "'>". $c[0] -> name . "</a></li>";
     }
-}
-
-foreach ($instructions as $section) {
-    if (count($section["items"]) != 0) {
-        echo "<h1>" . $section["key"] . "</h1>";
-        echo "<ul>";
-        foreach ($section["items"] as $i) {
-            echo "<li><a href='/instructions?section=" . $section["id"] . "&item=" . $i["id"] . "'>". $i["key"] . "</a></li>";
-        }
-        echo "</ul>";
-    }
+    echo "</ul>";
 }
 
 ?>

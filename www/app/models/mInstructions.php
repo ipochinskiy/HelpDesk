@@ -2,174 +2,180 @@
 
 class mInstructions extends model {
 
-    function getCe() {
-        return $this -> getList(array(
-                array(
-                    "key" => "Модемы",
-                    "id" => "modems",
-                    "items" =>  array(),
-                ),
-                array(
-                    "key" => "Роутеры",
-                    "id" => "routers",
-                    "items" => array(),
-                ),
-                array(
-                    "key" => "STBs",
-                    "id" => "stbs",
-                    "items" => array(),
-                ),
-                array(
-                    "key" => "VoIPs",
-                    "id" => "voips",
-                    "items" => array(),
-                ),
-            )
-        );
-    }
+    function getList($subcat) {
 
-    function getPe() {
-        return $this -> getList(array(
-                array(
-                    "key" => "DSLAMs",
-                    "id" => "dslams",
-                    "items" => array(),
-                ),
-                array(
-                    "key" => "Ethernet-коммутаторы",
-                    "id" => "etth_switches",
-                    "items" => array(),
-                ),
-                array(
-                    "key" => "Оборудование уровня агрегации и ядра",
-                    "id" => "core_aggr_devices",
-                    "items" => array(),
-                ),
-            )
-        );
-    }
+        if (!file_exists(DATA_PATH . $subcat . ".xml")) {
+            //TODO: why to throw exception? maybe we should just create this file?
+            throw new Exception("It seems there is no even needed files...");
+        }
 
-    function getIncidents() {
-        return $this -> getList(array(
-                array(
-                    "key" => "xDSL",
-                    "id" => "xdsl",
-                    "items" => array(),
-                ),
-                array(
-                    "key" => "FttB",
-                    "id" => "fttb",
-                    "items" => array(),
-                ),
-                array(
-                    "key" => "IPTV",
-                    "id" => "iptv",
-                    "items" => array(),
-                ),
-                array(
-                    "key" => "SIP",
-                    "id" => "sip",
-                    "items" => array(),
-                ),
-            )
-        );
-    }
+        $xml = new SimpleXMLElement(DATA_PATH . $subcat . ".xml", NULL, TRUE);
 
-    function getSoft() {
-        return $this -> getList(array(
+        $resultArray[] = NULL;
+        foreach ($xml -> section as $section) {
 
-            )
-        );
-    }
+            $attr = $section -> attributes();
+            $array = array(
+                "sectionId" => $attr["id"],
+                "sectionName" => $attr["name"],
+                "children" => array(),
+            );
 
-    function getList($instructions) {
-        $resultArray[] = null;
-
-        foreach ($instructions as $section) {
-
-            if (!file_exists(FILES_PATH . $section["id"] . ".csv")) {
-                //TODO: why to throw exception? maybe we should just create this file?
-                throw new Exception("It seems there is no even needed files...");
+            foreach ($section -> children() as $item) {
+                array_push($array["children"], $item);
             }
+            array_push($resultArray, $array);
 
-            $elements = file(FILES_PATH . $section["id"] . ".csv");
-
-            if (count($elements) == 1 && $elements[0] == '') {
-                //TODO: why to throw exception? maybe we should just show a user-friendly message that there's no modems?
-                throw new Exception("It seems there is $elements file, but still no elements inside...");
-            }
-
-            foreach ($elements as $element) {
-                $item = explode(';', $element);
-
-                if (file_exists(HTML_PATH . $section["id"] . "/" . $item[0] . ".html")) {
-                    array_push($resultArray, array(
-                            "section" => $section["id"],
-                            "id" => $item[0],
-                            "key" => $item[1],
-                        )
-                    );
-                }
-            }
         }
 
         return array_slice($resultArray, 1);
     }
 
     function getInstruction($section, $item) {
-        if (array_search($item . ".html", scandir(HTML_PATH . $section . "/")) != false) {
-            try {
-                $content =  array("content" => file_get_contents(HTML_PATH . $section . "/" . $item . ".html"));
-            } catch (Exception $e) {
-                throw new Exception("Can't read file $item in " . HTML_PATH . $section . "/");
+        switch($section) {
+            case "modem":
+            case "router":
+            case "stb":
+            case "voip": {
+                $file = DATA_PATH . "ce.xml";
+                break;
+            }
+            case "dslam":
+            case "etth":
+            case "core": {
+                $file = DATA_PATH . "pe.xml";
+                break;
+            }
+            case "xdsl":
+            case "fttb":
+            case "iptv":
+            case "sip": {
+                $file = DATA_PATH . "incidents.xml";
+                break;
+            }
+            case "browser": {
+                $file = DATA_PATH . "soft.xml";
+                break;
+            }
+            default: {
+                throw new Exception("Unknown section.");
             }
         }
 
-//        if (array_search($item . ".doc", scandir(DOC_PATH)) != false) {
-//            $content["link"] =  "/files/doc/" . $item . ".doc";
-//        }
+        $xml = new SimpleXMLElement($file, NULL, TRUE);
+        foreach ($xml -> section as $section) {
+            foreach ($section -> children() as $children) {
+                if ($children -> id == $item) {
+                    return $children -> content;
+                }
+            }
+        }
 
-        return $content;
     }
 
     function addInstruction($section, $id, $name, $content) {
         switch($section) {
             case 0: {
-                $fileName = FILES_PATH . "modems.csv";
+                $secId = "modem";
+                $fileName = DATA_PATH . "ce.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='modem' name='Модемы'></section><section id='router' name='Роутеры'></section><section id='stb' name='STBs'></section><section id='voip' name='VoIPs'></section></sections>";
                 break;
             }
             case 1: {
-                $fileName = FILES_PATH . "routers.csv";
+                $secId = "router";
+                $fileName = DATA_PATH . "ce.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='modem' name='Модемы'></section><section id='router' name='Роутеры'></section><section id='stb' name='STBs'></section><section id='voip' name='VoIPs'></section></sections>";
                 break;
             }
             case 2: {
-                $fileName = FILES_PATH . "stbs.csv";
+                $secId = "stb";
+                $fileName = DATA_PATH . "ce.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='modem' name='Модемы'></section><section id='router' name='Роутеры'></section><section id='stb' name='STBs'></section><section id='voip' name='VoIPs'></section></sections>";
                 break;
             }
             case 3: {
-                $fileName = FILES_PATH . "voips.csv";
+                $secId = "voip";
+                $fileName = DATA_PATH . "ce.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='modem' name='Модемы'></section><section id='router' name='Роутеры'></section><section id='stb' name='STBs'></section><section id='voip' name='VoIPs'></section></sections>";
+                break;
+            }
+            case 4: {
+                $secId = "dslam";
+                $fileName = DATA_PATH . "pe.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='dslam' name='DSLAMs'></section><section id='etth' name='Ethernet-коммутаторы'></section><section id='core' name='Оборудование уровня агрегации и ядра'></section></sections>";
+                break;
+            }
+            case 5: {
+                $secId = "etth";
+                $fileName = DATA_PATH . "pe.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='dslam' name='DSLAMs'></section><section id='etth' name='Ethernet-коммутаторы'></section><section id='core' name='Оборудование уровня агрегации и ядра'></section></sections>";
+                break;
+            }
+            case 6: {
+                $secId = "core";
+                $fileName = DATA_PATH . "pe.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='dslam' name='DSLAMs'></section><section id='etth' name='Ethernet-коммутаторы'></section><section id='core' name='Оборудование уровня агрегации и ядра'></section></sections>";
+                break;
+            }
+            case 7: {
+                $secId = "xdsl";
+                $fileName = DATA_PATH . "incidents.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='xdsl' name='xDSL'></section><section id='fttb' name='Fttb'></section><section id='iptv' name='IPTV'></section><section id='sip' name='SIP'></section></sections>";
+                break;
+            }
+            case 8: {
+                $secId = "fttb";
+                $fileName = DATA_PATH . "incidents.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='xdsl' name='xDSL'></section><section id='fttb' name='Fttb'></section><section id='iptv' name='IPTV'></section><section id='sip' name='SIP'></section></sections>";
+                break;
+            }
+            case 9: {
+                $secId = "iptv";
+                $fileName = DATA_PATH . "incidents.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='xdsl' name='xDSL'></section><section id='fttb' name='Fttb'></section><section id='iptv' name='IPTV'></section><section id='sip' name='SIP'></section></sections>";
+                break;
+            }
+            case 10: {
+                $secId = "sip";
+                $fileName = DATA_PATH . "incidents.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='xdsl' name='xDSL'></section><section id='fttb' name='Fttb'></section><section id='iptv' name='IPTV'></section><section id='sip' name='SIP'></section></sections>";
+                break;
+            }
+            case 11: {
+                $secId = "browser";
+                $fileName = DATA_PATH . "soft.xml";
+                $text = "<?xml version='1.0' standalone='yes'?><sections><section id='browser' name='Настройки браузеров'></section></sections>";
                 break;
             }
             default:
                 throw new Exception("Unknown section.");
         }
 
-        foreach (file($fileName) as $e) {
-            if (array_search($id, explode(";", $e)) !== false) {
-                throw new Exception("This ID is already used.");
+        if (!file_exists($fileName)) {
+            try {
+                $file = fopen($fileName, "x");
+                fwrite($file, $text);
+                fclose($file);
+            } catch (Exception $e) {
+                throw new Exception("xml is not exist and not creatable");
             }
         }
 
-        if (!file_put_contents($fileName, $id . ";" . $name . "\n", FILE_APPEND))
-        {
-            die ("Ошибка записи в файл");
+        $xml = new SimpleXMLElement($fileName, NULL, TRUE);
+
+        foreach ($xml -> section as $section) {
+            $attr = $section -> attributes();
+            if ($attr["id"] == $secId) {
+                $item = $section -> addChild($secId);
+                $item -> addChild("id", $id);
+                $item -> addChild("name", $name);
+                $item -> addChild("content", $content);
+
+                $xml->saveXML($fileName);
+                return;
+            }
         }
 
-        $fileStream = fopen(HTML_PATH . "modems/" . $id . ".html", "a");
-        if (!fwrite($fileStream, $content))
-        {
-            die ("Ошибка создания файла");
-        }
-        fclose($fileStream);
+        throw new Exception("Unknown section.");
     }
 }

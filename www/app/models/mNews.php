@@ -29,9 +29,9 @@ class mNews extends model {
 //    }
 
     function getNewsList() {
-        if (!file_exists(FILES_PATH . "news.xml")) {
+        if (!file_exists(DATA_PATH . "news.xml")) {
             try {
-                $file = fopen(FILES_PATH . "news.xml", "x");
+                $file = fopen(DATA_PATH . "news.xml", "x");
                 fwrite($file, "<?xml version='1.0' standalone='yes'?><news></news>");
                 fclose($file);
             } catch (Exception $e) {
@@ -39,7 +39,7 @@ class mNews extends model {
             }
         }
 
-        $xml = new SimpleXMLElement(FILES_PATH . "news.xml", NULL, TRUE);
+        $xml = new SimpleXMLElement(DATA_PATH . "news.xml", NULL, TRUE);
         if (count($xml) == 0) {
             return NULL;
 //            throw new Exception("It seems there is news.xml file, but still no items there...");
@@ -83,9 +83,9 @@ class mNews extends model {
         $item["author"] = str_replace("+", " ", urldecode($item["author"]));
         $item["author"] = str_replace("%21", "", $item["author"]);
 
-        if (!file_exists(FILES_PATH . "news.xml")) {
+        if (!file_exists(DATA_PATH . "news.xml")) {
             try {
-                $file = fopen(FILES_PATH . "news.xml", "x");
+                $file = fopen(DATA_PATH . "news.xml", "x");
                 fwrite($file, "<?xml version='1.0' standalone='yes'?><news></news>");
                 fclose($file);
             } catch (Exception $e) {
@@ -93,13 +93,13 @@ class mNews extends model {
             }
         }
 
-        $xml = new SimpleXMLElement(FILES_PATH . "news.xml", NULL, TRUE);
+        $xml = new SimpleXMLElement(DATA_PATH . "news.xml", NULL, TRUE);
 
         $new = $xml->addChild("new");
         $new->addChild("date", $item["date"]);
         $new->addChild("author", $item["author"]);
         $new->addChild("text", $item["text"]);
 
-        $xml->saveXML(FILES_PATH . "news.xml");
+        $xml->saveXML(DATA_PATH . "news.xml");
     }
 }
