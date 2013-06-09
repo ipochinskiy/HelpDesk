@@ -4,17 +4,17 @@
     <title>HelpDesk</title>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <link href=" <?php echo CSS_PATH . "style.css" ?>" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="<?php echo JS_PATH . "highslide/highslide.min.js" ?>"></script>
+    <link rel="stylesheet" type="text/css" href ="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href=" <?php echo JS_PATH . "highslide/highslide.css" ?>" />
+
+    <script type="text/javascript" src="<?php echo JS_PATH . "highslide/highslide.min.js" ?>"></script>
     <script type="text/javascript">
         hs.graphicsDir = '<?php echo JS_PATH . "highslide/graphics/" ?>';
         hs.wrapperClassName = "wide-border";
     </script>
-
-
-<!--    <link rel="stylesheet" type="text/css" href ="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />-->
     <script src="<?php echo JS_PATH . "jquery-1.10.1.js" ?>"></script>
     <script src="<?php echo JS_PATH . "jquery-ui-1.10.3/ui/jquery-ui.js" ?>"></script>
+
     <script src="<?php echo JS_PATH . "dialog.js" ?>"></script>
 
 
@@ -28,7 +28,7 @@
             <a href="/"><img src="/img/logo.png" width="296" height="50"/></a>
         </div>
         <div id="header_sel">
-            <select onchange="document.location=this.options[this.selectedIndex].value">
+            <select onchange="document.location=this.options[this.selectedIndex].value" >
                 <option value="#">Select CE device</option>
                 <option value="/">modem1</option>
                 <option value="/">modem2</option>
