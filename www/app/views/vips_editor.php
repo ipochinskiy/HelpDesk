@@ -1,4 +1,4 @@
-<form action="/instructions/add" method="post">
+<form action="/vips/add" method="post">
     <script type="text/javascript" src="<?php echo JS_PATH . "tiny_mce/tiny_mce.js" ?>"></script>
     <script type="text/javascript">
         tinyMCE.init({
@@ -34,28 +34,9 @@
     <input name="post" type="hidden" value="ok">
 
     <table style="width:963px;">
-        <tr>
-            <td>Секция:</td>
-            <td>
-                <select name="section" size="1">
-                    <option value="0">CE/modems</option>
-                    <option value="1">CE/routers</option>
-                    <option value="2">CE/stbs</option>
-                    <option value="3">CE/voips</option>
-                    <option value="4">PE/dslams</option>
-                    <option value="5">PE/etth_switches</option>
-                    <option value="6">PE/core_aggr_devices</option>
-                    <option value="7">Incidents/xdsl</option>
-                    <option value="8">Incidents/fttb</option>
-                    <option value="9">Incidents/iptv</option>
-                    <option value="10">Incidents/sip</option>
-                    <option value="11">Soft</option>
-                </select>
-            </td>
-        </tr>
-        <tr><td>Alias<b>*</b> инструкции:</td><td><input name="alias" type="text" size="60" value=<?php echo $_POST["alias"] ?> ></td></tr>
+        <tr><td>Alias<b>*</b> vip'а:</td><td><input name="alias" type="text" size="60" value=<?php echo $_POST["alias"] ?> ></td></tr>
         <tr><td colspan="2"><b>* - alias</b>: заполняется латинскими буквамии <b>без</b> слеша в конце "/"<br></td></tr>
-        <tr><td>Название инструкции:</td><td><input name="name" type="text" size="60" value=<?php echo $_POST["name"] ?> ></td></tr>
+        <tr><td>Наименование VIP'а:</td><td><input name="name" type="text" size="60" value=<?php echo $_POST["name"] ?> ></td></tr>
     </table>
 
     <textarea id='h' name="content" class="editor_big" style="height:500px;"><?php echo $_POST["content"] ?></textarea>

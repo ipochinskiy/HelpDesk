@@ -3,31 +3,49 @@
 class mVips extends model {
 
     function getList() {
-        if ( !file_exists(DATA_PATH . "vips.csv") ) {
-            //TODO: why to throw exception? maybe we should just create this file?
-            throw new Exception("It seems there is no even news.csv file...");
+        $this -> ensureFileExist(DATA_PATH . "vips.xml", "<vips></vips>");
+
+        $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
+        if (count($xml) == 0) {
+            return NULL;
+//            throw new Exception("It seems there is vips.xml file, but still no items there...");
         }
 
-        $vips = file(DATA_PATH . "vips.csv");
-
-        if (count($vips) == 1 && $vips[0] == '') {
-            //TODO: why to throw exception? maybe we should just show a user-friendly message that there's no cNews?
-            throw new Exception("It seems there is vips.csv file, but still no vipItems there...");
+        $result[] = NULL;
+        foreach ($xml as $item) {
+            array_push($result, array(
+                "id" => $item -> id,
+                "name" => $item -> name,
+                "content" => $item -> content,
+            ));
         }
 
-        $resultArray[] = null;
+        return array_slice($result, 1);
+    }
 
-        foreach ($vips as $vip) {
-            $vip = explode(';', $vip);
-            array_push($resultArray, array(
-                "id" => $vip[0],
-                "name" => $vip[1]));
+    function getItem($id) {
+        $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
+        foreach ($xml -> vip as $vip) {
+            if ($vip -> id == $id) {
+                return array (
+                    "name" => $vip -> name,
+                    "content" => $vip -> content,
+                );
+            }
         }
+    }
 
-        $resultArray = array_slice($resultArray, 1);
-        asort($resultArray);
+    function addItem($id, $name, $content) {
+        $this -> ensureFileExist(DATA_PATH . "vips.xml", "<vips></vips>");
 
-        return $resultArray;
+        $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
+
+        $item = $xml -> addChild("vip");
+        $item -> addChild("id", $id);
+        $item -> addChild("name", $name);
+        $item -> addChild("content", $content);
+
+        $xml->saveXML(DATA_PATH . "vips.xml");
     }
 
 }

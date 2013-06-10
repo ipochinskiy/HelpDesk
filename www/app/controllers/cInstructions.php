@@ -18,7 +18,7 @@ class cInstructions extends controller {
             if (count($_GET) == 0) {
                 $this -> view -> showView('instructions_list.php', $data);
             } else {
-                $this -> view -> showView('instructions_item.php', $this -> model -> getInstruction($_GET["section"], $_GET["item"]));
+                $this -> view -> showView('instructions_item.php', $this -> model -> getItem($_GET["section"], $_GET["item"]));
             }
         } catch (Exception $e) {
             echo $e -> getMessage();
@@ -66,7 +66,7 @@ class cInstructions extends controller {
                     $this -> view -> showView('instructions_editor.php', true);
                     return;
                 }
-                $this -> model -> addInstruction($_POST["section"], $_POST["alias"], $_POST["name"], $_POST["content"]);
+                $this -> model -> addItem($_POST["section"], $_POST["alias"], $_POST["name"], $_POST["content"]);
                 $this -> index();
 //                $this -> redirect("");
             }

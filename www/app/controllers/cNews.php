@@ -11,7 +11,7 @@ class cNews extends controller {
 
     function index() {
         try {
-            $this -> view -> showView('news.php', $this -> model -> getNewsList());
+            $this -> view -> showView('news.php', $this -> model -> getList());
         } catch (Exception $e) {
             echo $e -> getMessage();
         }
@@ -23,7 +23,7 @@ class cNews extends controller {
                                      "text" => $_POST['text']);
 
         try {
-            $this -> model -> addNewsItem($newsItemForAddition);
+            $this -> model -> addItem($newsItemForAddition);
         } catch (Exception $e) {
             echo $e -> getMessage();
         }

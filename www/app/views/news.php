@@ -35,6 +35,8 @@
             </div>
         <?php
         }
+    } else {
+        echo "It seems that there's no news...";
     }
     ?>
 
