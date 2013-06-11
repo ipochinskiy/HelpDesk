@@ -40,7 +40,8 @@
         <div id="leftside">
 
             <?php
-            foreach($categories as $category) {
+            $xml = new SimpleXMLElement(DATA_PATH . "menu.xml", NULL, TRUE);
+            foreach($xml -> category as $category) {
                 ?>
 
                 <div class='item'>
@@ -50,21 +51,21 @@
                                 <div class='l'></div>
 
                                 <?php
-                                echo "<div class='t'><a href='/" . $category["url"] . "'>" . $category["key"] . "</a></div>";
+                                echo "<div class='t'><a href='/" . $category -> url . "'>" . $category -> key . "</a></div>";
                                 ?>
 
                             </div>
                         </div>
 
                         <?php
-                        if ($category["children"] != null) {
-                            foreach ($category["children"] as $cat) {
+                        if (count($category -> children) != 0) {
+                            foreach ($category -> children -> category as $cat) {
                                 ?>
 
                                 <div class='item-content'>
                                     <div class='l'></div>
                                     <?php
-                                    echo "<div class='t'><a href='/" . $category["url"] . "/" . $cat["url"] . "'>" . $cat["key"] . "</a></div>";
+                                    echo "<div class='t'><a href='/" . $category -> url . "/" . $cat -> url . "'>" . $cat -> key . "</a></div>";
                                     ?>
                                 </div>
                             <?php

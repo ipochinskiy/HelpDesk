@@ -1,0 +1,41 @@
+<?xml version='1.0' standalone='yes'?>
+<categories>
+    <category>
+        <url>news</url>
+        <key>Новости</key>
+    </category>
+    <category>
+        <url>instructions</url>
+        <key>Инструкции</key>
+        <children>
+            <category>
+                <url>ce</url>
+                <key>Client Edge</key>
+            </category>
+            <category>
+                <url>pe</url>
+                <key>Provider Edge</key>
+            </category>
+            <category>
+                <url>incidents</url>
+                <key>Инциденты</key>
+            </category>
+            <category>
+                <url>soft</url>
+                <key>ПО и ПК</key>
+            </category>
+        </children>
+    </category>
+    <category>
+        <url>vips</url>
+        <key>VIP клиенты</key>
+    </category>
+    <category>
+        <url>phones</url>
+        <key>Телефонный справочник</key>
+    </category>
+    <category>
+        <url>tools</url>
+        <key>Инструменты</key>
+    </category>
+</categories>

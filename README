@@ -3,7 +3,7 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 //TODO:
 
 + 1. Изменить кодироку на utf-8.
-2. При переходе по некоторым ссылкам менюшные ссылки подсвечиваются фиолетовым (already visited).
++ 2. При переходе по некоторым ссылкам менюшные ссылки подсвечиваются фиолетовым (already visited).
 3. min-weight, min-height контента.
 4. Разобраться с highslide.js.
 # 5. move "add news/instructions/vips" buttons in header and implement it in pop-ups maybe (modal dialog).
@@ -12,7 +12,7 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 	rskvazh: <select onchange="document.location=this.options[this.selectedIndex].value"> на нормальном javascript замутить проверку, чтобы якоря не выскакивало
 8. Добавить ограничение на количество символов в newsItems.
 + 9. Новости, инструкции и випов хранить в xml.
-10. Избавиться от глобальных переменных.
++ 10. Избавиться от глобальных переменных.
 	rslvazh: Сделай singleton'ом какой-нибудь Registry класс, и обращайся к нему Registry::set($key, $value), Registry::get($key). Либой модель Categories с методом getCategories().
 11. Некрасиво, когда html-код выводится как echo "html-код";
 	rskvazh: header.php:54 вообще некрасиво когда html-код идет как php echo, можно же <?php foreach($categories as $category): ?> … HTML …
@@ -25,4 +25,9 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 16. В xml складывается инфа в 16-ичном представлении.
 17. В html wrapper должен включать в себя header + middle + footer.
 18. В config.php разобраться с $categories (перевести в xml).
-19.
+19. На форме просмотра VIP'ов выводится Nx2 элементов в списке.
+20. Реализовать проверку вводимого alias'а на существование.
+21. Привести стиль модального окна к стилю сайта.
+22. При добавлении новости/инструкции/випа картинка у кнопки "добавить" иногда исчезает.
+23. Уменьшить отступ заголовка инструкции/випа.
+24.
