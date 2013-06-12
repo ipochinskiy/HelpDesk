@@ -60,15 +60,26 @@ class cInstructions extends controller {
     function add() {
         try {
             if (count($_POST) == 0) {
-                $this -> view -> showView('instructions_editor.php', false);
+                $this -> view -> showView('editor.php', array(
+                    "formActionLink" => "/instructions/add",
+                    "allFieldsRequired" => false,
+                    "alias" => "",
+                    "name" => "",
+                    "content" => "",
+                ));
             } else {
-                if ($_POST["section"] == null || $_POST["alias"] == null || $_POST["name"] == null) {
-                    $this -> view -> showView('instructions_editor.php', true);
+                if (trim($_POST["section"]) == "" || trim($_POST["alias"]) == "" || trim($_POST["name"]) == "") {
+                    $this -> view -> showView('editor.php', array(
+                        "formActionLink" => "/instructions/add",
+                        "allFieldsRequired" => true,
+                        "alias" => $_POST["alias"],
+                        "name" => $_POST["name"],
+                        "content" => $_POST["content"],
+                    ));
                     return;
                 }
                 $this -> model -> addItem($_POST["section"], $_POST["alias"], $_POST["name"], $_POST["content"]);
                 $this -> index();
-//                $this -> redirect("");
             }
         } catch (Exception $e) {
             echo $e -> getMessage();

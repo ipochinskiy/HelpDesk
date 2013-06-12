@@ -3,7 +3,7 @@
 class mNews extends model {
 
     function getList() {
-        $this -> ensureFileExist(DATA_PATH . "news.xml", "<news></news>");
+        $this -> ensureFileExists(DATA_PATH . "news", "xml", "<news></news>");
 
         $xml = new SimpleXMLElement(DATA_PATH . "news.xml", NULL, TRUE);
         if (count($xml) == 0) {
@@ -29,7 +29,7 @@ class mNews extends model {
         $item["author"] = str_replace("+", " ", urldecode($item["author"]));
         $item["author"] = str_replace("%21", "", $item["author"]);
 
-        $this -> ensureFileExist(DATA_PATH . "news.xml", "<news></news>");
+        $this -> ensureFileExists(DATA_PATH . "news", "xml", "<news></news>");
 
         $xml = new SimpleXMLElement(DATA_PATH . "news.xml", NULL, TRUE);
 

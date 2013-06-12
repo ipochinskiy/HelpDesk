@@ -3,7 +3,7 @@
 class mVips extends model {
 
     function getList() {
-        $this -> ensureFileExist(DATA_PATH . "vips.xml", "<vips></vips>");
+        $this -> ensureFileExists(DATA_PATH . "vips", "xml", "<vips></vips>");
 
         $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
         if (count($xml) == 0) {
@@ -24,7 +24,7 @@ class mVips extends model {
     }
 
     function getItem($id) {
-        $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
+        $xml = new SimpleXMLElement(DATA_PATH . "vips", "xml", NULL, TRUE);
         foreach ($xml -> vip as $vip) {
             if ($vip -> id == $id) {
                 return array (
@@ -36,7 +36,7 @@ class mVips extends model {
     }
 
     function addItem($id, $name, $content) {
-        $this -> ensureFileExist(DATA_PATH . "vips.xml", "<vips></vips>");
+        $this -> ensureFileExists(DATA_PATH . "vips", "xml", "<vips></vips>");
 
         $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
 

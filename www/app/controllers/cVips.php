@@ -24,10 +24,22 @@ class cVips extends controller{
     function add() {
         try {
             if (count($_POST) == 0) {
-                $this -> view -> showView('vips_editor.php', false);
+                $this -> view -> showView('editor.php', array(
+                    "formActionLink" => "/vips/add",
+                    "allFieldsRequired" => false,
+                    "alias" => "",
+                    "name" => "",
+                    "content" => "",
+                ));
             } else {
                 if ($_POST["alias"] == null || $_POST["name"] == null) {
-                    $this -> view -> showView('vips_editor.php', true);
+                    $this -> view -> showView('editor.php', array(
+                        "formActionLink" => "/vips/add",
+                        "allFieldsRequired" => true,
+                        "alias" => $_POST["alias"],
+                        "name" => $_POST["name"],
+                        "content" => $_POST["content"],
+                    ));
                     return;
                 }
                 $this -> model -> addItem($_POST["alias"], $_POST["name"], $_POST["content"]);

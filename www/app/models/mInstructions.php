@@ -10,7 +10,7 @@ class mInstructions extends model {
     );
 
     function getList($subcat) {
-        $this -> ensureFileExist(DATA_PATH . $subcat . ".xml", $this -> sections[$subcat]);
+        $this -> ensureFileExists(DATA_PATH . $subcat, "xml", $this -> sections[$subcat]);
 
         $xml = new SimpleXMLElement(DATA_PATH . $subcat . ".xml", NULL, TRUE);
 
@@ -147,7 +147,7 @@ class mInstructions extends model {
 
         $text = $this -> sections[$group];
 
-        $this -> ensureFileExist(DATA_PATH . $group . ".xml", $text);
+        $this -> ensureFileExists(DATA_PATH . $group, "xml", $text);
 
         $xml = new SimpleXMLElement(DATA_PATH . $group . ".xml", NULL, TRUE);
 
