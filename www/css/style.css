@@ -399,43 +399,43 @@ table, th, td {vertical-align:middle; margin: 0; padding: 0;}
 .table-tl {
     width: 28px;
     height: 28px;
-    background-image: url(../img/table-tl.png);
+    background-image: url(../img/Sheet-s.png);
 }
 .table-tc {
     height: 28px;
-    background-image: url(../img/table-tc.png);
+    background-image: url(../img/Sheet-h.png);
 }
 .table-tr {
     width: 28px;
     height: 28px;
-    background-image: url(../img/table-tr.png);
+    background-image: url(../img/Sheet-s.png);
 }
 
 .table-cl {
     width: 28px;
-    background-image: url(../img/table-cl.png);
+    background-image: url(../img/Sheet-v.png);
 }
 .table-cc {
-    background-image: url(../img/table-cc.png);
+    background-image: url(../img/Sheet-c.png);
 }
 .table-cr {
     width: 28px;
-    background-image: url(../img/table-cr.png);
+    background-image: url(../img/Sheet-v.png);
 }
 
 .table-bl {
     width: 28px;
     height: 28px;
-    background-image: url(../img/table-bl.png);
+    background-image: url(../img/Sheet-s.png);
 }
 .table-bc {
     height: 28px;
-    background-image: url(../img/table-bc.png);
+    background-image: url(../img/Sheet-h.png);
 }
 .table-br {
     width: 28px;
     height: 28px;
-    background-image: url(../img/table-br.png);
+    background-image: url(../img/Sheet-s.png);
 }
 
 #dialog-form {

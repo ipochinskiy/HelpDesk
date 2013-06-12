@@ -21,12 +21,38 @@
 </head>
 
 <body>
+
+<div id="dialog-form" title="Create new user">
+    <p class="validateTips">All form fields are required.</p>
+    <form action="/" method="post">
+        <fieldset>
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" class="text ui-widget-content ui-corner-all" />
+            <label for="text">Text</label>
+            <input type="text" name="text" id="text" value="" class="text ui-widget-content ui-corner-all" />
+        </fieldset>
+    </form>
+</div>
+
 <div class="wrapper">
 
     <div id="header">
         <div id="logo">
             <a href="/"><img src="/img/logo.png" width="296" height="50"/></a>
         </div>
+
+        <div id="news-add">
+            <a href=""><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить новость</a>
+        </div>
+
+        <div id="instruction-add">
+            <a href="/instructions/add"><img style="margin:-10px 5px 0 0;" src="/img/news-add.png" width="16" height="16" align="middle"/>Добавить инструкцию</a>
+        </div>
+
+        <div id="vip-add">
+            <a href="vips/add"><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить VIP</a>
+        </div>
+
         <div id="header_sel">
             <select onchange="document.location=this.options[this.selectedIndex].value" >
                 <option value="#">Select CE device</option>
@@ -36,6 +62,7 @@
             </select>
         </div>
     </div>
+
     <div id="middle">
         <div id="leftside">
 

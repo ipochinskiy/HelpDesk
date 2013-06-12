@@ -14,7 +14,7 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 + 9. Новости, инструкции и випов хранить в xml.
 + 10. Избавиться от глобальных переменных.
 	rslvazh: Сделай singleton'ом какой-нибудь Registry класс, и обращайся к нему Registry::set($key, $value), Registry::get($key). Либой модель Categories с методом getCategories().
-11. Некрасиво, когда html-код выводится как echo "html-код";
++ 11. Некрасиво, когда html-код выводится как echo "html-код";
 	rskvazh: header.php:54 вообще некрасиво когда html-код идет как php echo, можно же <?php foreach($categories as $category): ?> … HTML …
 12. Редирект.
 	rskvazh: controller.php - protected function redirect($url, $timeout = 0), ну его надо делать через header('Location: http://xxx.com'); exit();
@@ -24,10 +24,11 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 - 15. Добавить функцию "Распечатать инструкцию".
 16. В xml складывается инфа в 16-ичном представлении.
 17. В html wrapper должен включать в себя header + middle + footer.
-18. В config.php разобраться с $categories (перевести в xml).
++ 18. В config.php разобраться с $categories (перевести в xml).
 19. На форме просмотра VIP'ов выводится Nx2 элементов в списке.
 20. Реализовать проверку вводимого alias'а на существование.
 21. Привести стиль модального окна к стилю сайта.
 22. При добавлении новости/инструкции/випа картинка у кнопки "добавить" иногда исчезает.
-23. Уменьшить отступ заголовка инструкции/випа.
-24.
+23. Уменьшить отступ заголовка инструкции/випа/телефонов.
+24. При уменьшении размера окна верстка съезжает (заменить на горизонтальный скроллинг).
+25.
