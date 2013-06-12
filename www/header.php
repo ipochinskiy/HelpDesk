@@ -41,15 +41,15 @@
             <a href="/"><img src="/img/logo.png" width="296" height="50"/></a>
         </div>
 
-        <div id="news-add">
+        <div id="news-add" style="float:left;">
             <a href=""><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить новость</a>
         </div>
 
-        <div id="instruction-add">
+        <div id="instruction-add" style="float:left;">
             <a href="/instructions/add"><img style="margin:-10px 5px 0 0;" src="/img/news-add.png" width="16" height="16" align="middle"/>Добавить инструкцию</a>
         </div>
 
-        <div id="vip-add">
+        <div id="vip-add" style="float:left;">
             <a href="vips/add"><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить VIP</a>
         </div>
 
