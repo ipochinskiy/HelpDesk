@@ -1,15 +1,15 @@
 $(document).ready(function() {
-    $("#news-add").click(function(event){
+    $("#add-news").click(function(event){
 		event.preventDefault();
         $("#dialog-form").dialog('open');
     });
 
 	$("#dialog-form").dialog({
 		autoOpen: false,
-		modal : true,
+		modal : false,
 		buttons: {
 			"Добавить": function() {
-				$("form", this).submit();
+				$(this).find("form .submit").click();
 			},
 			"Отмена": function() {
 				$( this ).dialog( "close" );

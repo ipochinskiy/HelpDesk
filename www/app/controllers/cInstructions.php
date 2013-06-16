@@ -68,16 +68,6 @@ class cInstructions extends controller {
                     "content" => "",
                 ));
             } else {
-                if (trim($_POST["section"]) == "" || trim($_POST["alias"]) == "" || trim($_POST["name"]) == "") {
-                    $this -> view -> showView('editor.php', array(
-                        "formActionLink" => "/instructions/add",
-                        "allFieldsRequired" => true,
-                        "alias" => $_POST["alias"],
-                        "name" => $_POST["name"],
-                        "content" => $_POST["content"],
-                    ));
-                    return;
-                }
                 $this -> model -> addItem($_POST["section"], $_POST["alias"], $_POST["name"], $_POST["content"]);
                 $this -> index();
             }

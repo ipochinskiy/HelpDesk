@@ -1,19 +1,25 @@
 <?php
 
 class model {
-    protected function ensureFileExists($fileName, $ext, $text) {
-        if ($ext == "xml") {
-            $text = "<?xml version='1.0' standalone='yes'?>" . $text;
-        }
-        $fileName = $fileName . "." . $ext;
+    protected function ensureFileExists($name) {
+        $fileName = DATA_PATH . $name . ".xml";
+
+        $dom = new DOMDocument("1.0", "utf-8");
+
         if (!file_exists($fileName)) {
             try {
-                $file = fopen($fileName, "x");
-                fwrite($file, $text);
-                fclose($file);
+                $dom -> appendChild($dom -> createElement($name));
+                file_put_contents($fileName, $dom -> saveXML());
             } catch (Exception $e) {
-                throw new Exception($fileName . "is not exist and not creatable");
+                throw new Exception($fileName . " is not exist and not creatable");
             }
         }
+
+        $dom -> load($fileName);
+        if ($dom -> childNodes -> item(0) -> childNodes -> length == 0) {
+            return FALSE;
+        }
+
+        return TRUE;
     }
 }

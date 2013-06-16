@@ -3,20 +3,19 @@
 class mNews extends model {
 
     function getList() {
-        $this -> ensureFileExists(DATA_PATH . "news", "xml", "<news></news>");
+        $this -> ensureFileExists("news");
 
-        $xml = new SimpleXMLElement(DATA_PATH . "news.xml", NULL, TRUE);
-        if (count($xml) == 0) {
-            return NULL;
-//            throw new Exception("It seems there is news.xml file, but still no items there...");
-        }
+        $dom = new DOMDocument("1.0", "utf-8");
+        $dom -> load(DATA_PATH . "news.xml");
 
         $result[] = NULL;
-        foreach ($xml as $item) {
+        $news = $dom -> childNodes -> item(0) -> childNodes;
+        for ($i = 0; $i < $news -> length; $i++) {
+            $new = $news -> item($i);
             array_push($result, array(
-                "date" => $item -> date,
-                "author" => $item -> author,
-                "text" => $item -> text,
+                "date" => $new -> childNodes -> item(0) -> nodeValue,
+                "author" => $new -> childNodes -> item(1) -> textContent,
+                "text" => $new -> childNodes -> item(2) -> textContent,
             ));
         }
 
@@ -24,20 +23,25 @@ class mNews extends model {
     }
 
     function addItem($item) {
-        $item["text"] = str_replace("+", " ", urldecode($item["text"]));
-        $item["text"] = str_replace("%21", "", $item["text"]);
-        $item["author"] = str_replace("+", " ", urldecode($item["author"]));
-        $item["author"] = str_replace("%21", "", $item["author"]);
+        $this -> ensureFileExists("news");
 
-        $this -> ensureFileExists(DATA_PATH . "news", "xml", "<news></news>");
+        $dom = new DOMDocument("1.0", "utf-8");
+        $dom -> load(DATA_PATH . "news.xml");
+        $news = $dom -> childNodes -> item(0);
 
-        $xml = new SimpleXMLElement(DATA_PATH . "news.xml", NULL, TRUE);
+        $new = $dom -> createElement("new");
+        $new -> appendChild($dom -> createElement("date", $item["date"]));
+        $author = $new -> appendChild($dom -> createElement("author"));
+        $text = $new -> appendChild($dom -> createElement("text"));
 
-        $new = $xml->addChild("new");
-        $new->addChild("date", $item["date"]);
-        $new->addChild("author", $item["author"]);
-        $new->addChild("text", $item["text"]);
+        $cdata = $dom -> createCDATASection($item["author"]);
+        $author -> appendChild($cdata);
+        $cdata = $dom -> createCDATASection($item["text"]);
+        $text -> appendChild($cdata);
 
-        $xml->saveXML(DATA_PATH . "news.xml");
+        $news -> appendChild($new);
+        $dom -> appendChild($news);
+
+        file_put_contents(DATA_PATH . "news.xml", $dom -> saveXML());
     }
 }

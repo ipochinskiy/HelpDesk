@@ -18,12 +18,12 @@ class cNews extends controller {
     }
 
     function add() {
-        $newsItemForAddition = array("date" => date("d/m/Y H:i"),
-                                     "author" => $_POST['author'],
-                                     "text" => $_POST['text']);
-
         try {
-            $this -> model -> addItem($newsItemForAddition);
+            $this -> model -> addItem(array(
+                "date" => date("d/m/Y H:i"),
+                "author" => $_POST['author'],
+                "text" => $_POST['text']
+            ));
         } catch (Exception $e) {
             echo $e -> getMessage();
         }

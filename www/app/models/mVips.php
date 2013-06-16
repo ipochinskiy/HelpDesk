@@ -3,49 +3,65 @@
 class mVips extends model {
 
     function getList() {
-        $this -> ensureFileExists(DATA_PATH . "vips", "xml", "<vips></vips>");
+        $this -> ensureFileExists("vips");
 
-        $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
-        if (count($xml) == 0) {
-            return NULL;
-//            throw new Exception("It seems there is vips.xml file, but still no items there...");
-        }
+        $dom = new DOMDocument("1.0", "utf-8");
+        $dom -> load(DATA_PATH . "vips.xml");
 
         $result[] = NULL;
-        foreach ($xml as $item) {
+        $vips = $dom -> childNodes -> item(0) -> childNodes;
+        for ($i = 0; $i < $vips -> length; $i++) {
+            $vip = $vips -> item($i);
             array_push($result, array(
-                "id" => $item -> id,
-                "name" => $item -> name,
-                "content" => $item -> content,
+                "id" => $vip -> childNodes -> item(0) -> nodeValue,
+                "name" => $vip -> childNodes -> item(1) -> textContent,
+                "content" => $vip -> childNodes -> item(2) -> textContent,
             ));
         }
 
-        return array_slice($result, 1);
+        return array_reverse(array_slice($result, 1));
     }
 
     function getItem($id) {
-        $xml = new SimpleXMLElement(DATA_PATH . "vips", "xml", NULL, TRUE);
-        foreach ($xml -> vip as $vip) {
-            if ($vip -> id == $id) {
+        $this -> ensureFileExists("vips");
+
+        $dom = new DOMDocument("1.0", "utf-8");
+        $dom -> load(DATA_PATH . "vips.xml");
+
+        $vips = $dom -> childNodes -> item(0) -> childNodes;
+
+        for ($i = 0; $i < $vips -> length; $i++) {
+            if ($vips -> item($i) -> childNodes -> item(0) -> nodeValue == $id) {
                 return array (
-                    "name" => $vip -> name,
-                    "content" => $vip -> content,
+                    "name" => $vips -> item($i) -> childNodes -> item(1) -> nodeValue,
+                    "content" => $vips -> item($i) -> childNodes -> item(2) -> textContent,
                 );
             }
         }
+        return NULL;
     }
 
-    function addItem($id, $name, $content) {
-        $this -> ensureFileExists(DATA_PATH . "vips", "xml", "<vips></vips>");
+    function addItem($item) {
+        $this -> ensureFileExists("vips");
 
-        $xml = new SimpleXMLElement(DATA_PATH . "vips.xml", NULL, TRUE);
+        $dom = new DOMDocument("1.0", "utf-8");
+        $dom -> load(DATA_PATH . "vips.xml");
+        $vips = $dom -> childNodes -> item(0);
 
-        $item = $xml -> addChild("vip");
-        $item -> addChild("id", $id);
-        $item -> addChild("name", $name);
-        $item -> addChild("content", $content);
+        $vip = $dom -> createElement("vip");
+        $vip -> appendChild($dom -> createElement("id", $item["id"]));
+        $name = $vip -> appendChild($dom -> createElement("name"));
+        $content = $vip -> appendChild($dom -> createElement("content"));
 
-        $xml->saveXML(DATA_PATH . "vips.xml");
+        $cdata = $dom -> createCDATASection($item["name"]);
+        $name -> appendChild($cdata);
+        $cdata = $dom -> createCDATASection($item["content"]);
+        $content -> appendChild($cdata);
+
+        $vips -> appendChild($vip);
+        $dom -> appendChild($vips);
+
+        file_put_contents(DATA_PATH . "vips.xml", $dom -> saveXML());
     }
 
 }

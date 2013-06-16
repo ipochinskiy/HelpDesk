@@ -11,11 +11,9 @@ define("CONTROLLERS_PATH", PORTAL_ROOT_PATH . "app/controllers/");
 define("VIEWS_PATH", PORTAL_ROOT_PATH . "app/views/");
 define("MODELS_PATH", PORTAL_ROOT_PATH . "app/models/");
 
-define("DATA_PATH", PORTAL_ROOT_PATH . "/data/");
-define("DOC_PATH", DATA_PATH . "doc/");
+define("DATA_PATH", PORTAL_ROOT_PATH . "data/");
 define("ETC_PATH", DATA_PATH . "etc/");
 define("IMG_PATH", DATA_PATH . "img/");
-define("NEWS_PATH", DATA_PATH . "_news/");
 
 define("DEBUG_MODE", 1);
 //define("USED_CSS", array());

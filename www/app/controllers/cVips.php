@@ -42,9 +42,12 @@ class cVips extends controller{
                     ));
                     return;
                 }
-                $this -> model -> addItem($_POST["alias"], $_POST["name"], $_POST["content"]);
+                $this -> model -> addItem(array(
+                    "id" => $_POST["alias"],
+                    "name" => $_POST["name"],
+                    "content" => $_POST['content'],
+                ));
                 $this -> index();
-//                $this -> redirect("");
             }
         } catch (Exception $e) {
             echo $e -> getMessage();

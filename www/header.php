@@ -4,7 +4,7 @@
     <title>HelpDesk</title>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <link href=" <?php echo CSS_PATH . "style.css" ?>" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href ="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href ="<?php echo JS_PATH . "jquery-ui-1.10.3.custom/css/redmond/jquery-ui-1.10.3.custom.css" ?>" />
     <link rel="stylesheet" type="text/css" href=" <?php echo JS_PATH . "highslide/highslide.css" ?>" />
 
     <script type="text/javascript" src="<?php echo JS_PATH . "highslide/highslide.min.js" ?>"></script>
@@ -14,7 +14,6 @@
     </script>
     <script src="<?php echo JS_PATH . "jquery-1.10.1.js" ?>"></script>
     <script src="<?php echo JS_PATH . "jquery-ui-1.10.3/ui/jquery-ui.js" ?>"></script>
-
     <script src="<?php echo JS_PATH . "dialog.js" ?>"></script>
 
 
@@ -22,15 +21,11 @@
 
 <body>
 
-<div id="dialog-form" title="Create new user">
-    <p class="validateTips">All form fields are required.</p>
-    <form action="/" method="post">
-        <fieldset>
-            <label for="author">Author</label>
-            <input type="text" name="author" id="author" class="text ui-widget-content ui-corner-all" />
-            <label for="text">Text</label>
-            <input type="text" name="text" id="text" value="" class="text ui-widget-content ui-corner-all" />
-        </fieldset>
+<div id="dialog-form" title="Добавить новость">
+    <form action="/news/add" method="POST">
+        <input type="text" required="required" value="" name="author" id="author" class="text ui-widget-content ui-corner-all" placeholder="Автор" />
+        <input type="text" required="required" value="" name="text" id="text" class="text ui-widget-content ui-corner-all" placeholder="Текст новости" />
+        <input style="display: none" class="submit" type="submit" value="send" />
     </form>
 </div>
 
@@ -38,29 +33,35 @@
 
     <div id="header">
         <div id="logo">
-            <a href="/"><img src="/img/logo.png" width="296" height="50"/></a>
+            <a href="/">HelpDesk</a>
         </div>
 
-        <div id="news-add" style="float:left;">
-            <a href=""><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить новость</a>
+        <div id="add-buttons">
+            <div id="add-news">
+                <a href="/news/add"><img src="/img/clipboard_add.png" width="32" height="32" align="middle"/>Добавить новость</a>
+            </div>
+
+            <div id="add-instruction">
+                <a href="/instructions/add"><img src="/img/document_add.png" width="32" height="32" align="middle"/>Добавить инструкцию</a>
+            </div>
+
+            <div id="add-vip">
+                <a href="/vips/add"><img src="/img/vip_add.png" width="32" height="32" align="middle"/>Добавить VIP</a>
+            </div>
+
+            <div id="edit-phones">
+                <a href="/phones/edit"><img src="/img/document_pencil.png" width="32" height="32" align="middle"/>Редактировать телефоны</a>
+            </div>
         </div>
 
-        <div id="instruction-add" style="float:left;">
-            <a href="/instructions/add"><img style="margin:-10px 5px 0 0;" src="/img/news-add.png" width="16" height="16" align="middle"/>Добавить инструкцию</a>
-        </div>
-
-        <div id="vip-add" style="float:left;">
-            <a href="vips/add"><img style="margin:-10px 5px 0 0;" src="img/news-add.png" width="16" height="16" align="middle"/>Добавить VIP</a>
-        </div>
-
-        <div id="header_sel">
-            <select onchange="document.location=this.options[this.selectedIndex].value" >
-                <option value="#">Select CE device</option>
-                <option value="/">modem1</option>
-                <option value="/">modem2</option>
-                <option value="/">router1</option>
-            </select>
-        </div>
+        <!--        <div id="header_sel">-->
+        <!--            <select onchange="document.location=this.options[this.selectedIndex].value" >-->
+        <!--                <option value="#">Select CE device</option>-->
+        <!--                <option value="/">modem1</option>-->
+        <!--                <option value="/">modem2</option>-->
+        <!--                <option value="/">router1</option>-->
+        <!--            </select>-->
+        <!--        </div>-->
     </div>
 
     <div id="middle">
@@ -109,16 +110,6 @@
 
         </div>
 
-        <div class="table-sheet">
-            <table>
-                <tbody>
-                <tr>
-                    <td class="table-tl"></td>
-                    <td class="table-tc"></td>
-                    <td class="table-tr"></td>
-                </tr>
-                <tr>
-                    <td class="table-cl"></td>
-                    <td class="table-cc">
-                        <div id="content">
+        <div id="content">
+
 

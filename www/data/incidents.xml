@@ -1,1 +1,2 @@
-<?xml version='1.0' standalone='yes'?><sections><section id='xdsl' name='xDSL'></section><section id='fttb' name='FttB'></section><section id='iptv' name='IPTV'></section><section id='sip' name='SIP'></section></sections>
+<?xml version="1.0" encoding="utf-8"?>
+<incidents><section id="xdsl" name="xDSL"/><section id="fttb" name="FttB"/><section id="iptv" name="IPTV"/><section id="sip" name="SIP"/></incidents>
