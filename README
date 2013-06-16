@@ -5,12 +5,12 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 + 1. Изменить кодироку на utf-8.
 + 2. При переходе по некоторым ссылкам менюшные ссылки подсвечиваются фиолетовым (already visited).
 + 3. min-weight, min-height контента.
-4. Разобраться с highslide.js.
++ 4. Разобраться с highslide.js.
 # 5. move "add news/instructions/vips" buttons in header and implement it in pop-ups maybe (modal dialog).
 6. news-item fixed size.
-7. "Select CE" implemet in jqueryUI widgets (autocomplete).
+- 7. "Select CE" implemet in jqueryUI widgets (autocomplete).
 	rskvazh: <select onchange="document.location=this.options[this.selectedIndex].value"> на нормальном javascript замутить проверку, чтобы якоря не выскакивало
-8. Добавить ограничение на количество символов в newsItems.
++ 8. Добавить ограничение на количество символов в newsItems.
 + 9. Новости, инструкции и випов хранить в xml.
 + 10. Избавиться от глобальных переменных.
 	rslvazh: Сделай singleton'ом какой-нибудь Registry класс, и обращайся к нему Registry::set($key, $value), Registry::get($key). Либой модель Categories с методом getCategories().
@@ -32,5 +32,6 @@ tinyMVC based (https://github.com/vitalyswipe/tinymvc/) mini framework
 + 23. Уменьшить отступ заголовка инструкции/випа/телефонов.
 24. При уменьшении размера окна верстка съезжает (заменить на горизонтальный скроллинг).
 25. Футер съезжает при невысоком контенте.
-26. Реализовать поддержку CDATA.
-27.
++ 26. Реализовать поддержку CDATA.
+27. Длинные новости вылезают за пределы блока.
+

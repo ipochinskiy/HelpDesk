@@ -23,8 +23,8 @@
 
 <div id="dialog-form" title="Добавить новость">
     <form action="/news/add" method="POST">
-        <input type="text" required="required" value="" name="author" id="author" class="text ui-widget-content ui-corner-all" placeholder="Автор" />
-        <input type="text" required="required" value="" name="text" id="text" class="text ui-widget-content ui-corner-all" placeholder="Текст новости" />
+        <input type="text" required maxlength="30" name="author" id="author" class="text ui-widget-content ui-corner-all" placeholder="Автор" />
+        <input type="text" required maxlength="250" name="text" id="text" class="text ui-widget-content ui-corner-all" placeholder="Текст новости" />
         <input style="display: none" class="submit" type="submit" value="send" />
     </form>
 </div>
@@ -53,15 +53,6 @@
                 <a href="/phones/edit"><img src="/img/document_pencil.png" width="32" height="32" align="middle"/>Редактировать телефоны</a>
             </div>
         </div>
-
-        <!--        <div id="header_sel">-->
-        <!--            <select onchange="document.location=this.options[this.selectedIndex].value" >-->
-        <!--                <option value="#">Select CE device</option>-->
-        <!--                <option value="/">modem1</option>-->
-        <!--                <option value="/">modem2</option>-->
-        <!--                <option value="/">router1</option>-->
-        <!--            </select>-->
-        <!--        </div>-->
     </div>
 
     <div id="middle">

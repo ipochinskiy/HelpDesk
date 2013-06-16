@@ -214,7 +214,7 @@ body {
     min-width: 500px;
     min-height: 650px;
     font-size: 12px;
-    padding: 20px 60px;
+    padding: 20px 60px 0;
     margin: 0 0 0 20px;
     background-image: url(../img/Sheet-c.png);
     box-shadow: 0 0 3px rgba(0,0,0,0.5);
@@ -228,6 +228,11 @@ body {
 	padding: 10px;
 	border: 1px dotted #265273;
 	font-size: 12px;
+}
+
+.editor_big {
+    margin: 20px;
+    width: 100%;
 }
 
 #footer {
