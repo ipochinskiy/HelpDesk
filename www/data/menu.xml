@@ -34,8 +34,4 @@
         <url>phones</url>
         <key>Телефонный справочник</key>
     </category>
-    <category>
-        <url>tools</url>
-        <key>Инструменты</key>
-    </category>
 </categories>
