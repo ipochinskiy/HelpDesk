@@ -10,24 +10,15 @@ class cNews extends controller {
     }
 
     function index() {
-        try {
-            $this -> view -> showView('news.php', $this -> model -> getList());
-        } catch (Exception $e) {
-            echo $e -> getMessage();
-        }
+        $this -> view -> showView('news.php', $this -> model -> getList());
     }
 
     function add() {
-        try {
-            $this -> model -> addItem(array(
-                "date" => date("d/m/Y H:i"),
-                "author" => $_POST['author'],
-                "text" => $_POST['text']
-            ));
-        } catch (Exception $e) {
-            echo $e -> getMessage();
-        }
-
+        $this -> model -> addItem(array(
+            "date" => date("d/m/Y H:i"),
+            "author" => $_POST['author'],
+            "text" => $_POST['text']
+        ));
         $this -> index();
     }
 

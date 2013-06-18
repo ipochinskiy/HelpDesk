@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ce><section id="modem" name="Модемы"><modem><id>sbrf</id><name>Сбербанк Роисси</name><content><![CDATA[<p>asdas</p>]]></content></modem><modem><id>22</id><name>22</name><content><![CDATA[<p><a class="highslide" title="1" onclick="return hs.expand(this)" href="/data/img/1.png"><img src="/data/img/.thumbs/40da6e4a956c1b383d8e798ec0f63b15_240_0_0.jpg" alt="1" width="240" height="190" /></a></p>]]></content></modem></section><section id="router" name="Роутеры"/><section id="stb" name="STBs"/><section id="voip" name="VoIPs"/></ce>
+<ce><section id="modem" name="Модемы"><modem><id>sbrf</id><name>Сбербанк Эрэфии</name><content><![CDATA[<p>asdasddd</p>
+<p>ads</p>
+<p>afregh3</p>
+<p>123</p>]]></content></modem></section><section id="router" name="Роутеры"><router><id>ggg</id><name>asd</name><content><![CDATA[<p>7756u n</p>
+<p>nn</p>]]></content></router></section><section id="stb" name="Приставки STB"/><section id="voip" name="Шлюзы VoIP"/></ce>

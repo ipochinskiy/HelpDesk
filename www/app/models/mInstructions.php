@@ -6,7 +6,7 @@ class mInstructions extends model {
         "ce" => "<sections><section id='modem' name='Модемы'></section><section id='router' name='Роутеры'></section><section id='stb' name='STBs'></section><section id='voip' name='VoIPs'></section></sections>",
         "pe" => "<sections><section id='dslam' name='DSLAMs'></section><section id='etth' name='Ethernet-коммутаторы'></section><section id='core' name='Оборудование уровня агрегации и ядра'></section></sections>",
         "incidents" => "<sections><section id='xdsl' name='xDSL'></section><section id='fttb' name='FttB'></section><section id='iptv' name='IPTV'></section><section id='sip' name='SIP'></section></sections>",
-        "soft" => "<sections><section id='browser' name='Настройки браузеров'></section></sections>",
+        "soft" => "<sections><section id='browser' name='Настройки браузеров'></section><section id='connection' name='Настройки подключений'></section><section id='mail-client' name='Настройки почтовых клиентов'></section></sections>",
     );
 
     private function cloneNode($node, $doc){
@@ -42,11 +42,11 @@ class mInstructions extends model {
             }
 
             file_put_contents(DATA_PATH . $subcat . ".xml", $dom -> saveXML());
-            throw new Exception("There's no instructions yet.");
+            throw new Exception("There's no instructions yet.", ERROR_NO_ITEMS);
         }
     }
 
-    private function resolveParameters($num) {
+    function resolveParameters($num) {
         switch($num) {
             case 0: {
                 return array (
@@ -120,6 +120,18 @@ class mInstructions extends model {
                     "group" => "soft",
                 );
             }
+            case 12: {
+                return array (
+                    "id" => "connection",
+                    "group" => "soft",
+                );
+            }
+            case 13: {
+                return array (
+                    "id" => "mail-client",
+                    "group" => "soft",
+                );
+            }
             default:
                 throw new Exception("Unknown section: $num");
         }
@@ -161,84 +173,40 @@ class mInstructions extends model {
         return array_slice($result, 1);
     }
 
-//    function getItem($section, $item) {
-//        switch($section) {
-//            case "modem":
-//            case "router":
-//            case "stb":
-//            case "voip": {
-//                $file = DATA_PATH . "ce.xml";
-//                break;
-//            }
-//            case "dslam":
-//            case "etth":
-//            case "core": {
-//                $file = DATA_PATH . "pe.xml";
-//                break;
-//            }
-//            case "xdsl":
-//            case "fttb":
-//            case "iptv":
-//            case "sip": {
-//                $file = DATA_PATH . "incidents.xml";
-//                break;
-//            }
-//            case "browser": {
-//                $file = DATA_PATH . "soft.xml";
-//                break;
-//            }
-//            default: {
-//                throw new Exception("Unknown section: $section");
-//            }
-//        }
-//
-//        $xml = new SimpleXMLElement($file, NULL, TRUE);
-//        foreach ($xml -> section as $section) {
-//            foreach ($section -> children() as $child) {
-//                if ($child -> id == $item) {
-//                    return array (
-//                        "name" => $child -> name,
-//                        "content" => $child -> content,
-//                    );
-//                }
-//            }
-//        }
-//
-//    }
-
-    function getItem($section, $id) {
-        $dom = new DOMDocument("1.0", "utf-8");
-
+    function getGroup($section) {
         switch($section) {
             case "modem":
             case "router":
             case "stb":
             case "voip": {
-                $file = "ce";
-                break;
+                return "ce";
             }
             case "dslam":
             case "etth":
             case "core": {
-                $file = "pe";
-                break;
+                return "pe";
             }
             case "xdsl":
             case "fttb":
             case "iptv":
             case "sip": {
-                $file = "incidents";
-                break;
+                return "incidents";
             }
-            case "browser": {
-                $file = "soft";
-                break;
+            case "browser":
+            case "connection":
+            case "mail-client": {
+                return "soft";
             }
             default: {
-            throw new Exception("Unknown section: $section");
+            throw new Exception("Unknown section: $section", ERROR_UNKNOWN_SECTION);
             }
         }
+    }
 
+    function getItem($section, $id) {
+        $file = $this -> getGroup($section);
+
+        $dom = new DOMDocument("1.0", "utf-8");
         $this -> ensureSectionFileExists($file, $dom);
         $dom -> load(DATA_PATH . $file . ".xml");
 
@@ -247,21 +215,29 @@ class mInstructions extends model {
         for ($i = 0; $i < $items -> length; $i++) {
             if ($items -> item($i) -> childNodes -> item(0) -> nodeValue == $id) {
                 return array (
+                    "section" => $section,
+                    "id" => $items -> item($i) -> childNodes -> item(0) -> nodeValue,
                     "name" => $items -> item($i) -> childNodes -> item(1) -> nodeValue,
                     "content" => $items -> item($i) -> childNodes -> item(2) -> nodeValue,
                 );
             }
         }
 
+        throw new Exception("Nothing found", ERROR_NOT_FOUND);
     }
 
     function addItem($section, $id, $name, $content) {
-        $resolve = $this -> resolveParameters($section);
+        if (is_int($section)) {
+            $resolve = $this -> resolveParameters($section);
+        } else {
+            $resolve = array(
+                "id" => $section,
+                "group" => $this -> getGroup($section),
+            );
+        }
 
         $dom = new DOMDocument("1.0", "utf-8");
-
         $this -> ensureSectionFileExists($resolve["group"], $dom);
-
         $dom -> load(DATA_PATH . $resolve["group"] . ".xml");
 
         $sections = $dom -> childNodes -> item(0) -> childNodes;
@@ -288,7 +264,63 @@ class mInstructions extends model {
             }
         }
 
-        throw new Exception("Wrong section.");
+        throw new Exception("Wrong section number", ERROR_UNKNOWN_SECTION);
+    }
+
+    function deleteChildren($node) {
+        while (isset($node -> firstChild)) {
+            $this -> deleteChildren($node -> firstChild);
+            $node -> removeChild($node -> firstChild);
+        }
+    }
+
+    function removeItem($section, $id) {
+        $group = $this -> getGroup($section);
+
+        $dom = new DOMDocument("1.0", "utf-8");
+        $this -> ensureSectionFileExists($group, $dom);
+        $dom -> load(DATA_PATH . $group . ".xml");
+
+        $items = $dom -> getElementsByTagName($section);
+
+        for ($i = 0; $i < $items -> length; $i++) {
+            if ($items -> item($i) -> childNodes -> item(0) -> nodeValue == $id) {
+                $this -> deleteChildren($items -> item($i));
+                $parent = $items -> item($i) -> parentNode;
+                $parent -> removeChild($items -> item($i));
+
+                file_put_contents(DATA_PATH . $group . ".xml", $dom -> saveXML());
+                return;
+            }
+        }
+
+        throw new Exception("Wrong section number", ERROR_UNKNOWN_SECTION);
+    }
+
+    function convertArrayToNode($dom, $item) {
+        $node = $dom -> createElement($item["section"]);
+
+        $newNodeChild = $dom -> createElement("id", $item["id"]);
+        $node -> appendChild($newNodeChild);
+
+        $newNodeChild = $dom -> createElement("name", $item["name"]);
+        $node -> appendChild($newNodeChild);
+
+        $newNodeChild = $dom -> createElement("content");
+        $cdata = $dom -> createCDATASection($item["content"]);
+        $newNodeChild -> appendChild($cdata);
+
+        $node -> appendChild($newNodeChild);
+
+        return $node;
+    }
+
+    function editItem($oldItem, $newItem) {
+        $newResolve = $this -> resolveParameters($newItem["section"]);
+        $newItem["section"] = $newResolve["id"];
+
+        $this -> removeItem($oldItem["section"], $oldItem["id"]);
+        $this -> addItem($newItem["section"], $newItem["id"], $newItem["name"], $newItem["content"]);
     }
 
 }

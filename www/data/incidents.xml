@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<incidents><section id="xdsl" name="xDSL"/><section id="fttb" name="FttB"/><section id="iptv" name="IPTV"/><section id="sip" name="SIP"/></incidents>
+<incidents><section id="xdsl" name="Инциденты xDSL"/><section id="fttb" name="Инциденты FttB"/><section id="iptv" name="Инциденты IPTV"/><section id="sip" name="Инциденты SIP"/></incidents>

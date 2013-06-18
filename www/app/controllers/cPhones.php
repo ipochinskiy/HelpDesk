@@ -10,27 +10,19 @@ class cPhones extends controller {
     }
 
     function index() {
-        try {
-            $this -> view -> showView('phones.php', $this -> model -> getPhones());
-        } catch (Exception $e) {
-            echo $e -> getMessage();
-        }
+        $this -> view -> showView('phones.php', $this -> model -> getPhones());
     }
 
     function edit() {
-        try {
-            if (count($_POST) == 0) {
-                $this -> view -> showView('editor.php', array(
-                    "formActionLink" => "/phones/edit",
-                    "allFieldsRequired" => false,
-                    "content" => $this -> model -> getPhones(),
-                ));
-            } else {
-                $this -> model -> editPhones($_POST["content"]);
-                $this -> index();
-            }
-        } catch (Exception $e) {
-            echo $e -> getMessage();
+        if (count($_POST) == 0) {
+            $this -> view -> showView('editor.php', array(
+                "formActionLink" => "/phones/edit",
+                "allFieldsRequired" => false,
+                "content" => $this -> model -> getPhones(),
+            ));
+        } else {
+            $this -> model -> editPhones($_POST["content"]);
+            $this -> index();
         }
     }
 

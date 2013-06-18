@@ -1,7 +1,9 @@
+<div id="accordion">
+
 <?php
 
 foreach ($data as $d) {
-    echo "<h1>" . $d["sectionName"] . "</h1>";
+    echo "<h3>" . $d["sectionName"] . "</h3>";
     echo "<ul>";
     foreach ($d["children"] as $c) {
         echo "<li><a href='/instructions?section=" . $d["sectionId"] . "&item=" . $c["id"] . "'>". $c["name"] . "</a></li>";
@@ -10,3 +12,5 @@ foreach ($data as $d) {
 }
 
 ?>
+
+</div>

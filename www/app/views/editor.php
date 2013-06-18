@@ -40,25 +40,28 @@
         <table>
 
             <?php
-            if ($formActionLink == "/instructions/add") {
+            if ($formActionLink == "/instructions/add"
+                || $formActionLink == "/instructions/edit") {
                 ?>
 
                 <tr>
                     <td>Секция:</td>
                     <td>
                         <select name="section" size="1" style="width: 300px;">
-                            <option value="0">Модемы</option>
-                            <option value="1">Роутеры</option>
-                            <option value="2">Приставки STB</option>
-                            <option value="3">Шлюзы VoIP</option>
-                            <option value="4">DSLAM'ы</option>
-                            <option value="5">Коммутаторы Ethernet</option>
-                            <option value="6">Оборудование агрегации и ядра сети</option>
-                            <option value="7">Инциденты xDSL</option>
-                            <option value="8">Инциденты FttB</option>
-                            <option value="9">Инциденты IPTV</option>
-                            <option value="10">Инциденты SIP</option>
-                            <option value="11">ПО и ПК</option>
+                            <option <?php if ($_GET["section"] == "modem") {echo "selected";} ?> value="0">Модемы</option>
+                            <option <?php if ($_GET["section"] == "router") {echo "selected";} ?> value="1">Роутеры</option>
+                            <option <?php if ($_GET["section"] == "stb") {echo "selected";} ?> value="2">Приставки STB</option>
+                            <option <?php if ($_GET["section"] == "voip") {echo "selected";} ?> value="3">Шлюзы VoIP</option>
+                            <option <?php if ($_GET["section"] == "dslam") {echo "selected";} ?> value="4">DSLAM'ы</option>
+                            <option <?php if ($_GET["section"] == "etth") {echo "selected";} ?> value="5">Коммутаторы Ethernet</option>
+                            <option <?php if ($_GET["section"] == "core") {echo "selected";} ?> value="6">Оборудование агрегации и ядра сети</option>
+                            <option <?php if ($_GET["section"] == "xdsl") {echo "selected";} ?> value="7">Инциденты xDSL</option>
+                            <option <?php if ($_GET["section"] == "fttb") {echo "selected";} ?> value="8">Инциденты FttB</option>
+                            <option <?php if ($_GET["section"] == "iptv") {echo "selected";} ?> value="9">Инциденты IPTV</option>
+                            <option <?php if ($_GET["section"] == "sip") {echo "selected";} ?> value="10">Инциденты SIP</option>
+                            <option <?php if ($_GET["section"] == "browser") {echo "selected";} ?> value="11">Настройки браузеров</option>
+                            <option <?php if ($_GET["section"] == "connection") {echo "selected";} ?> value="12">Настройки подключений</option>
+                            <option <?php if ($_GET["section"] == "mail-client") {echo "selected";} ?> value="13">Настройки почтовых клиентов</option>
                         </select>
                     </td>
                     <td></td>
@@ -75,7 +78,7 @@
             </tr>
             <tr>
                 <td>Наименование:</td>
-                <td><input type="text" style="width: 296px;" required maxlength="100" name="name" size="30" placeholder="Huawei MT880 (fw: 2.0.1)" value=<?php echo $name ?>></td>
+                <td><input type="text" style="width: 296px;" required maxlength="50" name="name" size="30" placeholder="Huawei MT880 (fw: 2.0.1)" value=<?php echo $name ?>></td>
             </tr>
         </table>
 
@@ -84,5 +87,23 @@
     ?>
 
     <textarea id='h' name="content" class="editor_big" style="height:500px;width:830"><?php echo $content ?></textarea>
+
+    <?php
+
+    switch($formActionLink) {
+        case "/instructions/edit" : {
+            ?>
+            <input type="hidden" name="oldSection" value="<?php echo $_GET["section"] ?>" />
+        <?php
+        }
+        case "/vips/edit" : {
+            ?>
+            <input type="hidden" name="oldAlias" value="<?php echo $alias ?>" />
+        <?php
+        }
+            default:{}
+    }
+    ?>
+
     <input type="submit" value="Добавить" />
 </form>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pe><section id="dslam" name="DSLAMs"/><section id="etth" name="Ethernet-коммутаторы"/><section id="core" name="Оборудование уровня агрегации и ядра"><core><id>bras</id><name>БРАС</name><content><![CDATA[<p>ыва</p>
+<pe><section id="dslam" name="DSLAMs"/><section id="etth" name="Коммутаторы Ethernet"/><section id="core" name="Оборудование агрегации и ядра сети"><core><id>bras</id><name>БРАС</name><content><![CDATA[<p>ыва</p>
 <p>выфа</p>
 <p>safdsdf</p>
 <p>sdf</p>

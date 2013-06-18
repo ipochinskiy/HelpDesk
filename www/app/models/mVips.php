@@ -64,4 +64,35 @@ class mVips extends model {
         file_put_contents(DATA_PATH . "vips.xml", $dom -> saveXML());
     }
 
+    function deleteChildren($node) {
+        while (isset($node -> firstChild)) {
+            $this -> deleteChildren($node -> firstChild);
+            $node -> removeChild($node -> firstChild);
+        }
+    }
+
+    function removeItem($id) {
+        $dom = new DOMDocument("1.0", "utf-8");
+        $this -> ensureFileExists("vips");
+        $dom -> load(DATA_PATH . "vips" . ".xml");
+
+        $vips = $dom -> childNodes -> item(0) -> childNodes;
+
+        for ($i = 0; $i < $vips -> length; $i++) {
+            if ($vips -> item($i) -> childNodes -> item(0) -> nodeValue == $id) {
+                $this -> deleteChildren($vips -> item($i));
+                $parent = $vips -> item($i) -> parentNode;
+                $parent -> removeChild($vips -> item($i));
+
+                file_put_contents(DATA_PATH . "vips.xml", $dom -> saveXML());
+                return;
+            }
+        }
+    }
+
+    function editItem($oldId, $newItem) {
+        $this -> removeItem($oldId);
+        $this -> addItem($newItem);
+    }
+
 }

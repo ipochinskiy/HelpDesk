@@ -2,7 +2,7 @@
 
 abstract class controller {
 
-    protected  $view;
+    protected $view;
     protected $model;
 
     function __construct() {
@@ -10,14 +10,4 @@ abstract class controller {
     }
 
     abstract function index();
-
-    protected function redirect($url, $timeout = 0) {
-        echo "
-            <html>
-				<head>
-					<meta http-equiv='Refresh' content='1'; URL = $url'>
-				</head>
-        ";
-    }
-
 }

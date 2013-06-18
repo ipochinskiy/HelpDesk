@@ -12,7 +12,7 @@ class Route {
         $routes = explode('/', $uriMap['path']);
 
         if (count($routes) > 3) {
-//            Route::error404();
+            Route::errorHandler(new Exception("", ERROR_UNSUPPORTED_ROUTE));
         }
 
         if ( !empty($routes[1]) ) {
@@ -23,45 +23,63 @@ class Route {
             $action_name = $routes[2];
         }
 
-//        if ($uriMap["query"] != null) {
-//            $queryGetParams = explode('&', $uriMap[query]);
-//
-//            foreach ($queryGetParams as $queryItem) {
-//                $queryItemArray = explode('=', $queryItem);
-//                $_GET[$queryItemArray[0]] = $queryItemArray[1];
-//            }
-//        }
-
         $controller_name = 'c' . ucfirst($controller_name);
-//        $action_name = 'action' . ucfirst($action_name);
-
         $controller_file = CONTROLLERS_PATH . $controller_name . '.php';
 
         if(file_exists($controller_file)) {
             include $controller_file;
         } else {
-            Route::error404();
+            Route::errorHandler(new Exception("", ERROR_NOT_FOUND));
         }
 
-        $controller = new $controller_name;
+        if (class_exists($controller_name)) {
+            $controller = new $controller_name;
+        } else {
+            Route::errorHandler(new Exception("", ERROR_NOT_FOUND));
+        }
+
         $action = $action_name;
 
         if(method_exists($controller, $action)) {
-            $controller -> $action();
+            try {
+                $controller -> $action();
+            } catch (Exception $e) {
+                Route::errorHandler($e);
+            }
         } else {
-            Route::error404();
+            Route::errorHandler(new Exception("", ERROR_NOT_FOUND));
         }
     }
 
-    function error404() {
-        include_once(CONTROLLERS_PATH . "c404.php");
-        $a = new c404();
-        $a -> index();
+    function errorHandler($e) {
+        include_once(CONTROLLERS_PATH . "cErrorHandler.php");
+        $errorHandler = new cErrorHandler();
 
-//        $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-//        header('HTTP/1.1 404 Not Found');
-//        header("Status: 404 Not Found");
-//        header('Location:' . $host . '404');
+        switch ($e -> getCode()) {
+            case ERROR_NO_FILES: {
+                $errorHandler -> errorNoFiles($e);
+                break;
+            }
+            case ERROR_NO_ITEMS: {
+                $errorHandler -> errorNoItems($e);
+                break;
+            }
+            case ERROR_UNKNOWN_SECTION: {
+                $errorHandler -> errorUnknownSection($e);
+                break;
+            }
+            case ERROR_NOT_FOUND: {
+                $errorHandler -> errorNotFound($e);
+                break;
+            }
+            case ERROR_UNSUPPORTED_ROUTE: {
+                $errorHandler -> errorUnsupportedRoute($e);
+                break;
+            }
+            default: {
+            $errorHandler -> index($e);
+            }
+        }
     }
 
 }

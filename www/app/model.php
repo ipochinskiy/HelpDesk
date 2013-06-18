@@ -11,7 +11,7 @@ class model {
                 $dom -> appendChild($dom -> createElement($name));
                 file_put_contents($fileName, $dom -> saveXML());
             } catch (Exception $e) {
-                throw new Exception($fileName . " is not exist and not creatable");
+                throw new Exception("There's no needed files.", ERROR_NO_FILES);
             }
         }
 
