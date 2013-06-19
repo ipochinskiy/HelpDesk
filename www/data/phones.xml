@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<phones><![CDATA[<p>фывы</p>]]><![CDATA[<p>фывы</p>
-<p>ыфвфы</p>
-<p>фыв</p>
-<p>фыв</p>
-<p>фвы</p>]]></phones>
+<phones><![CDATA[<table border="0">
+<tbody>
+<tr>
+<td>xxx-xxx</td>
+<td>Начальник отдела</td>
+</tr>
+<tr>
+<td>yyy-yyy</td>
+<td>Большой брат</td>
+</tr>
+<tr>
+<td>zzz-zzz</td>
+<td>Звонить при ЧП</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Полиция</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Скорая помощь</td>
+</tr>
+</tbody>
+</table>]]></phones>

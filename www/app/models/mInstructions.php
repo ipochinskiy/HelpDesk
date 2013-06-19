@@ -227,13 +227,31 @@ class mInstructions extends model {
     }
 
     function addItem($section, $id, $name, $content) {
-        if (is_int($section)) {
+
+        switch ($section) {
+            case "0":
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+            case "10":
+            case "11":
+            case "12":
+            case "13": {
             $resolve = $this -> resolveParameters($section);
-        } else {
+                break;
+            }
+            default : {
             $resolve = array(
                 "id" => $section,
                 "group" => $this -> getGroup($section),
             );
+            }
         }
 
         $dom = new DOMDocument("1.0", "utf-8");

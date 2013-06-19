@@ -1,9 +1,1045 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pe><section id="dslam" name="DSLAMs"/><section id="etth" name="Коммутаторы Ethernet"/><section id="core" name="Оборудование агрегации и ядра сети"><core><id>bras</id><name>БРАС</name><content><![CDATA[<p>ыва</p>
-<p>выфа</p>
-<p>safdsdf</p>
-<p>sdf</p>
-<p>dsf</p>
-<p>sas</p>
+<pe><section id="dslam" name="DSLAMs"><dslam><id>huawei_ma5600</id><name>Huawei MA5600</name><content><![CDATA[<p>&nbsp;</p>
+<table border="0">
+<tbody>
+<tr>
+<td><a class="highslide" title="dslam_ma5600" onclick="return hs.expand(this)" href="/images/pe/dslam_ma5600.jpg"> </a>
+<p style="text-align: center;"><a name="anchor_top"></a></p>
+<a class="highslide" title="dslam_ma5600" onclick="return hs.expand(this)" href="/data/img/dslams/dslam_ma5600.jpg">
+<p style="text-align: center;"><img src="/data/img/dslams/.thumbs/13607c5aa014b135c5723eb161c16503_240_0_0.jpg" alt="dslam_ma5600" width="240" height="212" /></p>
+</a></td>
+</tr>
+<tr>
+<td style="text-align: justify;"><!-- link image cms-chaynik --><!-- /END link image --> <span style="font-size: x-normal;">IP-коммутаторы DSL серии МА5600, разработанные  компанией Huawei Technologies, представляют собой оборудование  мультисервисного доступа IP 2-го и 3-го уровня.<br /></span> 
+<ul>
+<li><span style="font-size: x-normal;">Три полки услуг (без сплиттеров), 2688 портов ADSL/ADSL2/ADSL2+</span></li>
+<li><span style="font-size: x-normal;">Две полки услуг (со сплиттерами), 1792 порта ADSL/ADSL2/ADSL2+</span></li>
+<li><span style="font-size: x-normal;">Ширина: 19 дюймов, высота: 10U</span></li>
+<li><span style="font-size: x-normal;">436.00 мм x 420.00 мм x 444.50 мм (Ш x Г x В)</span></li>
+<li><span style="font-size: x-normal;">2 слота для главной платы управления, 14 слотов услуг</span></li>
+<li><span style="font-size: x-normal;">896 ADSL/ADSL2/ADSL2+/448 G.SHDSL линий на полку</span></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<h2><span style="font-size: medium;">Список команд</span><br /></h2>
+<p><a href="#anchor_pvc">PVC</a></p>
+<p><a href="#anchor_igmp">IGMP</a></p>
+<p><a href="#anchor_adsl">ADSL профили</a></p>
+<p><a href="#anchor_shdsl">SHDSL профили</a></p>
+<p><a href="#anchor_adminstaus">Операции с клиентским портом</a></p>
+<p><a href="#anchor_stat">Просмотр статистики</a></p>
+<p><a href="#anchor_save">Конфигурация</a></p>
+<p><a href="#anchor_other">Прочее</a></p>
+<hr />
+<h1><a name="anchor_pvc"></a>PVC</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">service-port vlan IVLAN xDSL 0/SLOT/PORT vpi 0 vci  VCI rx-cttr 6 tx-cttr 6</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">IVLAN </span></span>подставить номер абонентской VLAN доступа (в зависимости от услуги может изменяться);<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;"> VCI </span></span>подставить параметр VCI (в зависимости от услуги может изменяться).</p>
+<p>Для создания PVC 0/33 на порту 0 ADSL платы 0 и VLAN 101 нужно выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31(config)#service-port vlan 101 adsl 0/0/0 vpi 0 vci 33 rx-cttr 6 tx-cttr 6</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><br />&nbsp; Add service virtual port successfully</span></span></em></strong></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление</span></h2>
+<p>Если известна VLAN и номер порта, можно использовать следующую команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">undo service-port vlan </span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">IVLAN </span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL 0/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">PORT</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">IVLAN </span></span>подставить номер абонентской VLAN доступа (в зависимости от услуги может изменяться);<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Для удаления PVC с порта 11 SHDSL платы 15 и VLAN 728 нужно выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>MA5600-235204(config)#undo service-port vlan 728 shdsl 0/15/11</strong></em><br /></span></span></pre>
+<p>должен появиться запрос на подтверждение выполнения удаления:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&nbsp; Are you sure to release service virtual port(s)? (y/n)[n]:y<br />&nbsp; The number of total service virtual port in this operation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which cannot be released:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />&nbsp; Deleting start...<br />&nbsp; Deleting end:<br />&nbsp; The number of total service virtual port which need be deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which have been deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</span></span></strong></em></pre>
+<p>Если известны VPI/VCI и номер порта, можно использовать следующую команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">undo service-port port 0/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">PORT</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"> vpi 0 vci </span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">VCI</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;"> VCI </span></span>подставить параметр VCI (в зависимости от услуги может изменяться).</p>
+<p>Для удаления PVC 0/33 с порта 0 платы 0 нужно выполнить следующую команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31(config)#undo service-port port 0/0/0 vpi 0 vci 33</span></span></strong></em></pre>
+<p>Должен появиться запрос на подтверждение выполнения удаления:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&nbsp; Are you sure to release service virtual port(s)? (y/n)[n]:y<br />&nbsp; The number of total service virtual port in this operation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which cannot be released:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br /><br />&nbsp; Deleting start...<br /><br />&nbsp; Deleting end:<br />&nbsp; The number of total service virtual port which need be deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which have been deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</span></span></strong></em></pre>
+<p>Если удаление PVC не выполнено, возможно, к ней привязан IGMP user. В  таком случае сначала нужно удалить его, после чего повторить удаление  PVC.</p>
+<h2 style="text-align: center;"><strong><span style="font-size: medium; font-weight: bold;">Просмотр</span></strong></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port port 0/SLOT/PORT</strong></em></span></span></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>MA5600-ATC31(config)#display service-port port 0/0/0<br />&nbsp; ---------------------------------------------------------------------------<br />&nbsp; VLAN ID&nbsp; VLAN-ATTR&nbsp; PORT-TYPE&nbsp; F / S/&nbsp; P&nbsp; VPI&nbsp;&nbsp; VCI&nbsp; RX&nbsp; TX&nbsp; STATE&nbsp;&nbsp;&nbsp; LABEL<br />&nbsp; ---------------------------------------------------------------------------<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 101&nbsp; common&nbsp;&nbsp;&nbsp;&nbsp; adl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 / 0/&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 33&nbsp;&nbsp; 6&nbsp;&nbsp; 6&nbsp; act/up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />&nbsp;&nbsp;&nbsp;&nbsp; 4000&nbsp; common&nbsp;&nbsp;&nbsp;&nbsp; adl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 / 0/&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 50&nbsp;&nbsp; 6&nbsp;&nbsp; 6&nbsp; act/up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />&nbsp; ---------------------------------------------------------------------------<br />&nbsp; Total : 2&nbsp; (Up/Down :&nbsp;&nbsp;&nbsp; 2/0)</strong></em></span></span></pre>
+<p>Также можно сделать выборку PVC по плате, VLAN или отобразить все PVC.<br />Для  просмотра всех PVC, созданных на определенной плате, необходимо  выполнить  следующую команду (вместо SLOT нужно указать номер платы, к  которой подключен абонент):</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port board 0/SLOT</strong></em></span></span></pre>
+<p>Для просмотра всех PVC на аппарате необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port all</strong></em></span></span></pre>
+<p>Для просмотра PVC, привязанных к определенной VLAN, необходимо  выполнить следующую команду (вместо IVLAN нужно указать номер  абонентской VLAN):</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port vlan IVLAN</strong></em></span></span></pre>
+<hr />
+<h1><a name="anchor_igmp"></a>IGMP</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание подписчика IGMP</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user add port 0/SLOT/PORT adsl 0 VCI auth quickleave enable log enable max-program 1</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;"> VCI </span></span>подставить параметр VCI (для IPTV обычно используется 50).</p>
+<p>Для создания подписчика IGMP на порту 0 платы 0 нужно в режиме конфигурирования BTV (Broadband TeleVision) выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31(config)#</span></span></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">btv</span></span></strong></em><br /><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31(config-btv)#</span></span></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user add port 0/0/0 adsl 0 50 auth quickleave enable log enable<br />max-program 1</span></span></strong></em></pre>
+<p>Также можно создать подписчиков IGMP на всех портах платы. Для этого  нужно выполнить следующую команду (вместо SLOT нужно подставить номер  платы, на портах которой создаются подписчики):</p>
+<pre><strong><em></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user add slot 0/SLOT auth quickleave enable log enable max-program 1</span></span></strong></em></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление подписчика IGMP</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user delete port 0/SLOT/PORT<br /></span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Для удаления подписчика IGMP на порту 0 платы 0 нужно выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>MA5600-ATC31(config-btv)#igmp user delete port 0/0/0<br /></strong></em></span></span></pre>
+<p>Должен появиться запрос на подтверждение выполнения удаления:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>&nbsp; Are you sure to delete user by port?(y/n)[n]:y</strong></em></span></span></pre>
+<p>Также можно удалить подписчиков IGMP на всех портах платы. Для этого  нужно  выполнить следующую команду (вместо SLOT нужно подставить номер  платы, с портов которой удаляются подписчики:</p>
+<pre><strong><em></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user delete slot 0/SLOT</span></span></strong></em></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Подключение к списку каналов</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>igmp user bind-profile port 0/SLOT/PORT profile-index-list INDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">INDEX </span></span>подставить номер индекса списка каналов.</p>
+<p>Для назначения списка каналов с индексом 1 подписчику IGMP на порту 0 платы 0 нужно выполнить следующие команды:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31(config-btv)#</span></span></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user bind-profile port 0/0/0 profile-index-list 1</span></span></strong></em></pre>
+<p>Также можно назначить списки каналов подписчикам IGMP на всех портах  платы. Для этого нужно  выполнить следующие команды (вместо SLOT нужно  подставить номер платы, подписчикам IGMP которой назначаются списки):</p>
+<pre><strong><em></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">bind-profile </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;"> slot 0/SLOT </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">profile-index-list INDEX</span></span></strong></em></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Отключение от списка каналов</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>undo igmp user bind-profile port 0/SLOT/PORT profile-index-list INDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">INDEX </span></span>подставить номер индекса списка каналов.</p>
+<p style="text-align: justify;">Для того, чтобы отключить подписчика IGMP на порту 0 платы 0 от списка каналов с индексом 1 нужно выполнить следующие команды:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31(config-btv)#</span></span></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">undo igmp user bind-profile port 0/0/0 profile-index-list 1</span></span></strong></em></pre>
+<p style="text-align: justify;">Также  можно отключить от списка каналов подписчиков IGMP на всех портах   платы. Для этого нужно  выполнить следующие команды (вместо SLOT нужно   подставить номер платы, подписчиков которой отключают от списка):</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">bind-profile </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">slot 0/SLOT </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">profile-index-list INDEX</span></span></strong></em></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр конфигурации подписчика IGMP</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display igmp user port 0/SLOT/PORT</em></strong></span></span></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Для просмотра конфигурации подписчика на порту 0 платы 0 необходимо выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31#display igmp user port 0/0/0</span></span></em></strong></pre>
+<p>Также можно просмотреть конфигурацию всех подписчиков на аппарате, либо сделать выборки просмотра.<br />Для просмотра конфигурации всех подписчиков на аппарате, необходимо выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31#display igmp user all<br /></span></span></em></strong></pre>
+<p>Для просмотра конфигурации всех подписчиков на плате необходимо выполнить слеующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31#display igmp user slot 0/SLOT</span></span></em></strong></pre>
+<p>Для просмотра конфигурации подписчиков, подключенных к списку каналов необходимо выполнить слеующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31#display igmp user profile-index INDEX<br /></span></span></em></strong></pre>
+<p>Для просмотра конфигурации всех подписчиков, в данный момент подключенных к подписке, необходимо выполнить слеующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31#display igmp user online all<br /></span></span></em></strong></pre>
+<p>Этот список можно отфильтровать, выбрав подписчиков, подключенных к  определенной плате. Для этого необходимо выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31#display igmp user online slot 0/SLOT</span></span></em></strong></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр логов протокола IGMP</span></h2>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp log port 0/SLOT/PORT all</span></span></em></strong></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Для просмотра конфигурации подписчика на порту 0 платы 0 необходимо выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31#display igmp log port 0/0/42 all<br />{ || }:<br /><br />&nbsp; Command:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; display igmp log port 0/0/42 all <br />&nbsp; --------------------------------------------------------------------------<br />&nbsp; Program-IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Join-time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leave-time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp; --------------------------------------------------------------------------<br />&nbsp; 233.99.61.116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-02-29 18:52:02&nbsp;&nbsp; 2012-02-29 18:53:38&nbsp;&nbsp; <br />&nbsp; 233.99.61.116&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-02-29 18:51:12&nbsp;&nbsp; 2012-02-29 18:51:46&nbsp;&nbsp; <br />&nbsp; 233.99.61.230&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-02-29 18:45:45&nbsp;&nbsp; 2012-02-29 18:51:10&nbsp;&nbsp; <br />&nbsp; 233.99.61.7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-02-29 18:39:46&nbsp;&nbsp; 2012-02-29 18:45:19&nbsp;&nbsp; </span></span></em></strong></pre>
+<hr />
+<h1><a name="anchor_adsl"></a>ADSL профили</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание профиля</span></h2>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">adsl line-profile add</span></span></em></strong></pre>
+<p style="text-align: justify;">После ввода команды пользователю будет предложено выбрать параметры профиля: название, тип ADSL, модуляцию и т.д.</p>
+<p style="text-align: left;">Вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PNAME</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести имя создаваемого профиля (имя может быть назначено автоматически, для этого на вопрос об имени нужно ввести 'n'):</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Do you want to name the profile (y/n) [n]:y<br />&gt;&nbsp; Please input profile name:PNAME<br /></span></span></strong></em></pre>
+<p>После ввода имени профиля будет отображен запрос типа ADSL:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Please choose default value type 0-adsl 1-adsl2+ (0~1) [0]:<br /></span></span></strong></em></pre>
+<p>Затем необходимо выбрать модуляцию (по умолчанию выбрана модуляция All (G992.1~5, T1.413):</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Will you set basic configuration for modem? (y/n)[n]:y<br />&nbsp; Note: Setting to these mode of G992.3~5 will lead that the adsl ports that are not support<br />adsl2+ not be activated ADSL transmission mode:<br />&gt;&nbsp; 0: All&nbsp;&nbsp; (G992.1~5,T1.413)<br />&gt;&nbsp; 1: Full rate(G992.1/3/5 or T1.413)<br />&gt;&nbsp; 2: g.lite(G992.2/4) (ADSL over ISDN board doesn't support g.lite mode)<br />&gt;&nbsp; 3: T1.413(ADSL over ISDN board doesn't support T1.413 mode)<br />&gt;&nbsp; 4: g.dmt (G992.1/3/5)<br />&gt;&nbsp; 5: g.hs&nbsp; (G992.1~5, G992.5 is prior)<br />&gt;&nbsp; 6: G992.1<br />&gt;&nbsp; 7: G992.2<br />&gt;&nbsp; 8: G992.3<br />&gt;&nbsp; 9: G992.4<br />&gt;&nbsp; 10:G992.5<br />&gt;&nbsp; 11:ADSL all (G992.1~2,T1.413)<br />Please select&nbsp; (0~11) [0]:<br /></span></span></strong></em></pre>
+<p>Следующие параметры можно не изменять:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Trellis mode 0-disable 1-enable (0~1) [1]:<br />&gt;&nbsp; Downstream channel bit swap 0-disable 1-enable (0~1) [1]:<br />&gt;&nbsp; Upstream channel bit swap 0-disable 1-enable (0~1) [1]:<br /></span></span></strong></em></pre>
+<p>Затем необходимо выбрать алгоритм передачи данных:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Please select channel mode 0-interleaved 1-fast (0~1) [0]:<br /></span></span></strong></em><em><strong></strong></em></pre>
+<p>При выборе алгоритма передачи данных interleaved будет предложено ввести специфичный для него параметр:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Will you set interleaved delay? (y/n)[n]:<br /></span></span></strong></em></pre>
+<p>После этого необходимо выбрать тип адаптации скорости передачи данных:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Please select form of transmit rate adaptation in downstream:<br />&gt;&nbsp; 0-fixed 1-adaptAtStartup 2-adaptAtRuntime (0~2) [1]:<br /></span></span></strong></em><em><strong></strong></em></pre>
+<p>Следующий параметр можно не изменять:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Will you set SNR margin for modem? (y/n)[n]:<br /></span></span></strong></em></pre>
+<p>Затем необходимо выбрать скорость соединения в диапазонах приема и передачи:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Will you set parameters for rate? (y/n)[n]:y<br />&gt;&nbsp; Minimum transmit rate in downstream (32~32000 Kbps) [32]:MINDOWN<br />&gt;&nbsp; Maximum transmit rate in downstream (32~32000 Kbps) [24544]:MAXDOWN<br />&gt;&nbsp; Minimum transmit rate in upstream (32~6000 Kbps) [32]:MINUP<br />&gt;&nbsp; Maximum transmit rate in upstream (32~6000 Kbps) [1024]:MAXUP</span></span></strong></em></pre>
+<p>Также можно добавить профиль одной командой:</p>
+<pre><em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;">adsl line-profile quickadd basic-para MODUL trellis 1 bitswap 0 0 channel CHMODE adapt<br />TRA snr 6 0 31 6 0 31 rate MINDOWN MAXDOWN MINUP MAXUP name PNAME</span></span></strong></em><br /></pre>
+<p>вместо<em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;"> </span></span></strong></em><span style="font-family: courier new,courier;"><span style="font-size: small;">MODUL</span></span> нужно ввести тип модуляции из следующего списка:</p>
+<p>ADSL-all, all, full-rate, g.dmt, g.hs, g.lite, G992.1, G992.2, G992.3, G992.4, G992.5, T1.413</p>
+<p>вместо<em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;"> </span></span></strong></em><span style="font-family: courier new,courier;"><span style="font-size: small;">CHMODE</span></span> нужно ввести алгоритм передачи данных из следующего списка:</p>
+<p>fast, interleaved</p>
+<p>вместо<em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;"> </span></span></strong></em><span style="font-family: courier new,courier;">TRA</span><span style="font-family: courier new,courier;"> </span>нужно ввести тип адаптации скорости передачи данных из следующего списка:</p>
+<p>at-runtime, at-startup, fixed</p>
+<p>вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MINDOWN</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести минимальную скорость в диапазоне приема;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MAXDOWN</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести максимальную скорость в диапазоне приема;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MINUP</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести минимальную скорость в диапазоне передачи;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MAXUP</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести максимальную скорость в диапазоне передачи;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> PNAME</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести название профайла.</p>
+<p style="text-align: left;">Например, для  создания профиля test с модуляцией all, алгоритмом передачи данных  interleaved, адаптацией скорости at-startup, минимальной скоростью в  обоих диапазонах 32 Кбит/с, максимальной скоростью в диапазоне приема 10  Мбит/с, в диапазоне передачи 1 Мбит/с необходимо выполнить следующую  команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5600-ATC31(config)#adsl line-profile quickadd basic-para all trellis 1 bitswap 0 0 channel<br />interleaved adapt at-startup snr 6 0 31 6 0 31 rate 32 10240 32 1024 name test<br /></span></span></strong></em><em><strong></strong></em></pre>
+<p>Если параметры профиля введены верно, будет выведен индекс созданного профиля (параметр PINDEX).</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление профиля</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>adsl line-profile delete PINDEX</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр профиля</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">display adsl line-profile </span></span></strong></em><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>PINDEX</strong></em></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<p>Также имеется возможность вывести конфигурацию всех профилей в сводной таблице. Для этого не нужно вводить индекс профиля.</p>
+<hr />
+<h1><a name="anchor_shdsl"></a>SHDSL профили</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание профиля</span></h2>
+<p>Так же, как и с линейным ADSL профилем, возможны 2 варианта: поэтапная конфигурация и быстрая конфигурация.<br />При первом варианте необходимо использовать следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>shdsl line-profile add</em></strong></span></span><br /></pre>
+<p>После ввода команды пользователю будет предложено выбрать параметры профиля: количество используемых пар в кабеле, скоростные параметры, режим передачи данных и т.д.</p>
+<p>Значение параметра <em><span style="font-family: courier new,courier;"><span style="font-size: small;">G.SHDSL interface mode of line</span></span></em><span style="font-size: small;"> задает количество используемых пар в телефонном кабеле (обычно используется 1 пара, т.е. значение параметра должно быть</span><span style="font-size: small;"><span style="font-size: small;"><strong><em> </em></strong><em>two wire</em></span>).</span></p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; G.SHDSL interface mode of line (1--two wire;2--four wire)[1]:<br /></em></strong></span></span></pre>
+<p><span style="font-size: small;">Па</span>раметры<span style="font-family: courier new,courier;"><span style="font-size: small;"> <em>G.SHDSL minimum line rate</em></span></span><span style="font-size: small;"> </span>и <span style="font-family: courier new,courier;"><span style="font-size: small;"> <em>G.SHDSL maximum line rate</em></span></span><span style="font-size: small;"> </span>отвечают  за минимальную и максимальную скорость соединения соответственно,  причем значения их величин должны быть кратны 64: 192, 256, 320, 384,  ..., 2248.</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Do you use the default data to create a line profile?(y/n)[y]:n<br />&gt; G.SHDSL minimum line rate<br />&nbsp; (Value must be multiple of 64,except 2312kbps,<br />&nbsp; 192~2304,2312 kbps)[2048]:<br />&gt; G.SHDSL maximum line rate<br />&nbsp; (Value must be multiple of 64,except 2312kbps,<br />&nbsp; 192~2304,2312 kbps)[2048]:<br /></em></strong></span></span></pre>
+<p>Параметр <span style="font-family: courier new,courier;"><span style="font-size: small;">Power Spectral Density mode </span></span>задает режим соединения: синхронный или асинхронный (необходимо использовать синхронный режим).</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Power Spectral Density mode (1--symmetric;2--asymmetric)[1]:<br /></em></strong></span></span></pre>
+<p>ПараметрTransmission Mode задает режим передачи данных (обычно используется режим Annex A):</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Transmission mode (1--G.991.2 Annex A;2--G.991.2 Annex B;<br />&nbsp; 3--support Annex A&amp;B)[3]:<br /></em></strong></span></span></pre>
+<p>Значения следующих параметров можно оставить без изменения:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Remote enable (1--enabled;2--disabled)[1]:<br />&gt; Probe enable (1--disabled;2--enabled)[1]:<br />&gt; Do you config the target SNR margin?(y/n)[n]:n<br />&nbsp; Add profile 8 successfully</em></strong></span></span><br /></pre>
+<p>Для быстрой конфигурации профиля необходимо использовать следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>shdsl line-profile quickadd line two-wire rate MINRATE MAXRATE psd<br />symmetric transmission annex-a remote enable probe enable snr-margin<br />ds-curr 0 ds-worst 0 us-curr 0 us-worst 0 bitmap 0x1</strong></em></span></span></pre>
+<p>вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MINRATE</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести минимальную скорость;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MAXRATE</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести максимальную скорость.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление профиля</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>shdsl line-profile delete PINDEX</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр профиля</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">display shdsl line-profile </span></span></strong></em><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>PINDEX</strong></em></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<p>Также имеется возможность вывести конфигурацию всех профилей в сводной таблице. Для этого не нужно вводить индекс профиля.</p>
+<hr />
+<h1><a name="anchor_adminstaus"></a>Операции с клиентским портом</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Выключение порта</span></h2>
+<p>Для административного выключения порта сначала необходимо зайти в  режим конфигурации платы, на которой расположен порт, после чего  выполнить команду выключения порта:</p>
+<pre><strong><em><span style="font-family: courier new,courier;"><span style="font-size: small;">interface xDSL 0/SLOT<br />deactivate PORT</span></span></em></strong><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Включение порта</span></h2>
+<p>Для административного включения порта могут быть использованы 2  команды, представленные ниже. Первая включает порт, не меняя профиля,  который был для него назначен, вторая профиль изменяет. Обе команды  необходимо выполнять в режиме конфигурирования слота.</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">activate PORT<br />activate PORT profile-index PINDEX</span></span></em></strong><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер выставляемого профиля.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр состояния порта</span></h2>
+<pre><span style="font-size: small;"><em><strong><span style="font-family: courier new,courier;">display port state PORT</span></strong></em></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.<br />Команду необходимо выполнять в режиме конфигурирования слота.</p>
+<hr />
+<h1><a name="anchor_stat"></a>Просмотр статистики</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр статистики передачи данных</span></h2>
+<p>Имеется возможность просмотреть статистику порта за текущие сутки  (момент начала сбора статистики: момент выполнения команды, момент  окончания сбора статистики: 15 минут или 24 часа от начала сбора  статистики), за предыдущие сутки (момент начала сбора статистики: 24  часа назад от момента выполнения команды, момент окончания сбора  статистики: 15 минут или 24 часа от начала сбора статистики) и за все  время с момента последней перезагрузки платы.</p>
+<p>Для сбора статистики за текущие сутки необходимо выполнить следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display statistics performance 0/SLOT/PORT current-24hours</strong></em></span></span><br /></pre>
+<p>Для сбора статистики за текущие 15 минут необходимо заменить управляющие слова <span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>current_24hours&nbsp;</strong></em></span></span>на <span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>current_15minutes</strong></em></span></span>.</p>
+<p>Для сбора статистики за предыдущие сутки необходимо выполнить следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>display statistics performance 0</em></strong></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>/SLOT/PORT</strong></em></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em> last-24hours<br /></em></strong></span></span></pre>
+<p>Для сбора статистики за все время необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display statistics performance 0</em></strong></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>/SLOT/PORT</strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em> ever-before</em></strong></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Статистика будет выведена в следующем формате:</p>
+<p><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>&nbsp; ATU-R<br /></strong></em></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>&nbsp; Count of Loss of Frame failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 456<br />&nbsp; Count of Loss of Signal failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 383<br />&nbsp; Count of Loss of Link failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 378<br />&nbsp; Count of Loss of Power failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of Errored Seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 44748<br />&nbsp; Count of line initialization attempts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 759<br />&nbsp; Count of all encoded blocks received&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 319489155<br />&nbsp; Count of all encoded blocks transmitted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 326303478<br />&nbsp; Count of all blocks received with correctable errors&nbsp;&nbsp; : 898283<br />&nbsp; Count of all blocks received with uncorrectable errors : 251091<br />&nbsp; Count of fast retrain times&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of failed fast retrain times&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of severely errored seconds(SES)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of unavailable seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 656133<br />&nbsp; ATU-C<br />&nbsp; Count of Loss of Frame failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 3<br />&nbsp; Count of Loss of Signal failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of Loss of Power failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 5<br />&nbsp; Count of Errored Seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 43436<br />&nbsp; Count of all encoded blocks received&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 326303478<br />&nbsp; Count of all encoded blocks transmitted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 319489155<br />&nbsp; Count of all blocks received with correctable errors&nbsp;&nbsp; : 1632842500<br />&nbsp; Count of all blocks received with uncorrectable errors : 353396<br />&nbsp; Count of severely errored seconds(SES)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 156<br />&nbsp; Count of unavailable seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 28473</strong></em></span></span></p>
+<p>Вся выдаваемая статистика разделена на 2 блока: ATU-R и ATU-C.  Информация, расположенная в блоке ATU-R (ADSL Transmission Unit-Remote),  относится к абонентскому модему, а информация в блоке ATU-C (ADSL  Transmission Unit-Central Office) - к порту DSLAM, к которому подключен  абонентский модем. Большинство параметров совпадают, но есть и  специфичные для каждого блока.</p>
+<table border="0">
+<tbody>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Frame failures</span></span></td>
+<td>Количество потерь кадров данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Signal failures</span></span></td>
+<td>Количество потерь полезной составляющей сигнала</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Link failures</span></span></td>
+<td>Количество потерь соединения</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Power failures</span></span></td>
+<td>Количество потерь кадров данных из-за низкой мощности сигнала</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Errored Seconds</span></span></td>
+<td>Количество секунд с ошибками передачи данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of line initialization attempts</span></span></td>
+<td>Количество попыток соединения<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all encoded blocks received</span></span></td>
+<td>Количество полученных зашифрованными блоков данных<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all encoded blocks transmitted</span></span></td>
+<td>Количество переданных зашифрованными блоков данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all blocks received with correctable errors</span></span></td>
+<td>Количество блоков данных, полученных с ошибками, которые удалось исправить<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all blocks received with uncorrectable errors</span></span></td>
+<td>Количество блоков данных, полученных с ошибками, которые не удалось исправить</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of fast retrain times</span></span></td>
+<td>Количество попыток изменения модемами скорости соединения<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of failed fast retrain times</span></span></td>
+<td>Количество неудавшихся попыток изменения модемами скорости соединения</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of severely errored seconds(SES)</span></span></td>
+<td>Количество секунд с 10 или более ошибками передачи данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of unavailable seconds</span></span></td>
+<td>Количество секунд, когда передача данных была недоступна<br /></td>
+</tr>
+</tbody>
+</table>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр общей статистики</span></h2>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>display interface xDSL 0/SLOT/PORT</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>По статистике можно выяснить состояние соединения, выставленный  линейный и BTV профили, время последнего соединения и т.д. В отдельных  блоках выводится статистика по каждой PVC, созданных на порту.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр электрических параметров соединения</span></h2>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display line operation port 0/SLOT/PORT</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Параметры соединения будут выведены в следующем формате:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>&nbsp; Channel mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Interleaved<br />&nbsp; Downstream channel bit swap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Disable<br />&nbsp; Upstream channel bit swap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Disable<br />&nbsp; Trellis mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Enable<br />&nbsp; Standard in port training&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : G992.5-Annex A<br />&nbsp; Downstream channel rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 6144<br />&nbsp; Downstream max. attainable rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp; : 21656<br />&nbsp; Downstream channel SNR margin(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 26.9<br />&nbsp; Downstream interleaved channel delay(ms)&nbsp; : 6<br />&nbsp; Downstream channel attenuation(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 17.0<br />&nbsp; Downstream total output power(dBm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 1.8<br />&nbsp; Upstream channel rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 638<br />&nbsp; Upstream max. attainable rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 1027<br />&nbsp; Upstream channel SNR margin(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 18.0<br />&nbsp; Upstream interleaved channel delay(ms)&nbsp;&nbsp;&nbsp; : 2<br />&nbsp; Upstream channel attenuation(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 8.5<br />&nbsp; Upstream total output power(dBm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 11.5</strong></em></span></span><br /></pre>
+<p>Ниже приведена расшифровка этих параметров:</p>
+<table border="0">
+<tbody>
+<tr>
+<td>Attenuation</td>
+<td>Величина затухания полезного сигнала</td>
+</tr>
+<tr>
+<td>SNR margin</td>
+<td>Отношение величины полезного сигнала к величине помехи</td>
+</tr>
+<tr>
+<td>Output power</td>
+<td>Мощность выходного сигнала</td>
+</tr>
+<tr>
+<td>Interleaved channel delay</td>
+<td>Задержка канала с алгоритмом передачи данных interleaved</td>
+</tr>
+</tbody>
+</table>
+<p>Также можно вывести параметры соединения всех портов определенной   платы или всех портов на аппарате. Для этого необходимо использовать   одну из следующих команд:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display line operation slot 0/SLOT</strong></em></span></span><br /></pre>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display line operation all<br /></strong></em></span></span></pre>
+<hr />
+<h1><a name="anchor_save"></a>Конфигурация</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр конфигурации</span></h2>
+<p>Для просмотра всей конфигурации устройства используется следующая команда:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display current-configuration</strong></em></span></span><br /></pre>
+<p>Имеется возможность вывести только определенный блок конфигурации с помощью следующей команды:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display current-configuration section SEC</strong></em></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SEC</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести название блока конфигурации из списка ниже:</p>
+<table border="0">
+<tbody>
+<tr>
+<td>global-config</td>
+<td>задается имя аппарата, создаются пользователи, линейные профайлы, аварийные сообщения</td>
+</tr>
+<tr>
+<td>device-config</td>
+<td>задаются платы в слотах устройства</td>
+</tr>
+<tr>
+<td>vlan-config</td>
+<td>VLAN создаются и пробрасываются на интерфейсы<br /></td>
+</tr>
+<tr>
+<td>scu</td>
+<td>задается конфигурация управляющей платы устройства</td>
+</tr>
+<tr>
+<td>adsl</td>
+<td>линейные профили применяются к портам каждой платы</td>
+</tr>
+<tr>
+<td>bbs-config</td>
+<td>создаются PVC</td>
+</tr>
+<tr>
+<td>btv-config</td>
+<td>конфигурируются программы, подписчики, списки каналов</td>
+</tr>
+<tr>
+<td>vlanif</td>
+<td>созданным VLAN назнааются IP-адреса</td>
+</tr>
+<tr>
+<td>meth</td>
+<td>конфигурируется интерфейс Metro-Ethernet</td>
+</tr>
+<tr>
+<td>null</td>
+<td>конфигурируется Null-интерфейс (Loopback)</td>
+</tr>
+<tr>
+<td>acl-user</td>
+<td>создаются списки контроля доступа</td>
+</tr>
+<tr>
+<td>aaa</td>
+<td>задаются параметры аутентификации, авторизации и учета</td>
+</tr>
+<tr>
+<td>post-system</td>
+<td>конфигурируются SNMP community, списки контроля доступа применяются к интерфейсам</td>
+</tr>
+</tbody>
+</table>
+<h2 style="text-align: center;"><span style="font-size: medium;">Сохранение конфигурации</span></h2>
+<p>Для сохранения конфигурации используются 2 команды:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>save configuration<br />save</em></strong></span></span><br /></pre>
+<p>Первая сохраняет конфигурационный файл на флэш-память аппарата, вторая используется для сохранения файлов базы данных аппарата.<br />Если выполнить только вторую команду, изменения не будут отображены в файле конфигурации.</p>
+<hr />
+<h1><a name="anchor_other"></a>Прочее</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Перезагрузка платы<br /></span></h2>
+<p>Перед перезагрузкой плат необходимо <strong>ОБЯЗАТЕЛЬНО</strong> сохранить конфигурацию!</p>
+<p>Для перезагрузки платы необходимо выполнить следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>board reset 0/SLOT</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр трафика<br /></span></h2>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display traffic 0/SLOT/PORT</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Результат будет выведен в следующем формате:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&nbsp; --------------------------------------------------------------<br />&nbsp; Frame/Slot/Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rx Traffic(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tx Traffic(Kbps)<br />&nbsp; --------------------------------------------------------------<br />&nbsp; 0 /SLOT /PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x.x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x.x<br />&nbsp; --------------------------------------------------------------</em></strong></span></span><br /></pre>
+<p>Причем в стобце <span style="font-family: courier new,courier;"><span style="font-size: small;">Rx Traffic</span></span><span style="font-family: courier new,courier;"> </span>(Receive) будет выведена скорость исходящая для абонента, а в столбце <span style="font-family: courier new,courier;"><span style="font-size: small;">Tx Traffic</span></span><span style="font-family: courier new,courier;"> </span>(Transmit)- входящая.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр профилей трафика</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display traffic table index PINDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля трафика.</p>
+<p>Также можно вывести конфигурацию диапазона профилей. Для этого необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display traffic table FINDEX 0 to-index TINDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">FINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс начала выводимого диапазона;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">TINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс конца выводимого диапазона.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр MAC-адресов<br /></span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display mac-address adsl 0/SLOT/PORT</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Также имеется возможность вывести все MAC-адреса в VLAN. Для этого необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display mac-address vlan VLAN</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">VLAN</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс VLAN, MAC-адреса в которой необходимо вывести.</p>]]></content></dslam><dslam><id>huawei_ma5603</id><name>Huawei MA5603</name><content><![CDATA[<table border="0">
+<tbody>
+<tr>
+<td><a class="highslide" title="dslam_ma5600" href="/images/pe/dslam_ma5600.jpg"> </a>
+<p style="text-align: center;"><!-- image cms-chaynik --><a name="anchor_top"></a><!-- /END link image --></p>
+<p style="text-align: center;"><img src="/data/img/dslams/dslam_ma5603.jpg" alt="dslam_ma5603" width="200" height="110" /></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: justify;">IP-коммутаторы  DSL серии МА5603, разработанные  компанией Huawei Technologies,  представляют собой оборудование  мультисервисного доступа IP 2-го и 3-го  уровня.<br /> 
+<ul>
+<li><span style="font-size: small;">192 ADSL/ADSL2/ADSL2+/G.SHDSL на полку</span></li>
+<li><span style="font-size: small;">6 слотов услуг</span></li>
+<li><span style="font-size: small;">IP DSLAM средней емкости; Ширина: 19 дюймов, высота: 5U</span></li>
+<li><span style="font-size: small;">436 мм x 420 мм x 219.5 мм (Ш x Г x В) </span></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<h2><span style="font-size: medium;">Список команд</span><br /></h2>
+<p><a href="#anchor_pvc">PVC</a></p>
+<p><a href="#anchor_igmp">IGMP</a></p>
+<p><a href="#anchor_adsl">ADSL профили</a></p>
+<p><a href="#anchor_shdsl">SHDSL профили</a></p>
+<p><a href="#anchor_adminstaus">Операции с клиентским портом</a></p>
+<p><a href="#anchor_stat">Просмотр статистики</a></p>
+<p><a href="#anchor_save">Конфигурация</a></p>
+<p><a href="#anchor_other">Прочее</a></p>
+<hr />
+<h1><a name="anchor_pvc"></a>PVC</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">service-port vlan IVLAN xDSL 0/SLOT/PORT vpi 0 vci  VCI rx-cttr 6 tx-cttr 6</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">IVLAN </span></span>подставить номер абонентской VLAN доступа (в зависимости от услуги может изменяться);<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;"> VCI </span></span>подставить параметр VCI (в зависимости от услуги может изменяться).</p>
+<p>Для создания PVC 0/33 на порту 0 ADSL платы 1 и VLAN 101 нужно выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37(config)#service-port vlan 101 adsl 0/1/0 vpi 0 vci 33 rx-cttr 6 tx-cttr 6<br />&nbsp; Add service virtual port successfully</span></span></em></strong></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление</span></h2>
+<p>Если известна VLAN и номер порта, можно использовать следующую команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">undo service-port vlan </span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">IVLAN </span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL 0/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">PORT</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">IVLAN </span></span>подставить номер абонентской VLAN доступа (в зависимости от услуги может изменяться);<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Для удаления PVC с порта 0 ADSL платы 1 и VLAN 101 нужно выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>MA5603-ATC37(config)#undo service-port vlan 101 adsl 0/1/0</strong></em><br /></span></span></pre>
+<p>должен появиться запрос на подтверждение выполнения удаления:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&nbsp; Are you sure to release service virtual port(s)? (y/n)[n]:y<br />&nbsp; The number of total service virtual port in this operation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which cannot be released:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br />&nbsp; Deleting start...<br />&nbsp; Deleting end:<br />&nbsp; The number of total service virtual port which need be deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which have been deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</span></span></strong></em></pre>
+<p>Если известны VPI/VCI и номер порта, можно использовать следующую команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">undo service-port port 0/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">/</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">PORT</span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"> vpi 0 vci </span></span><span style="font-size: small;"><span style="font-family: courier new,courier;">VCI</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;"> VCI </span></span>подставить параметр VCI (в зависимости от услуги может изменяться).</p>
+<p>Для удаления PVC 0/33 с порта 0 платы 1 нужно выполнить следующую команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37(config)#undo service-port port 0/1/0 vpi 0 vci 33</span></span></strong></em></pre>
+<p>Должен появиться запрос на подтверждение выполнения удаления:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&nbsp; Are you sure to release service virtual port(s)? (y/n)[n]:y<br />&nbsp; The number of total service virtual port in this operation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which cannot be released:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br /><br />&nbsp; Deleting start...<br /><br />&nbsp; Deleting end:<br />&nbsp; The number of total service virtual port which need be deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br />&nbsp; The number of total service virtual port which have been deleted:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</span></span></strong></em></pre>
+<p>Если удаление PVC не выполнено, возможно, к ней привязан IGMP user. В   таком случае сначала нужно удалить его, после чего повторить удаление   PVC.</p>
+<h2 style="text-align: center;"><strong><span style="font-size: medium; font-weight: bold;">Просмотр</span></strong></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port port 0/SLOT/PORT</strong></em></span></span></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>MA5603-ATC37#display service-port port 0/1/0<br />&nbsp; ---------------------------------------------------------------------------<br />&nbsp; VLAN ID&nbsp; VLAN-ATTR&nbsp; PORT-TYPE&nbsp; F / S/&nbsp; P&nbsp; VPI&nbsp;&nbsp; VCI&nbsp; RX&nbsp; TX&nbsp; STATE&nbsp;&nbsp;&nbsp; LABEL<br />&nbsp; ---------------------------------------------------------------------------<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 101&nbsp; common&nbsp;&nbsp;&nbsp;&nbsp; adl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 / 1/&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 33&nbsp;&nbsp; 6&nbsp;&nbsp; 6&nbsp; act/up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />&nbsp;&nbsp;&nbsp;&nbsp; 4000&nbsp; common&nbsp;&nbsp;&nbsp;&nbsp; adl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 / 1/&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 50&nbsp;&nbsp; 6&nbsp;&nbsp; 6&nbsp; act/up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br />&nbsp; ---------------------------------------------------------------------------<br />&nbsp; Total : 2&nbsp; (Up/Down :&nbsp;&nbsp;&nbsp; 2/0)</strong></em></span></span></pre>
+<p>Также можно сделать выборку PVC по плате, VLAN или отобразить все PVC.<br />Для   просмотра всех PVC, созданных на определенной плате, необходимо   выполнить  следующую команду (вместо SLOT нужно указать номер платы, к   которой подключен абонент):</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port board 0/SLOT</strong></em></span></span></pre>
+<p>Для просмотра всех PVC на аппарате необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port all</strong></em></span></span></pre>
+<p>Для просмотра PVC, привязанных к определенной VLAN, необходимо   выполнить следующую команду (вместо IVLAN нужно указать номер   абонентской VLAN):</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display service-port vlan IVLAN</strong></em></span></span></pre>
+<hr />
+<h1><a name="anchor_igmp"></a>IGMP</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание подписчика IGMP</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user add port 0/SLOT/PORT adsl 0 VCI auth quickleave enable log enable max-program 1</span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;"> VCI </span></span>подставить параметр VCI (для IPTV обычно используется 50).</p>
+<p>Для создания подписчика IGMP на порту 0 платы 0 нужно в режиме конфигурирования BTV (Broadband TeleVision) выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37(config)#btv</span></span></em></strong><br /><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37(config-btv)#igmp user add port 0/1/0 adsl 0 50 auth quickleave enable log enable<br />max-program 1</span></span></em></strong><em><strong></strong></em></pre>
+<p>Также можно создать подписчиков IGMP на всех портах платы. Для этого   нужно выполнить следующую команду (вместо SLOT нужно подставить номер   платы, на портах которой создаются подписчики):</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user add slot 0/SLOT auth quickleave enable log enable max-program 1</span></span></em></strong></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление подписчика IGMP</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user delete port 0/SLOT/PORT<br /></span></span></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Для удаления подписчика IGMP на порту 0 платы 1 нужно выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>MA5603-ATC37(config-btv)#igmp user delete port 0/1/0<br /></strong></em></span></span></pre>
+<p>Должен появиться запрос на подтверждение выполнения удаления:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>&nbsp; Are you sure to delete user by port?(y/n)[n]:y</strong></em></span></span></pre>
+<p>Также можно удалить подписчиков IGMP на всех портах платы. Для этого   нужно  выполнить следующую команду (вместо SLOT нужно подставить номер   платы, с портов которой удаляются подписчики:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user delete slot 0/SLOT</span></span></em></strong></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Подключение к списку каналов</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>igmp user bind-profile port 0/SLOT/PORT profile-index-list INDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">INDEX </span></span>подставить номер индекса списка каналов.</p>
+<p>Для назначения списка каналов с индексом 25 подписчику IGMP на порту 0 платы 1 нужно выполнить следующие команды:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37(config-btv)#igmp user bind-profile port 0/1/0 profile-index-list 25</span></span></em></strong><em><strong></strong></em></pre>
+<p>Также можно назначить списки каналов подписчикам IGMP на всех портах   платы. Для этого нужно  выполнить следующие команды (вместо SLOT нужно   подставить номер платы, подписчикам IGMP которой назначаются списки):</p>
+<pre><strong><em></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">igmp user </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">bind-profile </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">slot 0/SLOT </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">profile-index-list INDEX</span></span></strong></em></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Отключение от списка каналов</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>undo igmp user bind-profile port 0/SLOT/PORT profile-index-list INDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">INDEX </span></span>подставить номер индекса списка каналов.</p>
+<p style="text-align: justify;">Для того, чтобы отключить подписчика IGMP на порту 0 платы 1 от списка каналов с индексом 25 нужно выполнить следующие команды:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37(config-btv)#undo igmp user bind-profile port 0/1/0 profile-index-list 25</span></span></em></strong><em><strong></strong></em></pre>
+<p style="text-align: justify;">Также   можно отключить от списка каналов подписчиков IGMP на всех портах    платы. Для этого нужно  выполнить следующие команды (вместо SLOT нужно    подставить номер платы, подписчиков которой отключают от списка):</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">i</span></span></em></strong><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">gmp user </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">bind-profile </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">slot 0/SLOT </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">profile-index-list INDEX</span></span></strong></em></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр конфигурации подписчика IGMP</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display igmp user port 0/SLOT/PORT</em></strong></span></span></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Также можно просмотреть конфигурацию всех подписчиков на аппарате, либо сделать выборки просмотра.<br />Для просмотра конфигурации всех подписчиков на аппарате, необходимо выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp user all<br /></span></span></em></strong></pre>
+<p>Для просмотра конфигурации всех подписчиков на плате необходимо выполнить слеующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp user slot 0/SLOT</span></span></em></strong></pre>
+<p>Для просмотра конфигурации подписчиков, подключенных к списку каналов необходимо выполнить слеующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp user profile-index INDEX<br /></span></span></em></strong></pre>
+<p>Для просмотра конфигурации всех подписчиков, в данный момент подключенных к подписке, необходимо выполнить слеующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp user online all<br /></span></span></em></strong></pre>
+<p>Этот список можно отфильтровать, выбрав подписчиков, подключенных к   определенной плате. Для этого необходимо выполнить следующую команду:</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp user online slot 0/SLOT</span></span></em></strong></pre>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр логов протокола IGMP</span></h2>
+<p><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp log port 0/SLOT/PORT all</span></span></em></strong></p>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p>Для просмотра конфигурации подписчика на порту 0 платы 1 необходимо выполнить следующую команду:</p>
+<p><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37#display igmp log port 0/1/0 all<br />{ || }:<br /><br />&nbsp; Command:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></em></strong><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">display igmp log port 0/1/0 all</span></span></em></strong><br /><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">&nbsp; --------------------------------------------------------------------------<br />&nbsp; Program-IP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Join-time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leave-time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp; --------------------------------------------------------------------------<br />&nbsp; 233.99.61.224&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-03-05 11:15:24&nbsp;&nbsp; 2012-03-05 13:15:25&nbsp; &nbsp;<br />&nbsp; 233.99.61.224&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-03-05 10:38:31&nbsp;&nbsp; 2012-03-05 11:15:06&nbsp; &nbsp;<br />&nbsp; 233.99.61.36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-03-05 09:11:59&nbsp;&nbsp; 2012-03-05 10:38:07&nbsp; &nbsp;<br />&nbsp; 233.99.61.36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2012-03-05 07:11:57&nbsp;&nbsp; 2012-03-05 09:11:59&nbsp; &nbsp;</span></span></em></strong></p>
+<hr />
+<h1><a name="anchor_adsl"></a>ADSL профили</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание профиля</span></h2>
+<p><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">adsl line-profile add</span></span></em></strong></p>
+<p style="text-align: justify;">После ввода команды пользователю будет предложено выбрать параметры профиля: название, тип ADSL, модуляцию и т.д.</p>
+<p style="text-align: left;">Вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PNAME</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести имя создаваемого профиля (имя может быть назначено автоматически, для этого на вопрос об имени нужно ввести 'n'):</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Do you want to name the profile (y/n) [n]:y<br />&gt;&nbsp; Please input profile name:PNAME<br /></span></span></strong></em></pre>
+<p>После ввода имени профиля будет отображен запрос типа ADSL:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Please choose default value type 0-adsl 1-adsl2+ (0~1) [0]:<br /></span></span></strong></em></pre>
+<p>Затем необходимо выбрать модуляцию (по умолчанию выбрана модуляция All (G992.1~5, T1.413):</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;  Will you set basic configuration for modem? (y/n)[n]:y<br />  Note: Setting to these mode of G992.3~5 will lead that the adsl ports that are not support<br />adsl2+ not be activated ADSL transmission mode:<br />&gt;  0: All   (G992.1~5,T1.413)<br />&gt;  1: Full rate(G992.1/3/5 or T1.413)<br />&gt;  2: g.lite(G992.2/4) (ADSL over ISDN board doesn't support g.lite mode)<br />&gt;  3: T1.413(ADSL over ISDN board doesn't support T1.413 mode)<br />&gt;  4: g.dmt (G992.1/3/5)<br />&gt;  5: g.hs  (G992.1~5, G992.5 is prior)<br />&gt;  6: G992.1<br />&gt;  7: G992.2<br />&gt;  8: ADSL all (G992.1~2,T1.413)<br />Please select  (0~8) [0]:<br /></span></span></strong></em></pre>
+<p>Следующие параметры можно не изменять:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Trellis mode 0-disable 1-enable (0~1) [1]:<br />&gt;&nbsp; Downstream channel bit swap 0-disable 1-enable (0~1) [1]:<br />&gt;&nbsp; Upstream channel bit swap 0-disable 1-enable (0~1) [1]:<br /></span></span></strong></em></pre>
+<p>Затем необходимо выбрать алгоритм передачи данных:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Please select channel mode 0-interleaved 1-fast (0~1) [0]:<br /></span></span></strong></em><em><strong></strong></em></pre>
+<p>При выборе алгоритма передачи данных interleaved будет предложено ввести специфичный для него параметр:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Will you set interleaved delay? (y/n)[n]:<br /></span></span></strong></em></pre>
+<p>После этого необходимо выбрать тип адаптации скорости передачи данных:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Please select form of transmit rate adaptation in downstream:<br />&gt;&nbsp; 0-fixed 1-adaptAtStartup 2-adaptAtRuntime (0~2) [1]:<br /></span></span></strong></em><em><strong></strong></em></pre>
+<p>Следующий параметр можно не изменять:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Will you set SNR margin for modem? (y/n)[n]:<br /></span></span></strong></em></pre>
+<p>Затем необходимо выбрать скорость соединения в диапазонах приема и передачи:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">&gt;&nbsp; Will you set parameters for rate? (y/n)[n]:y<br />&gt;&nbsp; Minimum transmit rate in downstream (32~32000 Kbps) [32]:MINDOWN<br />&gt;&nbsp; Maximum transmit rate in downstream (32~32000 Kbps) [24544]:MAXDOWN<br />&gt;&nbsp; Minimum transmit rate in upstream (32~6000 Kbps) [32]:MINUP<br />&gt;&nbsp; Maximum transmit rate in upstream (32~6000 Kbps) [1024]:MAXUP</span></span></strong></em></pre>
+<p>Также можно добавить профиль одной командой:</p>
+<pre><em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;">adsl line-profile quickadd basic-para MODUL trellis 1 bitswap 0 0 channel CHMODE adapt<br />TRA snr 6 0 31 6 0 31 rate MINDOWN MAXDOWN MINUP MAXUP name PNAME</span></span></strong></em><br /></pre>
+<p>вместо<em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;"> </span></span></strong></em><span style="font-family: courier new,courier;"><span style="font-size: small;">MODUL</span></span> нужно ввести тип модуляции из следующего списка:</p>
+<p>ADSL-all, all, full-rate, g.dmt, g.hs, g.lite, G992.1, G992.2, G992.3, G992.4, G992.5, T1.413</p>
+<p>вместо<em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;"> </span></span></strong></em><span style="font-family: courier new,courier;"><span style="font-size: small;">CHMODE</span></span> нужно ввести алгоритм передачи данных из следующего списка:</p>
+<p>fast, interleaved</p>
+<p>вместо<em><strong><span style="font-family: courier new,courier;"><span style="font-size: small;"> </span></span></strong></em><span style="font-family: courier new,courier;">TRA</span><span style="font-family: courier new,courier;"> </span>нужно ввести тип адаптации скорости передачи данных из следующего списка:</p>
+<p>at-runtime, at-startup, fixed</p>
+<p>вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MINDOWN</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести минимальную скорость в диапазоне приема;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MAXDOWN</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести максимальную скорость в диапазоне приема;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MINUP</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести минимальную скорость в диапазоне передачи;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MAXUP</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести максимальную скорость в диапазоне передачи;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> PNAME</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести название профайла.</p>
+<p style="text-align: left;">Например, для   создания профиля test с модуляцией all, алгоритмом передачи данных   interleaved, адаптацией скорости at-startup, минимальной скоростью в   обоих диапазонах 32 Кбит/с, максимальной скоростью в диапазоне приема 10   Мбит/с, в диапазоне передачи 1 Мбит/с необходимо выполнить следующую   команду:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">MA5603-ATC37(config)#adsl line-profile quickadd basic-para all trellis 1 bitswap 0 0 channel<br />interleaved adapt at-startup snr 6 0 31 6 0 31 rate 32 10240 32 1024 name test<br /></span></span></strong></em><em><strong></strong></em></pre>
+<p>Если параметры профиля введены верно, будет выведен индекс созданного профиля (параметр PINDEX).</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление профиля</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>adsl line-profile delete PINDEX</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр профиля</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">display adsl line-profile </span></span></strong></em><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>PINDEX</strong></em></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<p>Также имеется возможность вывести конфигурацию всех профилей в сводной таблице. Для этого не нужно вводить индекс профиля.</p>
+<hr />
+<h1><a name="anchor_shdsl"></a>SHDSL профили</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание профиля</span></h2>
+<p>Так же, как и с линейным ADSL профилем, возможны 2 варианта: поэтапная конфигурация и быстрая конфигурация.<br />При первом варианте необходимо использовать следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>shdsl line-profile add</em></strong></span></span><br /></pre>
+<p>После ввода команды пользователю будет предложено выбрать параметры  профиля: количество используемых пар в кабеле, скоростные параметры,  режим передачи данных и т.д.</p>
+<p>Значение параметра <em><span style="font-family: courier new,courier;"><span style="font-size: small;">G.SHDSL interface mode of line</span></span></em><span style="font-size: small;"> задает количество используемых пар в телефонном кабеле (обычно используется 1 пара, т.е. значение параметра должно быть</span><span style="font-size: small;"><span style="font-size: small;"><strong><em> </em></strong><em>two wire</em></span>).</span></p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; G.SHDSL interface mode of line (1--two wire;2--four wire)[1]:<br /></em></strong></span></span></pre>
+<p><span style="font-size: small;">Па</span>раметры<span style="font-family: courier new,courier;"><span style="font-size: small;"> <em>G.SHDSL minimum line rate</em></span></span><span style="font-size: small;"> </span>и <span style="font-family: courier new,courier;"><span style="font-size: small;"> <em>G.SHDSL maximum line rate</em></span></span><span style="font-size: small;"> </span>отвечают   за минимальную и максимальную скорость соединения соответственно,   причем значения их величин должны быть кратны 64: 192, 256, 320, 384,   ..., 2248.</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Do you use the default data to create a line profile?(y/n)[y]:n<br />&gt; G.SHDSL minimum line rate<br />&nbsp; (Value must be multiple of 64,except 2312kbps,<br />&nbsp; 192~2304,2312 kbps)[2048]:<br />&gt; G.SHDSL maximum line rate<br />&nbsp; (Value must be multiple of 64,except 2312kbps,<br />&nbsp; 192~2304,2312 kbps)[2048]:<br /></em></strong></span></span></pre>
+<p>Параметр <span style="font-family: courier new,courier;"><span style="font-size: small;">Power Spectral Density mode </span></span>задает режим соединения: синхронный или асинхронный (необходимо использовать синхронный режим).</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Power Spectral Density mode (1--symmetric;2--asymmetric)[1]:<br /></em></strong></span></span></pre>
+<p>ПараметрTransmission Mode задает режим передачи данных (обычно используется режим Annex A):</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Transmission mode (1--G.991.2 Annex A;2--G.991.2 Annex B;<br />&nbsp; 3--support Annex A&amp;B)[3]:<br /></em></strong></span></span></pre>
+<p>Значения следующих параметров можно оставить без изменения:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&gt; Remote enable (1--enabled;2--disabled)[1]:<br />&gt; Probe enable (1--disabled;2--enabled)[1]:<br />&gt; Do you config the target SNR margin?(y/n)[n]:n<br />&nbsp; Add profile 8 successfully</em></strong></span></span><br /></pre>
+<p>Для быстрой конфигурации профиля необходимо использовать следующую команду:</p>
+<p><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>shdsl  line-profile quickadd line two-wire rate MINRATE MAXRATE psd symmetric  transmission annex-a remote enable probe enable snr-margin ds-curr 0  ds-worst 0 us-curr 0 us-worst 0 bitmap 0x1</strong></em></span></span></p>
+<p>вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MINRATE</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести минимальную скорость;<br />вместо<span style="font-family: courier new,courier;"><span style="font-size: small;"> MAXRATE</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести максимальную скорость.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление профиля</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>shdsl line-profile delete PINDEX</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр профиля</span></h2>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">display shdsl line-profile </span></span></strong></em><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>PINDEX</strong></em></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля.</p>
+<p>Также имеется возможность вывести конфигурацию всех профилей в сводной таблице. Для этого не нужно вводить индекс профиля.</p>
+<hr />
+<h1><a name="anchor_adminstaus"></a>Операции с клиентским портом</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Выключение порта</span></h2>
+<p>Для административного выключения порта сначала необходимо зайти в   режим конфигурации платы, на которой расположен порт, после чего   выполнить команду выключения порта:</p>
+<pre><strong><em><span style="font-family: courier new,courier;"><span style="font-size: small;">interface xDSL 0/SLOT<br />deactivate PORT</span></span></em></strong><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Включение порта</span></h2>
+<p>Для административного включения порта могут быть использованы 2   команды, представленные ниже. Первая включает порт, не меняя профиля,   который был для него назначен, вторая профиль изменяет. Обе команды   необходимо выполнять в режиме конфигурирования слота.</p>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">activate PORT<br />activate PORT profile-index PINDEX</span></span></em></strong><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер выставляемого профиля.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр состояния порта</span></h2>
+<pre><span style="font-size: small;"><em><strong><span style="font-family: courier new,courier;">display port state PORT</span></strong></em></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.<br />Команду необходимо выполнять в режиме конфигурирования слота.</p>
+<hr />
+<h1><a name="anchor_stat"></a>Просмотр статистики</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр статистики передачи данных</span></h2>
+<p>Имеется возможность просмотреть статистику порта за текущие сутки   (момент начала сбора статистики: момент выполнения команды, момент   окончания сбора статистики: 15 минут или 24 часа от начала сбора   статистики), за предыдущие сутки (момент начала сбора статистики: 24   часа назад от момента выполнения команды, момент окончания сбора   статистики: 15 минут или 24 часа от начала сбора статистики) и за все   время с момента последней перезагрузки платы.</p>
+<p>Для сбора статистики за текущие сутки необходимо выполнить следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display statistics performance 0/SLOT/PORT current-24hours</strong></em></span></span><br /></pre>
+<p>Для сбора статистики за текущие 15 минут необходимо заменить управляющие слова <span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>current_24hours&nbsp;</strong></em></span></span>на <span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>current_15minutes</strong></em></span></span>.</p>
+<p>Для сбора статистики за предыдущие сутки необходимо выполнить следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>display statistics performance 0</em></strong></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>/SLOT/PORT</strong></em></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em> last-24hours<br /></em></strong></span></span></pre>
+<p>Для сбора статистики за все время необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display statistics performance 0</em></strong></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>/SLOT/PORT</strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em> ever-before</em></strong></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Статистика будет выведена в следующем формате:</p>
+<p><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>&nbsp; ATU-R<br /></strong></em></span></span><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>&nbsp; Count of Loss of Frame failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 456<br />&nbsp; Count of Loss of Signal failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 383<br />&nbsp; Count of Loss of Link failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 378<br />&nbsp; Count of Loss of Power failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of Errored Seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 44748<br />&nbsp; Count of line initialization attempts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 759<br />&nbsp; Count of all encoded blocks received&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 319489155<br />&nbsp; Count of all encoded blocks transmitted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 326303478<br />&nbsp; Count of all blocks received with correctable errors&nbsp;&nbsp; : 898283<br />&nbsp; Count of all blocks received with uncorrectable errors : 251091<br />&nbsp; Count of fast retrain times&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of failed fast retrain times&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of severely errored seconds(SES)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of unavailable seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 656133<br />&nbsp; ATU-C<br />&nbsp; Count of Loss of Frame failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 3<br />&nbsp; Count of Loss of Signal failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 0<br />&nbsp; Count of Loss of Power failures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 5<br />&nbsp; Count of Errored Seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 43436<br />&nbsp; Count of all encoded blocks received&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 326303478<br />&nbsp; Count of all encoded blocks transmitted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 319489155<br />&nbsp; Count of all blocks received with correctable errors&nbsp;&nbsp; : 1632842500<br />&nbsp; Count of all blocks received with uncorrectable errors : 353396<br />&nbsp; Count of severely errored seconds(SES)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 156<br />&nbsp; Count of unavailable seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 28473</strong></em></span></span></p>
+<p>Вся выдаваемая статистика разделена на 2 блока: ATU-R и ATU-C.   Информация, расположенная в блоке ATU-R (ADSL Transmission Unit-Remote),   относится к абонентскому модему, а информация в блоке ATU-C (ADSL   Transmission Unit-Central Office) - к порту DSLAM, к которому подключен   абонентский модем. Большинство параметров совпадают, но есть и   специфичные для каждого блока.</p>
+<table border="0">
+<tbody>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Frame failures</span></span></td>
+<td>Количество потерь кадров данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Signal failures</span></span></td>
+<td>Количество потерь полезной составляющей сигнала</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Link failures</span></span></td>
+<td>Количество потерь соединения</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Loss of Power failures</span></span></td>
+<td>Количество потерь кадров данных из-за низкой мощности сигнала</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of Errored Seconds</span></span></td>
+<td>Количество секунд с ошибками передачи данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of line initialization attempts</span></span></td>
+<td>Количество попыток соединения<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all encoded blocks received</span></span></td>
+<td>Количество полученных зашифрованными блоков данных<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all encoded blocks transmitted</span></span></td>
+<td>Количество переданных зашифрованными блоков данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all blocks received with correctable errors</span></span></td>
+<td>Количество блоков данных, полученных с ошибками, которые удалось исправить<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of all blocks received with uncorrectable errors</span></span></td>
+<td>Количество блоков данных, полученных с ошибками, которые не удалось исправить</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of fast retrain times</span></span></td>
+<td>Количество попыток изменения модемами скорости соединения<br /></td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of failed fast retrain times</span></span></td>
+<td>Количество неудавшихся попыток изменения модемами скорости соединения</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of severely errored seconds(SES)</span></span></td>
+<td>Количество секунд с 10 или более ошибками передачи данных</td>
+</tr>
+<tr>
+<td><span style="font-family: courier new,courier;"><span style="font-size: small;">Count of unavailable seconds</span></span></td>
+<td>Количество секунд, когда передача данных была недоступна<br /></td>
+</tr>
+</tbody>
+</table>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр общей статистики</span></h2>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>display interface xDSL 0/SLOT/PORT</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">xDSL </span></span>подставить тип платы: ADSL или SHDSL;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>По статистике можно выяснить состояние соединения, выставленный   линейный и BTV профили, время последнего соединения и т.д. В отдельных   блоках выводится статистика по каждой PVC, созданных на порту.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр электрических параметров соединения</span></h2>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display line operation port 0/SLOT/PORT</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Параметры соединения будут выведены в следующем формате:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>&nbsp; Channel mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Interleaved<br />&nbsp; Downstream channel bit swap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Disable<br />&nbsp; Upstream channel bit swap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Disable<br />&nbsp; Trellis mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Enable<br />&nbsp; Standard in port training&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : G992.5-Annex A<br />&nbsp; Downstream channel rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 6144<br />&nbsp; Downstream max. attainable rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp; : 21656<br />&nbsp; Downstream channel SNR margin(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 26.9<br />&nbsp; Downstream interleaved channel delay(ms)&nbsp; : 6<br />&nbsp; Downstream channel attenuation(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 17.0<br />&nbsp; Downstream total output power(dBm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 1.8<br />&nbsp; Upstream channel rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 638<br />&nbsp; Upstream max. attainable rate(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 1027<br />&nbsp; Upstream channel SNR margin(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 18.0<br />&nbsp; Upstream interleaved channel delay(ms)&nbsp;&nbsp;&nbsp; : 2<br />&nbsp; Upstream channel attenuation(dB)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 8.5<br />&nbsp; Upstream total output power(dBm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 11.5</strong></em></span></span><br /></pre>
+<p>Ниже приведена расшифровка этих параметров:</p>
+<table border="0">
+<tbody>
+<tr>
+<td>Attenuation</td>
+<td>Величина затухания полезного сигнала</td>
+</tr>
+<tr>
+<td>SNR margin</td>
+<td>Отношение величины полезного сигнала к величине помехи</td>
+</tr>
+<tr>
+<td>Output power</td>
+<td>Мощность выходного сигнала</td>
+</tr>
+<tr>
+<td>Interleaved channel delay</td>
+<td>Задержка канала с алгоритмом передачи данных interleaved</td>
+</tr>
+</tbody>
+</table>
+<p>Также можно вывести параметры соединения всех портов определенной    платы или всех портов на аппарате. Для этого необходимо использовать    одну из следующих команд:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display line operation slot 0/SLOT</strong></em></span></span><br /></pre>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display line operation all<br /></strong></em></span></span></pre>
+<hr />
+<h1><a name="anchor_save"></a>Конфигурация</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр конфигурации</span></h2>
+<p>Для просмотра всей конфигурации устройства используется следующая команда:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display current-configuration</strong></em></span></span><br /></pre>
+<p>Имеется возможность вывести только определенный блок конфигурации с помощью следующей команды:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display current-configuration section SEC</strong></em></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SEC</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести название блока конфигурации из списка ниже:</p>
+<table border="0">
+<tbody>
+<tr>
+<td>global-config</td>
+<td>задается имя аппарата, создаются пользователи, линейные профайлы, аварийные сообщения</td>
+</tr>
+<tr>
+<td>device-config</td>
+<td>задаются платы в слотах устройства</td>
+</tr>
+<tr>
+<td>vlan-config</td>
+<td>VLAN создаются и пробрасываются на интерфейсы<br /></td>
+</tr>
+<tr>
+<td>scu</td>
+<td>задается конфигурация управляющей платы устройства</td>
+</tr>
+<tr>
+<td>adsl</td>
+<td>линейные профили применяются к портам каждой платы</td>
+</tr>
+<tr>
+<td>bbs-config</td>
+<td>создаются PVC</td>
+</tr>
+<tr>
+<td>btv-config</td>
+<td>конфигурируются программы, подписчики, списки каналов</td>
+</tr>
+<tr>
+<td>vlanif</td>
+<td>созданным VLAN назнааются IP-адреса</td>
+</tr>
+<tr>
+<td>meth</td>
+<td>конфигурируется интерфейс Metro-Ethernet</td>
+</tr>
+<tr>
+<td>null</td>
+<td>конфигурируется Null-интерфейс (Loopback)</td>
+</tr>
+<tr>
+<td>acl-user</td>
+<td>создаются списки контроля доступа</td>
+</tr>
+<tr>
+<td>aaa</td>
+<td>задаются параметры аутентификации, авторизации и учета</td>
+</tr>
+<tr>
+<td>post-system</td>
+<td>конфигурируются SNMP community, списки контроля доступа применяются к интерфейсам</td>
+</tr>
+</tbody>
+</table>
+<h2 style="text-align: center;"><span style="font-size: medium;">Сохранение конфигурации</span></h2>
+<p>Для сохранения конфигурации используются 2 команды:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>save configuration<br />save</em></strong></span></span><br /></pre>
+<p>Первая сохраняет конфигурационный файл на флэш-память аппарата, вторая используется для сохранения файлов базы данных аппарата.<br />Если выполнить только вторую команду, изменения не будут отображены в файле конфигурации.</p>
+<hr />
+<h1><a name="anchor_other"></a>Прочее</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Перезагрузка платы<br /></span></h2>
+<p>Перед перезагрузкой плат необходимо <strong>ОБЯЗАТЕЛЬНО</strong> сохранить конфигурацию!</p>
+<p>Для перезагрузки платы необходимо выполнить следующую команду:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>board reset 0/SLOT</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр трафика<br /></span></h2>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>display traffic 0/SLOT/PORT</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Результат будет выведен в следующем формате:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>&nbsp; --------------------------------------------------------------<br />&nbsp; Frame/Slot/Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rx Traffic(Kbps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tx Traffic(Kbps)<br />&nbsp; --------------------------------------------------------------<br />&nbsp; 0 /SLOT /PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x.x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x.x<br />&nbsp; --------------------------------------------------------------</em></strong></span></span><br /></pre>
+<p>Причем в стобце <span style="font-family: courier new,courier;"><span style="font-size: small;">Rx Traffic</span></span><span style="font-family: courier new,courier;"> </span>(Receive) будет выведена скорость исходящая для абонента, а в столбце <span style="font-family: courier new,courier;"><span style="font-size: small;">Tx Traffic</span></span><span style="font-family: courier new,courier;"> </span>(Transmit)- входящая.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр профилей трафика</span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display traffic table index PINDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс профиля трафика.</p>
+<p>Также можно вывести конфигурацию диапазона профилей. Для этого необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>display traffic table FINDEX 0 to-index TINDEX</em></strong></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">FINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс начала выводимого диапазона;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">TINDEX</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс конца выводимого диапазона.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр MAC-адресов<br /></span></h2>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display mac-address adsl 0/SLOT/PORT</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Также имеется возможность вывести все MAC-адреса в VLAN. Для этого необходимо выполнить следующую команду:</p>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>display mac-address vlan VLAN</strong></em></span></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">VLAN</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести индекс VLAN, MAC-адреса в которой необходимо вывести.</p>]]></content></dslam><dslam><id>lucent_stinger_ls_fsplus</id><name>Lucent Stinger LS (FS+)</name><content><![CDATA[<p><a name="anchor_top"></a></p>
+<table border="0">
+<tbody>
+<tr style="text-align: center;">
+<td><!-- link image cms-chaynik --><!-- /END link image --><a class="highslide" title="dslam_stinger_fs" onclick="return hs.expand(this)" href="/data/img/dslams/dslam_stinger_fs.jpg"><img src="/data/img/dslams/.thumbs/da1ed53b37fd6801e2fd74f7be95dd24_0_240_0.jpg" alt="dslam_stinger_fs" width="205" height="240" /></a> <br /></td>
+<td><!-- image cms-chaynik --><!-- /END link image --><img src="/data/img/dslams/dslam_stinger_ls.jpg" alt="dslam_stinger_ls" width="150" height="190" /> <br /></td>
+</tr>
+<tr style="text-align: center;">
+<td>Lucent StingerFS+</td>
+<td>Lucent StingerLS</td>
+</tr>
+<tr>
+<td style="text-align: justify;" colspan="2">
+<p><span style="font-size: small;"><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">Семейство  DSLAM Lucent Stinger  - концентраторы доступа DSL операторского класса,  разработанные для поставщиков услуг. Оборудование предназначено для   организации широкополосного доступа по телефонной линии с интеграцией   функций магистральной сети АТМ, которая позволяет достичь максимального   уровня производительности и надежности. Будучи DSLAM, устройство   выполняет функции DSL-окончания и ATM-коммутатора. Соответственно,   Stinger может использоваться в качестве высокоскоростного мультиплексора   доступа DSL на центральной станции для входа в основную структуру   коммутации, а также в качестве ATM коммутатора.</span></span></p>
+<ul class="squre">
+<li><span style="font-size: small;"><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">Наиболее мощное устройство Stinger FS/FS+ </span><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">поддерживает  1008 портов xDSL и четыре интерфейса OC-3/STM-1. В  стандартную  7-футовую стойку можно установить три устройства Stinger  FS+, что дает в  общей сложности 3024 порта DSL. Это наивысшая плотность  портов из всех  концентраторов доступа DSL, имеющихся на рынке;</span></span></li>
+<li><span style="font-size: small;"><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">Stinger LS </span><span style="font-family: Verdana,Arial,Helvetica,sans-serif;">-  это уменьшенная версия оригинального концентратора Stinger FS+,   сохранившая все его функции и характеристики. Lucent предлагает 2 модели   Stinger LS: для 19-дюймовой стойки с 5-ю слотами (общей емкостью до  360  портов) и для 23-дюймовой стойки с 7-ю слотами (общая емкость до  504  портов); </span></span> </li>
+</ul>
+<p><span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;"><span style="font-size: small;">Информация взята из статьи 2005 года с ресурса <a href="http://www.networkmanuals.ru/articles/xDSL/xDSL_41.html" target="_blank">NetworkManuals.ru</a></span><br /></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h2><span style="font-size: medium;">Список команд</span><br /></h2>
+<p><a href="#anchor_pvc">PVC</a></p>
+<p><a href="#anchor_igmp">IGMP</a></p>
+<p><a href="#anchor_speed">Изменение скорости</a></p>
+<p><a href="#anchor_adminstaus">Операции с клиентским портом</a></p>
+<p><a href="#anchor_stat">Просмотр статистики</a></p>
+<p><a href="#anchor_save">Конфигурация</a></p>
+<p><a href="#anchor_other">Прочее</a></p>
+<hr />
+<h1><a name="anchor_pvc"></a>PVC</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Создание</span></h2>
+<p style="text-align: justify;">Для  создания PVC есть 2 способа: скопировать конфигурацию другой PVC, после  чего изменить VLAN, VCI и порт, к которому она привязана; или же  непосредственно создать новую PVC и вручную ввести все параметры.  Поскольку второй способ применяется при начальной конфигурации  устройства, в данной инструкции будет рассмотрен только первый способ.</p>
+<p style="text-align: justify;">Проверить, действительно ли не создана PVC, соответствующая порту доступа, с помощью команды:</p>
+<pre style="text-align: justify;"><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">dir connection<br /></span></span></em></strong></pre>
+<p style="text-align: justify;">Эта  команда выведет список всех PVC, созданных на аппарате, отсортированный в  алфавитном поряде. Названия PVC отображаются в последнем столбце  выводимой таблицы и могут быть произвольными, но принято называть их по  шаблону <span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>xxyyzz</strong></em></span></span>,  где xx -&nbsp; тип платы (ad для ADSL и sh для SHDSL), yy - номер слота, zz -  номер порта. Например, для 31 порта 2 SHDSL платы PVC будет называться <span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>sh0231</strong></em></span></span>.  Это соблюдается, если к проверяемому порту доступа привязана только 1  PVC, если на порту доступа несколько услуг (как правило, интернет + VPN)  то первая PVC имеет название, соответствующее шаблону, а вторая -  произвольное.</p>
+<p style="text-align: justify;">Если в  списке не найдено PVC, соответствующей проверяемому порту доступа,  необходимо считать конфигурацию любой другой PVC и изменить некоторые  параметры. Выполняется это с помощью следующих команд:</p>
+<pre style="text-align: justify;"><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">read connection PNAME_OLD<br />set station = PNAME_NEW<br />set atm-options vci = VCI<br /></span></span></em></strong><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">set atm-options nailed-group = NGROUP<br />set bridging-options bridging-group = IVLAN<br />write<br /></span></span></em></strong></pre>
+<p style="text-align: justify;">вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PNAME_OLD </span></span>подставить название считываемой PVC;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PNAME_NEW </span></span>подставить название создаваемой PVC;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">VCI</span></span> подставить параметр соединения VCI (в зависимости от услуги может изменяться);<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">NGROUP </span></span>подставить значение параметра nailed-group, определенное для порта доступа.<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">IVLAN </span></span>подставить номер абонентской VLAN доступа (в зависимости от услуги может изменяться).</p>
+<p style="text-align: justify;">Параметр <span style="font-size: small;"><span style="font-family: courier new,courier;">NGROUP</span></span> можно узнать с помощью следующей команды:</p>
+<pre style="text-align: justify;"><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">which -n { 1 SLOT PORT }</span></span></em></strong></pre>
+<p style="text-align: justify;">вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент.</p>
+<p style="text-align: justify;">В случае, если при выполнении команды <span style="font-size: small;"><span style="font-family: courier new,courier;">write</span></span> аппарат выдал ошибку, необходимо проверить, не привязана ли к указанному в конфигурации создаваемой PVC <span style="font-size: small;"><span style="font-family: courier new,courier;">NGROUP</span></span> какая-либо другая PVC. Это можно выполнить с помощью следующей команды:</p>
+<pre style="text-align: justify;"><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">which -p -c NGROUP<br /></span></span></em></strong></pre>
+<p style="text-align: justify;">Если  будет найдена какая-либо PVC, следует разобраться, а действительно ли  необходимо создавать PVC на проверяемом порту доступа.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Удаление</span></h2>
+<pre style="text-align: justify;"><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">delete connection PNAME</span></span></strong></em></pre>
+<p style="text-align: justify;">вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PNAME </span></span>подставить название удаляемой PVC.</p>
+<p style="text-align: justify;">Должен появиться запрос на подтверждение выполнения удаления:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">Delete profile CONNECTION/PNAME? [y/n]y<br />CONNECTION/</span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">PNAME </span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">deleted</span></span></strong></em></pre>
+<h2 style="text-align: center;"><strong><span style="font-size: medium; font-weight: bold;">Просмотр</span></strong></h2>
+<p style="text-align: justify;">Для  просмотра конфигурации PVC необходимо знать ее название (см. п.  "Создание PVC"). Можно либо с помощью одной команды вывести полную  конфигурацию PVC, либо с помощью нескольких команд просмотреть только  интересующие параметры.</p>
+<p style="text-align: justify;">Вывод полной конфигурации PVC:</p>
+<pre style="text-align: justify;"><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>read connection PNAME</em></strong></span></span></pre>
+<p style="text-align: justify;">вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PNAME</span></span> подставить название PVС.</p>
+<p style="text-align: justify;">Конфигурация будет выведена в следующем формате:</p>
+<pre style="text-align: justify;"><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>[in CONNECTION/ad0202]<br />station* = ad0202<br />active = yes<br />encapsulation-protocol = atm<br />called-number-type = national<br />dial-number = ""<br />clid = ""<br />auto-profiles = yes<br />ip-options = { no no { no 0 15 global } 0.0.0.0/0 0.0.0.0/0 "" 1 60 120 no 0 0.+<br />bridging-options = { 174 yes no vlan-circuit 0 0 "" 16 none 0 no "" }<br />session-options = { "" "" no no "" 120 no-idle 120 "" 0 disabled autobaud 78400+<br />telco-options = { ans-and-orig no ft1 52 no no 56k-clear 0 "" "" no 0 any }<br />ppp-options = { no-ppp-auth none "" none "" "" "" "" stac 1524 no 600 600 0 4 n+<br />mp-options = { 1 1 2 }<br />mpp-options = { "" quadratic transmit 1 1 15 5 10 70 }<br />fr-options = { "" 16 "" transparent-link no "" 16 "" }<br />tcp-clear-options = { "" 0 "" 0 "" 0 "" 0 no "" 256 20 }<br />usrRad-options = { global 0.0.0.0 1646 "" 1 acct-base-10 }<br />calledNumber = ""<br />shared-prof = no<br />max-shared-users = 0<br />tunnel-options = { disabled atmp-protocol 0 rip-off "" "" 5150 "" "" "" "" "" "+<br />vrouter = ""<br />cross-connect-index = 0<br />atm-options = { aal5-llc 0 33 52 p2p pvc no 00:00:00:00:00:00:00:00:00:00:00:00+<br />atm-connect-options = { aal5-llc 0 35 1 p2p pvc no 00:00:00:00:00:00:00:00:00:0+<br />port-redirect-options = { none 0 0.0.0.0 }<br />pppoe-options = { no no "" }<br />pppoa-options = { yes }<br />atm-qos-options = { default default 0-level }<br />bir-options = { no no { no [ { 0.0.0.0/0 0.0.0.0/0 } { 0.0.0.0/0 0.0.0.0/0 } { +<br />atm-aal-options = { no aal-0 1 1 }<br />conn-user = default<br />ether-options = { 1 0 default default }<br />remote-id = ""</strong></em></span></span></pre>
+<p style="text-align: justify;">Ниже приведена расшифровка некторых из выведенных параметров:</p>
+<table border="0">
+<tbody>
+<tr>
+<td>station</td>
+<td>название PVC</td>
+</tr>
+<tr>
+<td>active</td>
+<td>состояние PVC</td>
+</tr>
+<tr>
+<td>bridging-options</td>
+<td>набор параметров, управляющих соединением технологий ATM и Ethernet</td>
+</tr>
+<tr>
+<td>atm-options</td>
+<td>набор параметров, управляющих ATM-соединением клиента и порта доступа</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: justify;">В группе <span style="font-size: small;"><span style="font-family: courier new,courier;">bridging-options</span></span> перый параметр указывает VLAN, к которой привязывается PVC. В группе  atm-options параметры 2-4 указывают VPI, VCI и nailed-group  соответственно.</p>
+<pre style="text-align: justify;"><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>get connection </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>PNAME </em></strong></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>station<br />get </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>connection </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>PNAME </em></strong></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>active<br />get </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>connection </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>PNAME </em></strong></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>bridging bridging-group<br />get </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>connection </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>PNAME </em></strong></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>atm-options vpi<br />get </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>connection </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>PNAME </em></strong></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>atm-options vci<br />get </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>connection </strong></em></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><strong><em>PNAME </em></strong></span></span><span style="font-size: small;"><span style="font-family: courier new,courier;"><em><strong>atm-options nailed-group<br /></strong></em></span></span></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PNAME</span></span> подставить название PVС.</p>
+<hr />
+<h1><a name="anchor_igmp"></a>IGMP</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<p>Данный протокол не поддерживается устройством.</p>
+<hr />
+<h1><a name="anchor_speed"></a>Изменение скорости</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<p style="text-align: justify;">Для ADSL и SHDSL плат процедуры изменения линейной скорости на порту доступа абсолютно идентичны и состоят из следующих команд:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">read al-dmt {1 SLOT PORT}<br />list CHMODE-path-config<br />set PARAM = VALUE<br />write<br /></span></span></strong></em><em><strong></strong></em></pre>
+<p>вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">SLOT</span></span> подставить номер слота, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PORT </span></span>подставить номер порта на плате, к которому подключен абонент;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">CHMODE </span></span>подставить алгоритм передачи данных: fast или interleaved (в зависимости от выбранного для порта доступа алгоритма);<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">PARAM </span></span>подставить название параметра, который необходимо изменить;<br />вместо <span style="font-size: small;"><span style="font-family: courier new,courier;">VALUE </span></span>подставить значение изменяемого параметра.</p>
+<p>Узнать, какой алгоритм передачи данных выбран для порта доступа, можно с помощью следующих команд:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">get al-dmt {1 SLOT PORT} line-config line-latency-up<br />get al-dmt {1 SLOT PORT} line-config line-latency-down<br /></span></span></strong></em></pre>
+<p>Изменить алогритм передачи данных можно с помощью следующих команд:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">read al-dmt {1 SLOT PORT}</span></span></strong></em><br /><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">set line-config line-latency-up = CHMODE<br /></span></span></strong></em><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">set line-config line-latency-down = CHMODE</span></span></strong></em><br /></pre>
+<p>Следует также учесть, что для выставления скорости выше 8 Мбит/с необходимо также изменить еще несколько параметров. Команды приведены ниже:</p>
+<pre><em><strong><span style="font-size: small;"><span style="font-family: courier new,courier;">set line-config line-code-config adsl2plus = yes<br />set line-config downstream-end-bin = 511<br />write<br /></span></span></strong></em></pre>
+<hr />
+<h1><a name="anchor_adminstaus"></a>Операции с клиентским портом</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Выключение порта</span></h2>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">read al-dmt {1 </span></span></em></strong><span style="font-size: small;"><em><strong><span style="font-family: courier new,courier;">SLOT </span></strong></em></span><strong><em><span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span></em></strong><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">}<br />set enabled = no<br />write</span></span></em></strong></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Включение порта</span></h2>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">read al-dmt {1 </span></span></em></strong><span style="font-size: small;"><em><strong><span style="font-family: courier new,courier;">SLOT </span></strong></em></span><strong><em><span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span></em></strong><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">}<br />set enabled = yes<br />write<br /></span></span></em></strong></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр состояния порта</span></h2>
+<pre><span style="font-size: small;"><em><strong><span style="font-family: courier new,courier;">get al-dmt {1 SLOT </span></strong></em></span><strong><em><span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span></em></strong><span style="font-size: small;"><em><strong><span style="font-family: courier new,courier;">} enabled</span></strong></em></span><br /></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<hr />
+<h1><a name="anchor_stat"></a>Просмотр статистики</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
 <p>&nbsp;</p>
-<p>asd</p>]]></content></core></section></pe>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр статистики передачи данных</span></h2>
+<p>Данная функция не поддерживается устройством.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр общей статистики</span></h2>
+<p>Данная функция не поддерживается устройством.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр электрических параметров соединения</span></h2>
+<pre><strong><em><span style="font-size: small;"><span style="font-family: courier new,courier;">get al-dmt-stat {1 SLOT PORT} physical-statistic</span></span></em></strong><strong><em></em></strong></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата;<br />вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">PORT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер порта на плате.</p>
+<p>Параметры соединения будут выведены в следующем формате:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>line-up-timer = { 0 0 0 }<br />rx-signal-present = no<br />up-dwn-cntr = 158<br />self-test = passed<br />noise-margin-down = 0<br />attenuation-down = 0<br />output-power-down = 0<br />noise-margin-up = 0<br />attenuation-up = 0<br />output-power-up = 0<br />near-end-fec = 0<br />near-end-crc = 0<br />near-end-hec = 0<br />far-end-fec = 0<br />far-end-crc = 0<br />far-end-hec = 0<br />received-rs-blocks = 0<br />transmitted-rs-blocks = 0<br />incoming-cells = 0<br />outgoing-cells = 0</strong></em></span></span><br /></pre>
+<p>Ниже приведена расшифровка этих параметров:</p>
+<table border="0">
+<tbody>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">line-up-timer</span></span></pre>
+</td>
+<td>Время, прошедшее с момента установки соединения в формате {день час мин}</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">rx-signal-present</span></span></pre>
+</td>
+<td>Наличие соединения на текущий момент</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">up-dwn-cntr</span></span></pre>
+</td>
+<td>Суммарное количество разрывов</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-size: small;"><span style="font-family: courier new,courier;">attenuation</span></span></pre>
+</td>
+<td>Величина затухания полезного сигнала</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">noise-margin</span></span></pre>
+</td>
+<td>Отношение величины полезного сигнала к величине помехи</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">output-power</span></span></pre>
+</td>
+<td>Мощность выходного сигнала</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">near-end</span></span></pre>
+</td>
+<td>Ближняя сторона (DSLAM)<br /></td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">far-end</span></span></pre>
+</td>
+<td>Удаленная сторона (абонентское оборудование)</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">fec, </span></span><span style="font-family: courier new,courier;"><span style="font-size: small;">crc, </span></span><span style="font-family: courier new,courier;"><span style="font-size: small;">hec</span></span></pre>
+</td>
+<td>Различные виды ошибок</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">received-rs-blocks</span></span></pre>
+</td>
+<td>Количество полученных блоков данных</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">transmitted-rs-blocks</span></span></pre>
+</td>
+<td>Количество отправленных блоков данных</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">incoming-cells</span></span></pre>
+</td>
+<td>Количество полученных ячеек данных</td>
+</tr>
+<tr>
+<td>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;">outgoing-cells</span></span></pre>
+</td>
+<td>Количество отправленных ячеек данных</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1><a name="anchor_save"></a>Конфигурация</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр конфигурации</span></h2>
+<p>Данная функция не поддерживается устройством.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Сохранение конфигурации</span></h2>
+<p>Для сохранения конфигурации используются 1 команда:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><strong><em>write</em></strong></span></span><br /></pre>
+<p>Данную команду необходимо выполнять после каждого изменения конфигурации для вступления их в силу.</p>
+<hr />
+<h1><a name="anchor_other"></a>Прочее</h1>
+<p style="text-align: right;"><a href="#anchor_top">[Наверх]</a></p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Перезагрузка платы<br /></span></h2>
+<p>Перед перезагрузкой плат необходимо <strong>ОБЯЗАТЕЛЬНО</strong> сохранить конфигурацию!</p>
+<p>Процедура перезагрузки платы состоит из двух этапов: выключение платы и включение платы. Выключение платы выполняется с помощью следующей команды:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>slot -d 1 SLOT</strong></em></span></span><br /></pre>
+<p>Включение платы выполняется с помощью следующей команды:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>slot -u 1 SLOT</strong></em></span></span></pre>
+<p>вместо <span style="font-family: courier new,courier;"><span style="font-size: small;">SLOT</span></span><span style="font-family: courier new,courier;"> </span>нужно ввести номер слота, в котором расположена плата.</p>
+<p>Просмотреть состояние плат можно с помощью следующей команды:</p>
+<pre><span style="font-family: courier new,courier;"><span style="font-size: small;"><em><strong>show</strong></em></span></span></pre>
+<p>Параметр Oper всех плат должен быть UP, при перезагрузке этот параметр принимает значение RESET.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр трафика<br /></span></h2>
+<p>Данная функция не поддерживается устройством.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр профилей трафика</span></h2>
+<p>Данная функция не поддерживается устройством.</p>
+<h2 style="text-align: center;"><span style="font-size: medium;">Просмотр MAC-адресов<br /></span></h2>
+<p>Данная функция не поддерживается устройством.</p>]]></content></dslam></section><section id="etth" name="Коммутаторы Ethernet"/><section id="core" name="Оборудование агрегации и ядра сети"/></pe>

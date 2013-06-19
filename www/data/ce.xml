@@ -1,6 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ce><section id="modem" name="Модемы"><modem><id>sbrf</id><name>Сбербанк Эрэфии</name><content><![CDATA[<p>asdasddd</p>
-<p>ads</p>
-<p>afregh3</p>
-<p>123</p>]]></content></modem></section><section id="router" name="Роутеры"><router><id>ggg</id><name>asd</name><content><![CDATA[<p>7756u n</p>
-<p>nn</p>]]></content></router></section><section id="stb" name="Приставки STB"/><section id="voip" name="Шлюзы VoIP"/></ce>
+<ce><section id="modem" name="Модемы"><modem><id>sagemcom_fast_2804</id><name>Sagemcom F@st 2804</name><content><![CDATA[<p><!-- link image cms-chaynik --><!-- /END link image --></p>
+<table border="0">
+<tbody>
+<tr>
+<td style="text-align: center;">Вид спереди</td>
+</tr>
+<tr>
+<td>
+<p style="text-align: center;"><!-- link image cms-chaynik --><a class="highslide" title="view_front" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/view_front.jpg"><img src="/data/img/modems/sagemcom_fast_2804/.thumbs/db72652c2490648fe61b74bd57850641_240_0_0.jpg" alt="view_front" width="240" height="200" /></a> <!-- /END link image --></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Индикаторы:</p>
+<ul style="margin-top: 0cm;" type="disc">
+<li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;">Питание</li>
+<li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;">Линк</li>
+<li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;">Авторизация</li>
+<li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;">Беспроводная      сеть</li>
+<li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;">4 <span style="mso-ansi-language: EN-US;" lang="EN-US">LAN</span></li>
+<li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;"><span style="mso-ansi-language: EN-US;" lang="EN-US">USB</span>&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+</ul>
+<p>1. Зайти на модем по адресу 192.168.1.1 (логин/пароль: admin/admin). Если версия ПО и CEF старше указанных на рисунке ниже, их нужно обновить (файл прошивки можно найти <a href="/file/firmware/sagemcom_2804_5.47a4N_RTC">здесь</a>).</p>
+<table border="0">
+<tbody>
+<tr>
+<td><a class="highslide" title="image001" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image001.png"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/d8dda6c8ca3726247fbaccfbdf7a6085_240_0_0.jpg" alt="image001" width="240" height="117" /></a></td>
+<td><!-- link image cms-chaynik --><a class="highslide" title="image061" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image061.png"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/0e25db064df47ca5d59408d9c26112bd_240_0_0.jpg" alt="image061" width="240" height="129" /></a> <!-- /END link image --></td>
+</tr>
+</tbody>
+</table>
+<p>2. Удалить имеющиеся ATM-интерфейсы (при ошибке сначала нужно удалить WAN-сервисы со всех интерфейсов в пункте меню WAN сервис).</p>
+<p style="text-align: center;"><!-- link image cms-chaynik --><a class="highslide" title="image003" onclick="return hs.expand(this)" href="/images/modem/sagemcom2804/manual/image003.png"></a><!-- /END link image --></p>
+<p><!-- link image cms-chaynik --><a class="highslide" title="image003" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image003.png"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/903f161d9c4054d18396a5d37e81a6c8_240_0_0.jpg" alt="image003" width="240" height="65" /></a> <!-- /END link image --></p>
+<p>3. Создать ATM-интерфейс 0/33, нажав на кнопку "Добавить" и указав его параметры.</p>
+<p style="text-align: center;"><!-- link image cms-chaynik --><!-- /END link image --></p>
+<table style="align: center;" border="0">
+<tbody>
+<tr>
+<td><a class="highslide" title="image005" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image005.png"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/26e2c1d0a4f064105a7957163ddee4e7_240_0_0.jpg" alt="image005" width="240" height="66" /></a></td>
+<td><!-- link image cms-chaynik --><a class="highslide" title="image007" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image007.png"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/d5ea6778c4861af5c68c1e35f63d541e_240_0_0.jpg" alt="image007" width="240" height="181" /></a> <!-- /END link image --></td>
+</tr>
+</tbody>
+</table>
+<p>4. Создать WAN сервис bridge  на ATM-интерфейсе.</p>
+<p><!-- link image cms-chaynik --><!-- /END link image --></p>
+<table border="0">
+<tbody>
+<tr>
+<td><a class="highslide" title="image013" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image013.png"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/e685a341f90c76314dff55ff4dcf1c58_240_0_0.jpg" alt="image013" width="240" height="92" /></a></td>
+<td><!-- link image cms-chaynik --><a class="highslide" title="image065" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image065.PNG"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/b6f0103e8fffcd2092a26b2616c915b3_240_0_0.jpg" alt="image065" width="240" height="82" /></a> <!-- /END link image --></td>
+</tr>
+<tr>
+<td><!-- link image cms-chaynik --><a class="highslide" title="image033" onclick="return hs.expand(this)" href="/data/img/modems/sagemcom_fast_2804/manual/image033.png"><img src="/data/img/modems/sagemcom_fast_2804/manual/.thumbs/a5008c9f3c21552eea1794161522a609_240_0_0.jpg" alt="image033" width="240" height="81" /></a> <!-- /END link image --></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>]]></content></modem><modem><id>dlink_dsl_2540u</id><name>Dlink DSL 2540u</name><content><![CDATA[<table border="0">
+<tbody>
+<tr style="text-align: center;">
+<td>Вид спереди</td>
+<td>Вид сзади</td>
+</tr>
+<tr>
+<td><a class="highslide" title="view_front" onclick="return hs.expand(this)" href="/data/img/modems/dlink_dsl2540u_nru/view_front.jpg"><img src="/data/img/modems/dlink_dsl2540u_nru/.thumbs/5d3f67bad70088cace08044302f07d7e_240_0_0.jpg" alt="view_front" width="240" height="135" /></a></td>
+<td><!-- link image cms-chaynik --><a class="highslide" title="view_back" onclick="return hs.expand(this)" href="/data/img/modems/dlink_dsl2540u_nru/view_back.jpg"><img src="/data/img/modems/dlink_dsl2540u_nru/.thumbs/b262d8b1cda5757af2b2737d56806512_240_0_0.jpg" alt="view_back" width="240" height="129" /></a> <!-- /END link image --></td>
+</tr>
+</tbody>
+</table>
+<table border="0">
+<tbody>
+<tr>
+<td><!-- link image cms-chaynik --><a class="highslide" title="ppp_01" onclick="return hs.expand(this)" href="/data/img/modems/dlink_dsl2540u_nru/ppp_01.png"><img src="/data/img/modems/dlink_dsl2540u_nru/.thumbs/383d46329a2dfd16cb0027f217046ec3_240_0_0.jpg" alt="ppp_01" width="240" height="97" /></a> <!-- /END link image --></td>
+<td><!-- link image cms-chaynik --><a class="highslide" title="ppp_02" onclick="return hs.expand(this)" href="/data/img/modems/dlink_dsl2540u_nru/ppp_02.png"><img src="/data/img/modems/dlink_dsl2540u_nru/.thumbs/0877adf9d9bf6270d29c1051da7826db_0_240_0.jpg" alt="ppp_02" width="217" height="240" /></a> <!-- /END link image --></td>
+</tr>
+<tr style="text-align: center;">
+<td>Создаем PVC</td>
+<td>Настраиваем PVC</td>
+</tr>
+<tr>
+<td><!-- link image cms-chaynik --><a class="highslide" title="ppp_03" onclick="return hs.expand(this)" href="/data/img/modems/dlink_dsl2540u_nru/ppp_03.png"><img src="/data/img/modems/dlink_dsl2540u_nru/.thumbs/f046e9e4ae3aeede50cb41fc3c522e40_240_0_0.jpg" alt="ppp_03" width="240" height="79" /></a> <!-- /END link image --></td>
+<td>&nbsp;</td>
+</tr>
+<tr style="text-align: center;">
+<td>Сохраняем изменения</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>]]></content></modem></section><section id="router" name="Роутеры"/><section id="stb" name="Приставки STB"/><section id="voip" name="Шлюзы VoIP"/></ce>

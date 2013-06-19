@@ -16,12 +16,13 @@ class mPhones extends model {
 
         $dom = new DOMDocument("1.0", "utf-8");
         $dom -> load(DATA_PATH . "phones.xml");
-        $phones = $dom -> childNodes -> item(0);
+        $phonesOld = $dom -> childNodes -> item(0);
 
+        $phonesNew = $dom -> createElement("phones");
         $cdata = $dom -> createCDATASection($content);
-        $phones -> appendChild($cdata);
+        $phonesNew -> appendChild($cdata);
 
-        $dom -> appendChild($phones);
+        $dom -> replaceChild($phonesNew, $phonesOld);
 
         file_put_contents(DATA_PATH . "phones.xml", $dom -> saveXML());
     }
