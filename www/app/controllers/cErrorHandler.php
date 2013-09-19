@@ -2,30 +2,31 @@
 
 class cErrorHandler extends controller {
 
-    function index() {
+    function index($e) {
+        $this -> view -> showView("errors.php", $e);
     }
 
     function errorNoFiles($e) {
-        $this -> view -> showView("errors.php", $e);
+        $this -> index($e);
     }
 
     function errorNoItems($e) {
-        $this -> view -> showView("errors.php", $e);
+        $this -> index($e);
     }
 
     function errorUnknownSection($e) {
-        $this -> view -> showView("errors.php", $e);
+        $this -> index($e);
     }
 
     function errorNotFound($e) {
-        $this -> view -> showView("errors.php", $e);
+        $this -> index($e);
     }
 
     function errorUnsupportedRoute($e) {
-        $this -> view -> showView("errors.php", $e);
+        $this -> index($e);
     }
 
     function errorUnknownError($e) {
-        $this -> view -> showView("errors.php", $e);
+        $this -> index($e);
     }
 }
